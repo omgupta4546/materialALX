@@ -1,8 +1,14 @@
 import os
 import pytest
 from app.core.storage import LocalStorage, S3Storage
-from botocore.exceptions import ClientError
 from unittest.mock import MagicMock, patch
+
+# botocore is optional — stubbed by conftest.py in CI
+try:
+    from botocore.exceptions import ClientError
+except ImportError:
+    ClientError = Exception  # type: ignore[assignment,misc]
+
 
 @pytest.fixture
 def local_storage(tmp_path):

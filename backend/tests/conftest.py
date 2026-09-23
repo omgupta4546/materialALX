@@ -2,8 +2,8 @@ import sys
 import os
 from unittest.mock import MagicMock, patch
 
-# ── Stub heavy ML libraries before any app import ──────────────────────────
-# This prevents CI from failing due to missing sentence-transformers/torch.
+# ── Stub heavy/optional libraries before any app import ──────────────────
+# This prevents CI from failing due to packages not in requirements-ci.txt.
 # In production, the real packages are installed via requirements.txt.
 if os.getenv("CI") or not os.path.exists(
     os.path.join(os.path.dirname(__file__), "..", ".venv")
@@ -13,6 +13,10 @@ if os.getenv("CI") or not os.path.exists(
     sys.modules.setdefault("sentence_transformers", _st_mock)
     sys.modules.setdefault("torch", MagicMock())
     sys.modules.setdefault("transformers", MagicMock())
+    sys.modules.setdefault("openai", MagicMock())        # OpenAI provider — not in CI deps
+    sys.modules.setdefault("boto3", MagicMock())         # S3Storage — not in CI deps
+    sys.modules.setdefault("botocore", MagicMock())      # boto3 dependency
+    sys.modules.setdefault("botocore.exceptions", MagicMock())
 
 import pytest
 from sqlalchemy import create_engine, event

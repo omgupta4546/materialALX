@@ -1,18 +1,29 @@
 import os
 import uuid
-import boto3
 from abc import ABC, abstractmethod
-from typing import Optional, Union, BinaryIO
-from botocore.exceptions import ClientError
+from typing import Optional
 from pydantic_settings import BaseSettings
 
+# boto3/botocore are optional — only needed when using S3 storage provider
+try:
+    import boto3
+    from botocore.exceptions import ClientError
+    _BOTO3_AVAILABLE = True
+except ImportError:
+    boto3 = None  # type: ignore[assignment]
+    ClientError = Exception  # type: ignore[assignment,misc]
+    _BOTO3_AVAILABLE = False
+
+
 class StorageSettings(BaseSettings):
-    storage_provider: str = "local" # local or s3
+    storage_provider: str = "local"   # "local" or "s3"
     local_storage_dir: str = "./storage"
     s3_bucket: str = "materials-platform-bucket"
     s3_region: str = "us-east-1"
 
+
 settings = StorageSettings()
+
 
 class FileStorage(ABC):
     @abstractmethod
@@ -40,6 +51,7 @@ class FileStorage(ABC):
         """Generates a temporary download URL if supported."""
         pass
 
+
 class LocalStorage(FileStorage):
     def __init__(self, base_dir: str):
         self.base_dir = os.path.abspath(base_dir)
@@ -51,11 +63,8 @@ class LocalStorage(FileStorage):
     def put(self, file_content: bytes, file_name: str) -> str:
         ext = os.path.splitext(file_name)[1]
         storage_key = f"{uuid.uuid4()}{ext}"
-        path = self._get_path(storage_key)
-        
-        with open(path, "wb") as f:
+        with open(self._get_path(storage_key), "wb") as f:
             f.write(file_content)
-            
         return storage_key
 
     def get(self, storage_key: str) -> bytes:
@@ -76,13 +85,16 @@ class LocalStorage(FileStorage):
         return os.path.exists(self._get_path(storage_key))
 
     def generate_download_url(self, storage_key: str, expiration: int = 3600) -> Optional[str]:
-        # Local storage doesn't generate signed URLs natively like S3
-        # In a real app, you'd point to a local proxy endpoint
         return f"/api/v1/files/download/{storage_key}"
 
 
 class S3Storage(FileStorage):
     def __init__(self, bucket: str, region: str):
+        if not _BOTO3_AVAILABLE:
+            raise RuntimeError(
+                "boto3 package is not installed. "
+                "Install it with: pip install boto3"
+            )
         self.bucket = bucket
         self.s3 = boto3.client('s3', region_name=region)
 
@@ -119,12 +131,11 @@ class S3Storage(FileStorage):
 
     def generate_download_url(self, storage_key: str, expiration: int = 3600) -> Optional[str]:
         try:
-            url = self.s3.generate_presigned_url(
+            return self.s3.generate_presigned_url(
                 'get_object',
                 Params={'Bucket': self.bucket, 'Key': storage_key},
                 ExpiresIn=expiration
             )
-            return url
         except ClientError:
             return None
 
@@ -132,5 +143,4 @@ class S3Storage(FileStorage):
 def get_storage_provider() -> FileStorage:
     if settings.storage_provider.lower() == "s3":
         return S3Storage(bucket=settings.s3_bucket, region=settings.s3_region)
-    else:
-        return LocalStorage(base_dir=settings.local_storage_dir)
+    return LocalStorage(base_dir=settings.local_storage_dir)
