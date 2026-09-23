@@ -12,6 +12,21 @@ from app.ai.llm.providers.gemini_provider import GeminiProvider
 logger = logging.getLogger(__name__)
 
 
+class LLMProviderFactory:
+    """
+    Factory for creating the appropriate LLM provider based on environment config.
+    Reads LLM_PROVIDER env var: 'mock' (default), 'openai', 'gemini'.
+    """
+
+    @staticmethod
+    def get_provider() -> LLMProvider:
+        provider_name = os.getenv("LLM_PROVIDER", "mock").lower()
+        if provider_name == "gemini":
+            return GeminiProvider()
+        elif provider_name == "openai":
+            return OpenAIProvider()
+        else:
+            return MockProvider()
 
 def with_retry(max_retries: int = 3, fallback_to_mock: bool = True):
     """

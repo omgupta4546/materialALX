@@ -6,22 +6,20 @@ on:
   pull_request:
     branches: [main, develop]
 
-# Cancel in-flight runs for same branch on new push
+# Cancel in-flight runs on new push to same branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# ────────────────────────────────────────────────
-# FRONTEND JOB
-# ────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────
+# FRONTEND — Lint, Type-check & Build
+# ─────────────────────────────────────────────────────────────
 jobs:
   frontend-ci:
     name: "🎨 Frontend — Lint, Type-check & Build"
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js 20
         uses: actions/setup-node@v4
@@ -38,7 +36,7 @@ jobs:
         working-directory: ./frontend
         run: npm run lint
 
-      - name: Type-check (tsc)
+      - name: Type-check (tsc --noEmit)
         working-directory: ./frontend
         run: npx tsc --noEmit
 
@@ -46,8 +44,7 @@ jobs:
         working-directory: ./frontend
         run: npm run build
         env:
-          # Vite will bake this into the bundle for API calls
-          VITE_API_BASE_URL: ${{ secrets.API_BASE_URL || 'http://localhost:8000' }}
+          VITE_API_BASE_URL: "http://localhost:8000"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -56,78 +53,91 @@ jobs:
           path: frontend/dist
           retention-days: 7
 
-  # ────────────────────────────────────────────────
-  # BACKEND JOB
-  # ────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────
+  # BACKEND — Lint, Import-check & Pytest (SQLite in-memory)
+  # ─────────────────────────────────────────────────────────────
   backend-ci:
-    name: "🐍 Backend — Lint, Test & Import-check"
+    name: "🐍 Backend — Lint, Import-check & Pytest"
     runs-on: ubuntu-latest
+    env:
+      # Use SQLite in CI — no PostgreSQL/Redis needed
+      DATABASE_URL: "sqlite:///:memory:"
+      TEST_DATABASE_URL: "sqlite:///:memory:"
+      REDIS_URL: "redis://localhost:6379/0"
+      JWT_SECRET: "ci-test-secret-key-for-github-actions"
+      LLM_PROVIDER: "mock"
+      AI_PROVIDER: "local"
+      EMBEDDING_MODEL: "all-mpnet-base-v2"
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PYTHONPATH: "."
+      CI: "true"
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
-          cache-dependency-path: backend/requirements.txt
+          cache-dependency-path: backend/requirements-ci.txt
 
-      - name: Install dependencies
+      - name: Install CI dependencies (no heavy ML packages)
         working-directory: ./backend
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          # Use requirements-ci.txt — excludes sentence-transformers/torch (~2GB)
+          pip install -r requirements-ci.txt
           pip install flake8
 
-      - name: Lint with flake8
+      - name: Lint with flake8 (syntax errors + undefined names only)
         working-directory: ./backend
         run: |
-          # Stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics \
-            --exclude=.venv,__pycache__,*.pyc
+          flake8 . \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics \
+            --exclude=.venv,__pycache__,*.pyc,migrations
 
-      - name: Import smoke-test (verifies all modules load)
+      - name: Smoke-test — all app modules import cleanly
         working-directory: ./backend
-        env:
-          DATABASE_URL: "sqlite:///./ci_test.db"
-          REDIS_URL: "redis://localhost:6379/0"
-          JWT_SECRET: "ci-test-secret"
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          LLM_PROVIDER: "mock"
-          AI_PROVIDER: "local"
-          EMBEDDING_MODEL: "all-mpnet-base-v2"
-        run: python -c "from app.main import app; print('✅ All imports OK')"
-
-      - name: Run tests with pytest (SQLite in-memory)
-        working-directory: ./backend
-        env:
-          TEST_DATABASE_URL: "sqlite:///:memory:"
-          DATABASE_URL: "sqlite:///:memory:"
-          REDIS_URL: "redis://localhost:6379/0"
-          JWT_SECRET: "ci-test-secret"
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          LLM_PROVIDER: "mock"
-          AI_PROVIDER: "local"
-          EMBEDDING_MODEL: "all-mpnet-base-v2"
         run: |
-          pytest tests/ -v \
+          python -c "
+          import sys, os
+          from unittest.mock import MagicMock
+          # Stub ML libs not installed in CI
+          for mod in ['sentence_transformers', 'torch', 'transformers']:
+              sys.modules.setdefault(mod, MagicMock())
+          from app.main import app
+          print('✅ app.main imported OK')
+          "
+
+      - name: Run pytest (SQLite in-memory, ML libs mocked)
+        working-directory: ./backend
+        run: |
+          pytest tests/ \
+            -v \
             --tb=short \
             --ignore=tests/e2e \
             --ignore=tests/load \
-            -x
+            -x \
+            -q
 
-  # ────────────────────────────────────────────────
-  # AI MODULE JOB
-  # ────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────
+  # AI MODULE — Config, API & Baseline Smoke Tests
+  # ─────────────────────────────────────────────────────────────
   ai-ci:
-    name: "🤖 AI Module — Import & Baseline Check"
+    name: "🤖 AI Module — Config, API & Baseline Tests"
     runs-on: ubuntu-latest
+    env:
+      AI_PROVIDER: "local"
+      LLM_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      EMBEDDING_MODEL: "all-mpnet-base-v2"
+      PYTHONPATH: "."
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -142,52 +152,53 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: AI config smoke-test
+      - name: Test 1 — AI config loads correctly
         working-directory: ./ai
-        env:
-          LLM_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          AI_PROVIDER: "local"
-          EMBEDDING_MODEL: "all-mpnet-base-v2"
         run: |
           python -c "
           from config import ai_config
-          print(f'✅ AI config loaded — provider: {ai_config.AI_PROVIDER}')
+          print(f'✅ AI config loaded  →  provider={ai_config.AI_PROVIDER}  model={ai_config.EMBEDDING_MODEL}')
+          assert ai_config.AI_PROVIDER == 'local', f'Expected local, got {ai_config.AI_PROVIDER}'
           "
 
-      - name: AI API smoke-test
+      - name: Test 2 — AI FastAPI app imports cleanly
         working-directory: ./ai
-        env:
-          LLM_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          AI_PROVIDER: "local"
-          EMBEDDING_MODEL: "all-mpnet-base-v2"
         run: |
           python -c "
           from api import app
-          print('✅ AI FastAPI app loaded OK')
+          routes = [r.path for r in app.routes]
+          print(f'✅ AI FastAPI app loaded  →  routes: {routes}')
+          assert '/health' in routes, '/health route missing'
           "
 
-      - name: Baseline module import check
+      - name: Test 3 — Baseline matcher correctness
         working-directory: ./ai
         run: |
           python -c "
-          from baseline.baseline_matcher import BaslineMatcher if __import__('importlib.util', fromlist=['util']).util.find_spec('baseline.baseline_matcher') else None
-          import importlib.util, sys
-          spec = importlib.util.spec_from_file_location('bm', 'baseline/baseline_matcher.py')
-          mod = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(mod)
-          print('✅ Baseline matcher module loaded OK')
+          from baseline.baseline_matcher import BaselineMatcher
+          m = BaselineMatcher(match_threshold=0.8)
+
+          # Identical strings → should match
+          r = m.predict('gate valve 2 inch', 'gate valve 2 inch')
+          assert r['is_match'], f'Identical strings should match, got: {r}'
+          print(f'✅ Identical match:  score={r[\"score\"]:.3f}  is_match={r[\"is_match\"]}')
+
+          # Completely different → should not match
+          r2 = m.predict('bearing SKF 6202', 'butterfly valve PN16')
+          assert not r2['is_match'], f'Different items should not match, got: {r2}'
+          print(f'✅ Different no-match:  score={r2[\"score\"]:.3f}  is_match={r2[\"is_match\"]}')
+
+          print('✅ All baseline matcher tests passed')
           "
 
-  # ────────────────────────────────────────────────
-  # SECURITY SCAN JOB
-  # ────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────
+  # SECURITY SCAN — Bandit + npm audit
+  # ─────────────────────────────────────────────────────────────
   security-scan:
     name: "🔒 Security — Bandit & npm audit"
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -197,41 +208,45 @@ jobs:
       - name: Install security tools
         run: pip install bandit
 
-      - name: Run Bandit (Python security linter)
+      - name: Run Bandit (medium+ severity, Python security linter)
         run: |
           bandit -r backend/app/ \
             -ll \
             --exclude backend/app/__pycache__ \
             -f txt \
-            || true   # Report findings but don't fail CI for now
+            || true
 
       - name: Setup Node.js for npm audit
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: npm audit (frontend dependencies)
+      - name: npm audit (high+ severity only)
         working-directory: ./frontend
-        run: npm audit --audit-level=high || true   # Report high+ vulns, warn only
+        run: npm audit --audit-level=high || true
 
-  # ────────────────────────────────────────────────
-  # SUMMARY JOB — gating all others
-  # ────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────
+  # GATE JOB — must pass for all PRs
+  # ─────────────────────────────────────────────────────────────
   ci-success:
     name: "✅ All CI Jobs Passed"
     runs-on: ubuntu-latest
     needs: [frontend-ci, backend-ci, ai-ci, security-scan]
     if: always()
     steps:
-      - name: Check all jobs succeeded
+      - name: Check all jobs passed
         run: |
+          echo "frontend-ci:   ${{ needs.frontend-ci.result }}"
+          echo "backend-ci:    ${{ needs.backend-ci.result }}"
+          echo "ai-ci:         ${{ needs.ai-ci.result }}"
+          echo "security-scan: ${{ needs.security-scan.result }}"
           if [[ "${{ needs.frontend-ci.result }}" != "success" ]]; then
-            echo "❌ Frontend CI failed" && exit 1
+            echo "❌ frontend-ci failed" && exit 1
           fi
           if [[ "${{ needs.backend-ci.result }}" != "success" ]]; then
-            echo "❌ Backend CI failed" && exit 1
+            echo "❌ backend-ci failed" && exit 1
           fi
           if [[ "${{ needs.ai-ci.result }}" != "success" ]]; then
-            echo "❌ AI CI failed" && exit 1
+            echo "❌ ai-ci failed" && exit 1
           fi
-          echo "✅ All CI checks passed!"
+          echo "✅ All CI checks passed! Platform is healthy."

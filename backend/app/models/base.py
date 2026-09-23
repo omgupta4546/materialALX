@@ -23,8 +23,22 @@ from sqlalchemy import (
     event, DDL
 )
 from sqlalchemy.orm import declarative_base, relationship, backref
-from pgvector.sqlalchemy import Vector
 from app.core.db_config import db_config
+
+# pgvector is optional — not available on SQLite / CI environments
+try:
+    from pgvector.sqlalchemy import Vector as _Vector
+    _PGVECTOR_AVAILABLE = True
+except ImportError:
+    _Vector = None
+    _PGVECTOR_AVAILABLE = False
+
+
+def _vector_column(dimension: int):
+    """Return a Vector column for PostgreSQL, or a JSON fallback for SQLite/CI."""
+    if _PGVECTOR_AVAILABLE:
+        return Column(_Vector(dimension))
+    return Column(JSON, nullable=True)  # SQLite / CI fallback
 
 Base = declarative_base()
 
@@ -284,7 +298,7 @@ class NormalizedMaterial(Base, TimestampMixin):
     processing_time_ms      = Column(Integer)
 
     # pgvector — 768d (all-mpnet-base-v2) or 1536d (text-embedding-3-small)
-    embedding               = Column(Vector(db_config.embedding_dimension))
+    embedding               = _vector_column(db_config.embedding_dimension)
 
     source = relationship("SourceMaterial", back_populates="normalized")
     quality_metrics = relationship("DataQualityMetrics", back_populates="material", uselist=False, cascade="all, delete-orphan")
@@ -293,13 +307,16 @@ class NormalizedMaterial(Base, TimestampMixin):
         UniqueConstraint("source_material_id", "normalization_version", name="uq_normalized_source_version"),
         Index("ix_normalized_category", "category_code"),
         Index("ix_normalized_manufacturer", "normalized_manufacturer"),
-        # HNSW approximate nearest-neighbour index (cosine similarity)
-        Index(
-            "ix_normalized_embedding_hnsw",
-            "embedding",
-            postgresql_using="hnsw",
-            postgresql_with={"m": db_config.hnsw_m, "ef_construction": db_config.hnsw_ef_construction},
-            postgresql_ops={"embedding": "vector_cosine_ops"},
+        # HNSW approximate nearest-neighbour index (PostgreSQL + pgvector only)
+        *(
+            [Index(
+                "ix_normalized_embedding_hnsw",
+                "embedding",
+                postgresql_using="hnsw",
+                postgresql_with={"m": db_config.hnsw_m, "ef_construction": db_config.hnsw_ef_construction},
+                postgresql_ops={"embedding": "vector_cosine_ops"},
+            )]
+            if _PGVECTOR_AVAILABLE else []
         ),
     )
 

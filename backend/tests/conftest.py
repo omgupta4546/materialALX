@@ -1,3 +1,19 @@
+import sys
+import os
+from unittest.mock import MagicMock, patch
+
+# ── Stub heavy ML libraries before any app import ──────────────────────────
+# This prevents CI from failing due to missing sentence-transformers/torch.
+# In production, the real packages are installed via requirements.txt.
+if os.getenv("CI") or not os.path.exists(
+    os.path.join(os.path.dirname(__file__), "..", ".venv")
+):
+    _st_mock = MagicMock()
+    _st_mock.SentenceTransformer.return_value.encode.return_value = [0.0] * 768
+    sys.modules.setdefault("sentence_transformers", _st_mock)
+    sys.modules.setdefault("torch", MagicMock())
+    sys.modules.setdefault("transformers", MagicMock())
+
 import pytest
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
