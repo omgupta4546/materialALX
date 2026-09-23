@@ -156,6 +156,13 @@ app.include_router(exports_router, prefix="/api/v1/exports")
 app.include_router(migration_router, prefix="/api/v1/migration", dependencies=[Depends(require_role(admin_roles))])
 
 
+from fastapi.responses import RedirectResponse
+
+@app.get("/", include_in_schema=False)
+def root():
+    """Root endpoint — redirects to interactive API documentation."""
+    return RedirectResponse(url="/docs")
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "service": "main-backend"}
@@ -163,15 +170,49 @@ def health_check():
 @app.get("/ready")
 def readiness_check():
     db_status = check_db_health()
-    # Add redis check here if applicable in future
-    
+
     if db_status["status"] != "ok":
         from fastapi import HTTPException
         raise HTTPException(status_code=503, detail="Service Unavailable: Database not ready")
-        
+
     return {
         "status": "ready",
         "service": "main-backend",
         "database": db_status
     }
 
+@app.get("/api", include_in_schema=False)
+def api_info():
+    """API info — lists available route groups and useful links."""
+    return {
+        "platform": "National Material Intelligence & Harmonization Platform",
+        "version": "1.0.0",
+        "status": "running",
+        "docs": {
+            "swagger_ui": "http://localhost:8000/docs",
+            "redoc":       "http://localhost:8000/redoc",
+            "openapi_json":"http://localhost:8000/openapi.json",
+        },
+        "health_endpoints": {
+            "health": "http://localhost:8000/health",
+            "ready":  "http://localhost:8000/ready",
+        },
+        "api_routes": {
+            "auth":               "/api/v1/auth",
+            "materials":          "/api/v1/materials",
+            "national_materials": "/api/v1/national-materials",
+            "matches":            "/api/v1/matches",
+            "mappings":           "/api/v1/mappings",
+            "cpses":              "/api/v1/cpses",
+            "classifications":    "/api/v1/classifications",
+            "analytics":          "/api/v1/analytics",
+            "jobs":               "/api/v1/jobs",
+            "data_quality":       "/api/v1/data-quality",
+            "rules":              "/api/v1/rules",
+            "feedback":           "/api/v1/feedback",
+            "admin":              "/api/v1/admin",
+            "exports":            "/api/v1/exports",
+            "procurement":        "/api/v1/analytics/procurement",
+            "migration":          "/api/v1/migration",
+        }
+    }
