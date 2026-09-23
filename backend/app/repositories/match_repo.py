@@ -39,7 +39,7 @@ class MatchRow:
     __slots__ = (
         "match", "latest_approval",
         "mat_a_source", "mat_a_norm",
-        "mat_b_national",
+        "mat_b_national", "mat_b_source", "mat_b_norm",
     )
 
     def __init__(
@@ -49,13 +49,16 @@ class MatchRow:
         mat_a_source: Optional[SourceMaterial] = None,
         mat_a_norm: Optional[NormalizedMaterial] = None,
         mat_b_national: Optional[NationalMaterial] = None,
+        mat_b_source: Optional[SourceMaterial] = None,
+        mat_b_norm: Optional[NormalizedMaterial] = None,
     ):
         self.match = match
         self.latest_approval = latest_approval
         self.mat_a_source = mat_a_source
         self.mat_a_norm = mat_a_norm
         self.mat_b_national = mat_b_national
-
+        self.mat_b_source = mat_b_source
+        self.mat_b_norm = mat_b_norm
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MATCH REPO
@@ -102,7 +105,19 @@ class MatchRepo:
         nat_b = self.db.query(NationalMaterial).filter(
             NationalMaterial.national_material_id == match.material_b_id
         ).first()
-        return MatchRow(match, approval, src_a, norm_a, nat_b)
+        src_b = self.db.query(SourceMaterial).filter(
+            SourceMaterial.source_material_id == match.material_b_id
+        ).first() if not nat_b else None
+        norm_b = (
+            self.db.query(NormalizedMaterial)
+            .filter(NormalizedMaterial.normalized_material_id == match.material_b_id)
+            .first()
+        ) if not src_b and not nat_b else (
+            self.db.query(NormalizedMaterial)
+            .filter(NormalizedMaterial.source_material_id == match.material_b_id)
+            .first()
+        )
+        return MatchRow(match, approval, src_a, norm_a, nat_b, src_b, norm_b)
 
     # ── List / search ─────────────────────────────────────────────────────────
 
@@ -272,6 +287,9 @@ class MappingRepo:
         notes: Optional[str],
         created_by: str,
         request_id: Optional[str] = None,
+        status: str = "PENDING",
+        approved_by: Optional[str] = None,
+        approved_at: Optional[datetime] = None,
     ) -> MaterialMapping:
         self._check_conflicts(source_material_id)
 
@@ -281,8 +299,10 @@ class MappingRepo:
             national_material_id=national_material_id,
             mapping_type=mapping_type,
             confidence=confidence,
-            status="PENDING",
+            status=status,
             created_by=created_by,
+            approved_by=approved_by,
+            approved_at=approved_at,
             is_ai_suggested=False,
             notes=notes,
         )

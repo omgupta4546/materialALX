@@ -96,7 +96,8 @@ async def process_upload_job(ctx, content: bytes, filename: str, cpse_id: str, j
                 return
                 
             try:
-                best_match_id = pipeline.process(target_id)
+                # Run the synchronous pipeline in a separate thread so we don't block the ARQ async worker loop
+                best_match_id = await asyncio.to_thread(pipeline.process, target_id)
                 job.successful += 1
             except Exception as e:
                 logger.error(f"Item {target_id} failed: {str(e)}")

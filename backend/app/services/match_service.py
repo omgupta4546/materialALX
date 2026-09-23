@@ -182,9 +182,8 @@ class MatchService:
             negative_evidence=m.negative_evidence or {},
             conflicts=m.conflicts or {},
             prompt_version=m.prompt_version,
-            rules_version=m.rules_version,
-            material_a=_material_snapshot(row.mat_a_source, row.mat_a_norm),
-            material_b=_material_snapshot(nat=row.mat_b_national),
+            material_a=_material_snapshot(src=row.mat_a_source, norm=row.mat_a_norm),
+            material_b=_material_snapshot(src=row.mat_b_source, norm=row.mat_b_norm, nat=row.mat_b_national),
             review_history=[_approval_read(a) for a in history],
         )
 
@@ -214,6 +213,27 @@ class MatchService:
             review_type=review_type or decision,
             request_id=get_request_id(),
         )
+
+        # Auto-create MaterialMapping upon match approval
+        if decision == "APPROVED":
+            from datetime import datetime, timezone
+            try:
+                self._mapping_repo.create_mapping(
+                    source_material_id=row.match.material_a_id,
+                    national_material_id=row.match.material_b_id,
+                    mapping_type=row.match.match_type,
+                    confidence=row.match.final_score,
+                    notes=f"Auto-generated from match approval {approval.approval_id}",
+                    created_by=reviewer_id,
+                    request_id=get_request_id(),
+                    status="APPROVED",
+                    approved_by=reviewer_id,
+                    approved_at=datetime.now(timezone.utc).replace(tzinfo=None),
+                )
+            except ValueError:
+                # If a pending/approved mapping already exists for this source material, ignore
+                pass
+
         return ReviewActionResponse(
             match_id=match_id,
             approval_id=approval.approval_id,
