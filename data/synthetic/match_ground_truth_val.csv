@@ -1,0 +1,751 @@
+material_a,material_b,ground_truth,reason,critical_conflict,category
+GME-PPE-40732,GME-B-273EACD2,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+NEC-DUP-11525,NEC-B-2914EBBE,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-BRG-16195,GME-B-BD56AD41,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-MTR-91172,NEC-B-C2863CBB,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-MTR
+NEC-FST-97836,NEC-B-8A37A055,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+CPI-DUP-61434,CPI-B-DDF72918,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+GME-FST-88802,GME-B-28EC3DD8,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+BUS-PIP-57662,BUS-B-D87150FB,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+AHM-BRG-67706,AHM-B-F7E56A99,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-DUP-91620,AHM-B-F2271724,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+GME-INS-45075,GME-B-65CD33A5,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+CPI-DUP-92686,CPI-B-199E3DFB,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+CPI-MTR-26922,CPI-B-70B661BE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+NEC-BRG-96033,NEC-B-409F2546,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-72922,BUS-B-FFDD97F2,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+CPI-FLG-57223,CPI-B-FDB77989,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+AHM-DUP-30350,AHM-B-0221C3AF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+GME-GSK-10742,GME-B-4F1326D3,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+BUS-MTR-19842,BUS-B-A3D6D7F9,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+CPI-BRG-30409,CPI-B-2589792F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-INS-48342,NEC-B-7A196D8A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+CPI-PIP-40335,CPI-B-C3007E20,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+AHM-CBL-40418,AHM-B-C31F2994,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+GME-BRG-86511,GME-B-0DFC68D5,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-37924,BUS-B-5321E19F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+GME-PIP-76413,GME-B-6EBC27F7,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+AHM-VLV-86448,AHM-B-1613EB90,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+CPI-INS-54066,CPI-B-1332117A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+NEC-CFL-80877,NEC-B-BAD0195C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-CFL-74800,AHM-B-F5A57D8B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-DUP-17320,GME-B-513E8E32,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+CPI-DUP-63143,CPI-B-D011606E,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+NEC-DUP-33259,NEC-B-6E29F5B4,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+CPI-DUP-81139,CPI-B-C2CFA2BE,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+NEC-MTR-20923,NEC-B-ECF03A0F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-MTR
+NEC-INS-50979,NEC-B-6CD5427A,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+BUS-DUP-28325,BUS-B-5A87D95E,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+AHM-MTR-70027,AHM-B-7A0E9FD5,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+AHM-VLV-45775,AHM-B-A59F0766,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+AHM-MTR-17370,AHM-B-0E949668,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+NEC-ELC-17776,NEC-B-B2619465,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+NEC-INS-77551,NEC-B-11669C3B,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+NEC-BRG-16720,NEC-B-F745722C,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-CFL-28037,CPI-B-58A3ECF0,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+NEC-BRG-40167,NEC-B-3904FDD4,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+BUS-BRG-70266,BUS-B-8A97BEDD,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-BRG-36716,CPI-B-48B4DD71,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-VLV-76824,BUS-B-4896E8F5,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+BUS-BRG-80865,BUS-B-18FEA06E,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-DUP-52820,GME-B-B3AAC994,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+BUS-PMP-48773,BUS-B-2893C7E3,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+CPI-BRG-14098,CPI-B-D7F189DA,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-DUP-79061,NEC-B-8FC35451,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+CPI-MTR-44805,CPI-B-955B237A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+CPI-LUB-13030,CPI-B-50A75992,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-LUB
+AHM-BRG-57487,AHM-B-1A236D64,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+CPI-VLV-18363,CPI-B-8C3B1083,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+AHM-LUB-90635,AHM-B-35853BFD,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+AHM-DUP-80040,AHM-B-E9D825E5,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+AHM-CFL-77031,AHM-B-5DBC328C,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+CPI-LUB-23378,CPI-B-507E0E12,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-PMP-40234,GME-B-797943BF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+NEC-CFL-96879,NEC-B-C9B5E207,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+CPI-PIP-10919,CPI-B-14FE06F5,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+GME-BRG-16532,GME-B-1CED5CD2,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-LUB-77412,CPI-B-E6D5F243,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-INS-43064,GME-B-E3054400,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+AHM-CBL-62739,AHM-B-B721F59A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+AHM-CFL-94871,AHM-B-77F6389F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-ELC-86877,GME-B-ADF8B267,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+CPI-DUP-83540,CPI-B-AEF65A4F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+CPI-BRG-30643,CPI-B-E15B3A82,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+CPI-PPE-50944,CPI-B-13A29EEA,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+AHM-CFL-77031,AHM-B-2C1E7C86,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-PIP-89407,GME-B-819F2BB0,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+GME-FST-82842,GME-B-6621FBF7,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+NEC-CBL-12124,NEC-B-ADFFC886,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+CPI-FLG-93077,CPI-B-A5D62B8E,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+BUS-FLG-96570,BUS-B-B6EF6B62,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FLG
+BUS-DUP-38155,BUS-B-635D673E,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+NEC-BRG-80140,NEC-B-1764578B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-DUP-99581,GME-B-400DAD41,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+NEC-PIP-62237,NEC-B-5F388F09,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+NEC-LUB-20536,NEC-B-4C8F2F54,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+BUS-GSK-33243,BUS-B-2C74AF8B,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-GSK
+BUS-MTR-24467,BUS-B-514D2FC4,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+GME-BRG-72206,GME-B-B9EB3EA3,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-CFL-77325,GME-B-FA6806E7,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-ELC-14398,AHM-B-143C4BA5,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+NEC-INS-34784,NEC-B-F0BDDF3C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+NEC-PPE-11424,NEC-B-5AB59EF3,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PPE
+GME-BRG-42587,GME-B-E328489C,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-MTR-97616,NEC-B-2B6B6F6A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+CPI-PMP-81689,CPI-B-FF9574CE,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PMP
+NEC-GSK-76517,NEC-B-8A7C446B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+CPI-BRG-52770,CPI-B-A0188FDB,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-PPE-10006,NEC-B-B7DB4408,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+NEC-PMP-40827,NEC-B-2FAE778F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+CPI-GSK-89428,CPI-B-804ED15C,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+NEC-BRG-53884,NEC-B-E2BC1BF9,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-BRG-70699,GME-B-81FE02FC,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+NEC-DUP-80102,NEC-B-84ADB195,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-DUP-61940,GME-B-47AB4B97,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+GME-DUP-85067,GME-B-E456C035,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+BUS-PPE-13331,BUS-B-D3BEB912,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PPE
+CPI-BRG-88629,CPI-B-9B4E2FD5,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-FST-69991,CPI-B-59E9C691,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-FLG-29010,AHM-B-3518BBEF,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+NEC-DUP-57124,NEC-B-294432EE,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+CPI-INS-99838,CPI-B-4E995574,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+CPI-INS-92275,CPI-B-98B156DF,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+AHM-CBL-28530,AHM-B-7A3D61CA,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+NEC-PMP-50529,NEC-B-73C101AF,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+AHM-LUB-61180,AHM-B-5A1FE3FD,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-DUP-86037,GME-B-E613D051,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+CPI-CBL-49469,CPI-B-968EB229,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-CBL
+GME-BRG-96607,GME-B-CFD44B04,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+NEC-PMP-79520,NEC-B-D2326F74,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+CPI-BRG-63230,CPI-B-13FEFC77,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-MTR-31831,GME-B-4398CCA5,NOT_EQUIVALENT,"Same category, critical attribute conflict",power,CAT-MTR
+NEC-DUP-11503,NEC-B-54D1683B,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+BUS-PPE-90994,BUS-B-DB491E23,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PPE
+CPI-PPE-22906,CPI-B-0B3417E7,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+NEC-BRG-74577,NEC-B-4ED9495D,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-INS-94350,GME-B-8A214A4B,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+CPI-CFL-99022,CPI-B-B4EC0568,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+AHM-PIP-79994,AHM-B-A74FB558,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+BUS-CBL-88994,BUS-B-740B437C,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+AHM-DUP-53950,AHM-B-A84D61FC,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+CPI-INS-31094,CPI-B-23D348A8,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+BUS-MTR-21805,BUS-B-825AC3C3,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+CPI-BRG-69448,CPI-B-E32550C4,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-MTR-89820,CPI-B-4249B1FF,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+GME-MTR-72873,GME-B-A9FD6578,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+CPI-BRG-30643,CPI-B-1E388501,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-93452,BUS-B-11E05C7D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-MTR-10100,BUS-B-F68BBDA6,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+BUS-BRG-13369,BUS-B-44660DB1,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-95371,BUS-B-7577C8E1,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+AHM-BRG-54550,AHM-B-8845C0EF,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-CBL-37108,AHM-B-D83854EB,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+AHM-CBL-92769,AHM-B-B6701302,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+NEC-VLV-91040,NEC-B-8D26B8C3,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-PMP-81360,BUS-B-11482B2B,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PMP
+GME-FLG-76594,GME-B-090EA69C,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FLG
+BUS-FLG-71275,BUS-B-AA417082,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+BUS-DUP-83667,BUS-B-85CE6E48,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+NEC-BRG-31874,NEC-B-96CF9752,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+CPI-MTR-44318,CPI-B-AE75CF0D,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+CPI-CFL-58060,CPI-B-BDCF27FB,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+CPI-FST-91199,CPI-B-C74EBC1B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+NEC-FLG-53048,NEC-B-49C5EF8B,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FLG
+NEC-CFL-59368,NEC-B-83FB0C0A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+BUS-DUP-92366,BUS-B-31E43363,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+NEC-BRG-51510,NEC-B-EA020373,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-FLG-35436,BUS-B-C63A6C9F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FLG
+AHM-MTR-83518,AHM-B-ED0C44D9,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-MTR
+GME-INS-34339,GME-B-ED9E3AE2,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+GME-PPE-75519,GME-B-C49D80A9,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-DUP-36204,BUS-B-3C5661D5,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+GME-FLG-77060,GME-B-67A53B85,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+GME-FLG-35597,GME-B-F88F17C7,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FLG
+CPI-PPE-22220,CPI-B-FC218721,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+BUS-FST-42571,BUS-B-254199F2,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FST
+CPI-PPE-90425,CPI-B-8FD76B5C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+NEC-CBL-10652,NEC-B-E607C6DD,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+NEC-DUP-60500,NEC-B-DF6ABF73,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+GME-FST-61800,GME-B-2909D448,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-PIP-86052,AHM-B-2349930B,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+NEC-PIP-83942,NEC-B-EED70E7A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+GME-PIP-29504,GME-B-3B41ADAA,NOT_EQUIVALENT,"Same category, critical attribute conflict",diameter,CAT-PIP
+AHM-LUB-21719,AHM-B-C539B9DA,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+NEC-INS-72616,NEC-B-B84C700E,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+GME-PMP-37401,GME-B-CECB62C3,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+NEC-PPE-49769,NEC-B-3D29DF7B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+GME-ELC-30027,GME-B-C56F11A7,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-ELC
+BUS-PIP-20980,BUS-B-C02E5694,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PIP
+NEC-GSK-37032,NEC-B-646B1732,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-GSK
+BUS-PMP-41250,BUS-B-B9EAA81C,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+GME-CFL-22518,GME-B-34437B2E,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-ELC
+CPI-BRG-65340,CPI-B-CA2BDE35,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-62886,BUS-B-E23E5628,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PPE
+GME-INS-39080,GME-B-EB9A2609,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+BUS-BRG-69259,BUS-B-6CF0EE80,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-DUP-80611,CPI-B-96E30443,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-PPE-76022,NEC-B-C4601385,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+NEC-CFL-82809,NEC-B-13E373E9,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+NEC-PPE-30849,NEC-B-01B624B6,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+GME-CBL-44774,GME-B-9C2B11AD,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-CBL
+BUS-VLV-65483,BUS-B-47375B89,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+CPI-DUP-48271,CPI-B-0FD26678,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+GME-INS-79850,GME-B-9A23B4BE,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+CPI-BRG-40622,CPI-B-9CB27613,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+GME-PPE-35417,GME-B-3BC2D891,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-INS-97189,BUS-B-541FFA04,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+BUS-BRG-33331,BUS-B-147D1CFC,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-ELC-94141,CPI-B-036F1ADE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+NEC-CFL-58367,NEC-B-D4958104,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+BUS-LUB-76616,BUS-B-CBD66CD7,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+NEC-FLG-89371,NEC-B-771D1FE9,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FLG
+AHM-PMP-33222,AHM-B-92546588,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+NEC-LUB-21783,NEC-B-E53D5317,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-FST-80692,GME-B-03F3E356,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+AHM-ELC-18207,AHM-B-B08BADD6,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-ELC
+BUS-CBL-67109,BUS-B-3D9A52DF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+GME-MTR-62996,GME-B-35D89ED0,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+AHM-PMP-30435,AHM-B-66A9EBDF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+BUS-INS-70762,BUS-B-94C506BF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+GME-GSK-83204,GME-B-D769271F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+NEC-BRG-98395,NEC-B-A10BE9DE,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-CFL-26071,NEC-B-1FE69337,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+GME-BRG-50325,GME-B-D532DFC6,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-21343,BUS-B-D014FBC0,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-87590,AHM-B-41BF7B92,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+CPI-DUP-57346,CPI-B-D100CF4F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-VLV
+NEC-DUP-26787,NEC-B-D391B5E1,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+BUS-BRG-39474,BUS-B-15F7DFC4,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-DUP-40167,BUS-B-B2B7B1E4,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+NEC-LUB-56587,NEC-B-0440CF56,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+BUS-FST-58645,BUS-B-9CF93472,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+CPI-FST-68916,CPI-B-B8155202,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FST
+BUS-CBL-91292,BUS-B-1E3EF9A9,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+AHM-BRG-88352,AHM-B-BDEAFC16,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-16516,AHM-B-03D5343E,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-FLG-25796,CPI-B-D9830294,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+CPI-MTR-41498,CPI-B-E8214436,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+GME-BRG-29859,GME-B-E2A125B6,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-FST-58216,BUS-B-13AFB118,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-DUP-24979,AHM-B-C05D36E1,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+GME-FST-82076,GME-B-54FFF749,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+NEC-LUB-12033,NEC-B-4844E53A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+GME-DUP-36471,GME-B-9864F548,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+GME-FLG-99276,GME-B-897BF54F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+GME-MTR-67461,GME-B-F3BA66CD,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+BUS-VLV-60524,BUS-B-6A1A0CB8,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+NEC-PIP-59241,NEC-B-598C35B6,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+NEC-VLV-18442,NEC-B-8FFC3865,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+BUS-PIP-20980,BUS-B-D5E2FD4D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+NEC-PMP-43292,NEC-B-49E57563,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+CPI-INS-55201,CPI-B-280FDA4D,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+GME-ELC-59785,GME-B-686BB93C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+BUS-BRG-20615,BUS-B-BFFDC4CE,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-BRG-71827,CPI-B-8F426519,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-76477,AHM-B-6F4DB6AF,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-BRG-42466,NEC-B-587FA1C0,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-54550,AHM-B-678E0D95,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-FLG-33962,GME-B-0B55BF72,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+BUS-PIP-71210,BUS-B-94AA0D39,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+NEC-CFL-15193,NEC-B-762F43D0,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-FLG-93019,NEC-B-C7F01012,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+GME-LUB-40204,GME-B-3F89957C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+CPI-FLG-74609,CPI-B-9C4005B6,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FLG
+CPI-DUP-60400,CPI-B-C7F90131,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+CPI-FST-89214,CPI-B-6FDD1771,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+NEC-PMP-50529,NEC-B-1FA8CA4E,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+CPI-GSK-99049,CPI-B-7E6FF547,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+NEC-FLG-27695,NEC-B-C2E22589,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+GME-DUP-10936,GME-B-B78BB489,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+CPI-PPE-21937,CPI-B-D364244F,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+BUS-LUB-55282,BUS-B-F4E4653A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+NEC-FLG-34847,NEC-B-801ECF19,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+CPI-BRG-15278,CPI-B-F8DDEF5E,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-26398,AHM-B-D1FD0FA2,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-BRG-34784,CPI-B-D2192372,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+CPI-MTR-48210,CPI-B-EBEA426B,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+CPI-MTR-71046,CPI-B-CB05650E,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+NEC-VLV-50285,NEC-B-1CC537E1,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+CPI-MTR-94397,CPI-B-B035ACC3,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+CPI-MTR-18091,CPI-B-10E9C854,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+BUS-CFL-16927,BUS-B-13760C84,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+CPI-DUP-56721,CPI-B-86F3F4FF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+BUS-FST-22286,BUS-B-78E00244,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FST
+GME-LUB-79917,GME-B-7A63702A,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+GME-PIP-91535,GME-B-C94CCBF7,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PIP
+NEC-DUP-23188,NEC-B-157DDA7D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+GME-BRG-66929,GME-B-38BE5476,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-DUP-11226,BUS-B-E33D261D,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+NEC-BRG-44326,NEC-B-ED295676,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+AHM-PPE-54533,AHM-B-156224FD,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+AHM-GSK-72488,AHM-B-8FF4D5C2,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-GSK
+NEC-LUB-48076,NEC-B-36FFE040,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+AHM-DUP-51117,AHM-B-CD3266B7,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+CPI-FST-29259,CPI-B-216FFC2E,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+GME-MTR-74189,GME-B-80E76A95,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+GME-CBL-18237,GME-B-DACEA31A,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-CBL
+NEC-INS-26231,NEC-B-E575BA86,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+NEC-VLV-56162,NEC-B-339945DF,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+GME-GSK-27074,GME-B-6CA666C7,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+BUS-CFL-53910,BUS-B-A0ACCEB4,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-LUB
+BUS-PPE-11271,BUS-B-561AEE8F,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-PIP-18193,BUS-B-AF066FA0,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+AHM-GSK-47074,AHM-B-B4FF6BB4,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+CPI-BRG-30299,CPI-B-87C26572,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-FST-80819,BUS-B-D2A9A8FC,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-LUB-33499,AHM-B-028CAEBC,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-INS-88887,GME-B-90F3799A,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-INS
+CPI-LUB-94566,CPI-B-825031BB,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-LUB
+BUS-CBL-22353,BUS-B-3D9B3798,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+CPI-ELC-84431,CPI-B-3AD5644E,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+AHM-CBL-67385,AHM-B-AA8A807D,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+GME-DUP-10936,GME-B-FC7B42C4,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-FLG-15677,AHM-B-5EE20470,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+NEC-PMP-80468,NEC-B-EF725FE1,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+NEC-BRG-30105,NEC-B-B90353C6,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-INS-16012,AHM-B-48F2CA22,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+AHM-ELC-45325,AHM-B-67C4517B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+BUS-DUP-38184,BUS-B-8DFB4B57,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+GME-CBL-43708,GME-B-393C49DE,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+NEC-MTR-12398,NEC-B-62518B9F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+AHM-MTR-87036,AHM-B-2C8DE04A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+BUS-PMP-16831,BUS-B-A31C6DFE,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+NEC-PPE-95562,NEC-B-D21D9686,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+CPI-LUB-63704,CPI-B-EDC33369,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+CPI-PPE-20990,CPI-B-B20A2C53,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+BUS-BRG-72922,BUS-B-E1F7B9AD,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-LUB-43095,GME-B-17F9ABFA,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+NEC-INS-50979,NEC-B-48B034E2,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-INS
+GME-BRG-31748,GME-B-67DE523C,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-FLG-85063,NEC-B-D9CDE676,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FLG
+AHM-CBL-92106,AHM-B-AD3CCC53,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+NEC-GSK-65020,NEC-B-5D2758EB,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+NEC-MTR-70892,NEC-B-59AC18C9,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+AHM-GSK-34790,AHM-B-48CCFD03,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+BUS-FST-93784,BUS-B-BD33B7C7,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FST
+CPI-BRG-18655,CPI-B-A2079E53,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+BUS-DUP-48355,BUS-B-9798312F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-INS
+GME-CBL-12960,GME-B-ECD451CF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-CBL
+NEC-CBL-62223,NEC-B-0F66AF09,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+AHM-CBL-64827,AHM-B-B022C084,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+BUS-PPE-89483,BUS-B-F0A1CAAE,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PPE
+AHM-DUP-70644,AHM-B-1C83CD72,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PIP
+AHM-CFL-80295,AHM-B-041914B4,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+AHM-ELC-54840,AHM-B-45540914,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-ELC
+GME-VLV-56870,GME-B-0CF21F76,NOT_EQUIVALENT,"Same category, critical attribute conflict",size,CAT-VLV
+AHM-BRG-83035,AHM-B-A6C7DC15,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-MTR-52169,BUS-B-F1FFB3A6,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+CPI-LUB-62014,CPI-B-B801C6B5,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-DUP-26089,GME-B-C1C08665,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+CPI-PIP-88934,CPI-B-620FF8E7,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+NEC-PPE-66529,NEC-B-0799E8A4,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PPE
+NEC-LUB-10644,NEC-B-09C65C33,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+NEC-FST-72781,NEC-B-AEA700CA,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+CPI-CBL-77963,CPI-B-C0472770,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+BUS-BRG-37323,BUS-B-BFBD8FD4,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+CPI-BRG-74887,CPI-B-7B763A35,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+BUS-ELC-82957,BUS-B-3EE09CE0,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+CPI-BRG-79151,CPI-B-01EF77B3,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-47562,BUS-B-EE223BC4,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+NEC-DUP-80103,NEC-B-27EBA491,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+NEC-ELC-52919,NEC-B-52A1C8B1,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-ELC
+CPI-FLG-84758,CPI-B-CAE92852,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FLG
+NEC-FLG-92264,NEC-B-B5FDD54C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+GME-PMP-82399,GME-B-B1B91F08,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-DUP-23062,BUS-B-38F600C3,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+GME-BRG-93852,GME-B-E59A871F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-CFL-28902,BUS-B-D1071E2A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+BUS-CFL-72980,BUS-B-705936F7,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+BUS-BRG-71042,BUS-B-2754FC27,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-INS-23826,GME-B-0D85567D,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+CPI-PIP-92766,CPI-B-4B68207F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+GME-CFL-62378,GME-B-BBA7638D,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+GME-BRG-80016,GME-B-232D3530,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-CBL-55783,NEC-B-9E7959FF,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+AHM-FLG-12392,AHM-B-C0C6DFC4,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+GME-BRG-19511,GME-B-5E120223,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-BRG-96033,NEC-B-C97337B4,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-DUP-44483,NEC-B-E2B832C5,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+GME-GSK-10469,GME-B-C7123BB4,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+CPI-INS-36033,CPI-B-1B6F0E54,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-INS
+AHM-PPE-35993,AHM-B-6D4C3B85,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+NEC-DUP-96187,NEC-B-EFEAAFCC,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+GME-ELC-70696,GME-B-4BF9304D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+GME-ELC-97971,GME-B-78B00DA0,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+BUS-BRG-70679,BUS-B-67138A97,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+NEC-ELC-48668,NEC-B-05282D5A,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+BUS-BRG-47033,BUS-B-83E4A7DC,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PMP-46153,BUS-B-32BD0CFE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+NEC-VLV-12722,NEC-B-BCEA4FE8,NOT_EQUIVALENT,"Same category, critical attribute conflict",size,CAT-VLV
+BUS-ELC-33944,BUS-B-87777B83,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-ELC
+GME-DUP-41544,GME-B-EF0EB2F1,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-DUP-62540,NEC-B-A23A9DFD,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+NEC-BRG-31978,NEC-B-CF6C8DC1,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-BRG-87000,NEC-B-D2B0B761,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+CPI-BRG-56403,CPI-B-1879D900,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-MTR-51108,CPI-B-0324C392,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+NEC-BRG-47851,NEC-B-60E94FDA,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-FST-41453,BUS-B-60796589,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+CPI-LUB-59332,CPI-B-CD9D11C0,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-LUB
+CPI-INS-89355,CPI-B-28B2B7FB,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+BUS-BRG-47989,BUS-B-116DC69B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-GSK-73080,GME-B-A2DCDE0D,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+BUS-BRG-15831,BUS-B-82796B3E,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+BUS-CFL-72980,BUS-B-9300CF3A,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+AHM-CFL-76624,AHM-B-86522C55,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+BUS-FST-41157,BUS-B-11C4DEB3,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FST
+GME-VLV-94295,GME-B-B76382D8,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-PPE-93564,BUS-B-39996D23,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+AHM-GSK-81441,AHM-B-24731567,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+NEC-LUB-53126,NEC-B-8A913193,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+GME-BRG-76216,GME-B-95E25D72,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-98788,BUS-B-C710FD7C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+CPI-CFL-81345,CPI-B-72393039,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+AHM-MTR-57039,AHM-B-700C330A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+GME-CBL-46681,GME-B-F83DD936,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+AHM-CBL-99997,AHM-B-A078CEE2,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+NEC-INS-28909,NEC-B-FE4BE26D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+GME-PMP-44034,GME-B-378F2F6D,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+GME-DUP-77995,GME-B-BCB62028,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+NEC-INS-27389,NEC-B-29EEE56D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-PPE-38565,AHM-B-7819B634,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+AHM-FST-36158,AHM-B-00A6B02B,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-FST
+BUS-GSK-71019,BUS-B-E3655DDA,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+CPI-GSK-90383,CPI-B-1F1BFC5A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+CPI-BRG-86818,CPI-B-7E3DBE60,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-BRG
+CPI-ELC-77161,CPI-B-1DA8AF2A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+CPI-GSK-79210,CPI-B-8FBAAD89,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+NEC-GSK-77050,NEC-B-7C5C4CAD,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+CPI-PPE-53461,CPI-B-F3F32C38,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+NEC-VLV-98129,NEC-B-D821C97A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+GME-BRG-88600,GME-B-68BC9C3C,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+CPI-FLG-12356,CPI-B-0AB826A2,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+AHM-FLG-37555,AHM-B-4DAFEE85,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+AHM-LUB-90734,AHM-B-5CB41C7F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-DUP-47217,GME-B-D8B91AB3,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+AHM-LUB-50741,AHM-B-43998F09,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-BRG-44368,GME-B-9E59D69B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+CPI-FST-18899,CPI-B-62A3013B,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+AHM-FST-91021,AHM-B-7AF46739,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-FST-54561,AHM-B-219BACAC,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FST
+BUS-BRG-75947,BUS-B-1FA8C3C5,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+GME-FST-25449,GME-B-930D628C,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FST
+AHM-CBL-22144,AHM-B-BECFD2D8,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-CBL
+GME-BRG-25344,GME-B-77EAD92A,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-FLG-70324,AHM-B-8239918C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+BUS-CBL-56838,BUS-B-270CE0CE,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+GME-GSK-27014,GME-B-5284591C,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+GME-BRG-29859,GME-B-50DECA05,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-BRG-45489,GME-B-80319ADC,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-53133,BUS-B-CE719DFA,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-75346,BUS-B-65D27786,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+NEC-INS-10117,NEC-B-6E6D7807,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+CPI-ELC-86956,CPI-B-E08294F2,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-ELC
+NEC-FST-31025,NEC-B-4ADD67DE,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FST
+BUS-CFL-82769,BUS-B-D351A55C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+GME-ELC-51669,GME-B-BF1066F3,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+CPI-BRG-15750,CPI-B-A8F5A617,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-GSK-76305,GME-B-DEB38DBD,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-GSK
+BUS-INS-41493,BUS-B-7FA38BD0,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+AHM-PPE-52777,AHM-B-327D39EF,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+GME-VLV-85730,GME-B-08A34941,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-VLV
+CPI-CFL-17196,CPI-B-9B81950D,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-FLG-88903,GME-B-9AD2CDCD,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FLG
+CPI-DUP-90052,CPI-B-2DDF9774,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+AHM-FLG-39732,AHM-B-6CDF46CF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FLG
+BUS-VLV-20202,BUS-B-21C747DD,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+BUS-GSK-59720,BUS-B-D4F0A30A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+AHM-ELC-65435,AHM-B-5F050431,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+NEC-LUB-19995,NEC-B-EB8F7228,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-LUB
+NEC-LUB-55179,NEC-B-CF1A4FDE,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-LUB
+CPI-DUP-19841,CPI-B-9ADE61E8,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-VLV
+BUS-GSK-25169,BUS-B-5352EDF9,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-GSK
+CPI-PIP-53102,CPI-B-F6196394,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+AHM-FLG-59840,AHM-B-C2437B4B,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+CPI-PPE-44257,CPI-B-24DAA7B2,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+CPI-BRG-76612,CPI-B-EAD26A0C,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+NEC-BRG-88027,NEC-B-2C7CBA59,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PPE-54950,BUS-B-4419A819,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+GME-BRG-15273,GME-B-C517E795,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+AHM-DUP-96370,AHM-B-5FA0BF98,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+BUS-MTR-70456,BUS-B-F23A0898,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+NEC-LUB-92373,NEC-B-020F7824,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+CPI-PMP-78047,CPI-B-EC50AE3D,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PMP
+AHM-DUP-20134,AHM-B-482865E0,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+GME-BRG-78686,GME-B-5EE5D2D8,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-BRG-14075,NEC-B-CE5204B3,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-BRG
+BUS-BRG-69259,BUS-B-140CD3FA,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-CBL-40294,BUS-B-52C7FA1C,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-CBL
+CPI-FST-42621,CPI-B-C3FF5925,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+NEC-BRG-19532,NEC-B-8499F446,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-PIP-24939,CPI-B-BC843E15,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+BUS-VLV-17191,BUS-B-9465C51F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+CPI-MTR-96538,CPI-B-61276CDE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+GME-BRG-92448,GME-B-0A99ED10,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-ELC-59785,GME-B-7241ED35,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+AHM-MTR-14547,AHM-B-A8F66B38,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+NEC-BRG-74577,NEC-B-C4916762,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-LUB-33606,AHM-B-EB2C8A2F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-LUB
+NEC-CBL-62223,NEC-B-4D3B3C9C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+AHM-DUP-57873,AHM-B-0C8692D5,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+NEC-VLV-12128,NEC-B-03423D88,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+BUS-VLV-71330,BUS-B-EF0C1CDF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-VLV
+BUS-PPE-24295,BUS-B-A97E2362,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-PMP-90156,BUS-B-F1CB1BC6,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+AHM-DUP-50938,AHM-B-8D350967,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FLG
+CPI-BRG-55888,CPI-B-60CAB264,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-PMP-70479,AHM-B-BC277319,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PMP
+CPI-CFL-74276,CPI-B-7793E166,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-GSK
+AHM-ELC-42382,AHM-B-30590A8E,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+CPI-PMP-51004,CPI-B-D9AD7DFE,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-BRG-71042,BUS-B-8DEDE5F6,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-BRG
+GME-DUP-99907,GME-B-C70C8879,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+CPI-DUP-70435,CPI-B-23377DBE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-BRG-39696,AHM-B-639D6647,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-BRG
+NEC-PMP-87378,NEC-B-4367095A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+BUS-PMP-78099,BUS-B-2A7306C0,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PMP
+BUS-BRG-28404,BUS-B-3C2CEFA7,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-PMP-47706,CPI-B-C3E53A46,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+BUS-VLV-83440,BUS-B-366B3A85,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+NEC-FLG-37390,NEC-B-7874C213,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+GME-PMP-43188,GME-B-48A25AEF,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PMP
+GME-PMP-67799,GME-B-8DEF6D28,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+NEC-GSK-57710,NEC-B-0E5C8ADC,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+BUS-ELC-64811,BUS-B-88742908,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+CPI-VLV-96207,CPI-B-3D1CCE2B,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+GME-DUP-72695,GME-B-EEEBD9F2,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+GME-FST-60241,GME-B-B99E5B7B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+GME-BRG-25190,GME-B-753439A3,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-CBL-50707,GME-B-E0C3830D,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+GME-FST-61800,GME-B-B0603370,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+BUS-DUP-80471,BUS-B-84B8D5C0,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+CPI-FLG-28004,CPI-B-6644A31D,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+GME-INS-62676,GME-B-E1C8DA40,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-INS
+CPI-PPE-95811,CPI-B-8BFB23B9,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+AHM-FST-65250,AHM-B-1F1B900D,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FST
+NEC-BRG-67337,NEC-B-0FD4BF9A,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-LUB-42891,CPI-B-0A8196F3,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+NEC-FST-93393,NEC-B-31CB8864,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+BUS-DUP-18920,BUS-B-0780A4FE,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+NEC-FLG-67350,NEC-B-45B27EB1,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FLG
+CPI-BRG-18655,CPI-B-0E298995,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-CFL-87254,NEC-B-1188BFF9,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+BUS-GSK-50967,BUS-B-FBD032E2,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+BUS-PMP-59722,BUS-B-9B6C0C39,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-VLV-80201,BUS-B-455B3CAB,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+BUS-BRG-33331,BUS-B-658BE355,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-CBL-51203,GME-B-4CAA91E2,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+NEC-GSK-61680,NEC-B-34A26E93,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+CPI-DUP-79328,CPI-B-E3FBE0C6,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+NEC-BRG-84006,NEC-B-FA9D7F43,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-63060,AHM-B-A342EDAF,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+NEC-DUP-64502,NEC-B-B2C70B4A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+NEC-BRG-45334,NEC-B-1FF6335E,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-CBL-75765,GME-B-1B11FC93,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+BUS-BRG-47562,BUS-B-E1AB46DB,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-MTR-22426,BUS-B-ACFF96C6,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+AHM-BRG-38105,AHM-B-E719F680,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-BRG-80587,BUS-B-38897516,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+CPI-ELC-89958,CPI-B-F20757D2,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+CPI-INS-68889,CPI-B-8B40AE14,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+AHM-MTR-60583,AHM-B-7A2DDC32,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+AHM-ELC-27478,AHM-B-35DACDC4,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC
+AHM-GSK-38686,AHM-B-422D25DF,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+BUS-PMP-78127,BUS-B-03F73ECB,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+NEC-MTR-47569,NEC-B-281D1ED9,NOT_EQUIVALENT,"Same category, critical attribute conflict",frequency,CAT-MTR
+GME-PPE-87329,GME-B-B5EAD894,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+NEC-PPE-98183,NEC-B-8EDFE37B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-FST-53996,BUS-B-A96A4EBF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+NEC-BRG-47851,NEC-B-223214D8,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+GME-VLV-16285,GME-B-09508ABA,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+GME-CFL-28487,GME-B-E05AA881,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+NEC-GSK-85352,NEC-B-C62FFB88,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+BUS-PIP-52057,BUS-B-F41D0B79,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+CPI-LUB-77412,CPI-B-B7FD40E2,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+AHM-FST-99117,AHM-B-0250F14F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+NEC-LUB-82829,NEC-B-27D1A9E8,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+GME-VLV-77645,GME-B-DCAA4B6E,NOT_EQUIVALENT,"Same category, critical attribute conflict",end_connection,CAT-VLV
+BUS-DUP-21440,BUS-B-AE0B20E1,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-DUP-54796,GME-B-094918E5,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+AHM-PIP-66502,AHM-B-98CDDCEC,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PIP
+GME-CFL-37406,GME-B-D2ED5D66,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+BUS-BRG-41456,BUS-B-B04DCD48,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-FLG-51997,CPI-B-180B1F13,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+AHM-ELC-41865,AHM-B-2C6D08DF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+AHM-CBL-16522,AHM-B-DCFFC336,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+NEC-PMP-87138,NEC-B-31CCC853,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+BUS-BRG-48086,BUS-B-34B9F528,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-LUB-45922,NEC-B-501BA7D3,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+CPI-GSK-56391,CPI-B-D78B020D,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-GSK
+AHM-CBL-72484,AHM-B-17DF5761,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+CPI-DUP-15520,CPI-B-CD7D1523,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+NEC-PMP-53270,NEC-B-30850DB7,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PMP
+GME-PPE-35417,GME-B-DD7FED84,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+GME-DUP-74268,GME-B-29E2CA1F,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-INS
+AHM-DUP-20869,AHM-B-253A0CD3,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FST
+AHM-GSK-51698,AHM-B-A4A6812A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+AHM-CFL-94871,AHM-B-7E16597B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-LUB-84220,GME-B-B72CBFC6,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-LUB
+NEC-CFL-30904,NEC-B-5F5C9898,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+CPI-PIP-76799,CPI-B-30D2B8F0,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PIP
+BUS-VLV-79201,BUS-B-B64A7B51,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+GME-ELC-12969,GME-B-9EAA3C3D,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-ELC
+NEC-CBL-72717,NEC-B-E5D444C9,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+NEC-CBL-91186,NEC-B-BA741E6E,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-CBL
+BUS-VLV-95488,BUS-B-C4D77E94,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-BRG-20026,BUS-B-6D94AACD,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-VLV-45327,AHM-B-DD3745AD,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-VLV
+GME-PIP-15043,GME-B-82BFF512,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+GME-PIP-40199,GME-B-4700882A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+BUS-FST-53920,BUS-B-600D98FE,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FST
+AHM-VLV-45327,AHM-B-7368E716,NOT_EQUIVALENT,"Same category, critical attribute conflict",end_connection,CAT-VLV
+AHM-VLV-28212,AHM-B-47B0D874,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+GME-PMP-18601,GME-B-1FD44266,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PMP
+NEC-BRG-28115,NEC-B-0996AF2D,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-BRG-63909,CPI-B-4F3526B8,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+CPI-ELC-58869,CPI-B-15B6EDE1,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+AHM-PIP-94780,AHM-B-8F0CD60F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+NEC-LUB-83508,NEC-B-1AB1A97D,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+AHM-DUP-83619,AHM-B-AE32ACD3,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-VLV-82837,GME-B-D7FDF993,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-CFL-15684,BUS-B-F8EFB09F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-GSK-98373,NEC-B-B1B35885,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-GSK
+NEC-BRG-51510,NEC-B-28550852,RELATED,"Same category/mfg, different size/specs",NONE,CAT-BRG
+GME-BRG-82770,GME-B-F3E206D2,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-BRG-41194,AHM-B-F1670480,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-FST-66360,CPI-B-7CECEAFC,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+GME-INS-74929,GME-B-72E3D39E,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+CPI-INS-70067,CPI-B-7F455B7D,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+GME-ELC-68342,GME-B-055D0D9F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+AHM-DUP-99687,AHM-B-0E4B5D98,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FST
+BUS-MTR-94409,BUS-B-35F1CD44,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-MTR
+NEC-BRG-58381,NEC-B-B00AA4F7,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-DUP-39239,CPI-B-67278F4F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-DUP-46034,BUS-B-4794567C,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+GME-BRG-15273,GME-B-651CAE1A,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-BRG
+GME-PMP-74444,GME-B-5E89EFD3,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PMP
+AHM-PMP-85820,AHM-B-1EF8DCB5,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-DUP-71551,BUS-B-F27D6768,NOT_EQUIVALENT,"Same category, critical attribute conflict",power,CAT-MTR
+NEC-CBL-90855,NEC-B-D3112AFF,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+CPI-ELC-28731,CPI-B-D5F8D675,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+GME-CFL-69633,GME-B-B7B91B82,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+GME-DUP-82629,GME-B-77D2AB51,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+NEC-DUP-14476,NEC-B-5EDBBF86,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+CPI-BRG-76244,CPI-B-3A53C31C,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-PPE-39419,GME-B-6C549DA3,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+BUS-VLV-97009,BUS-B-6F15768B,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+GME-DUP-97920,GME-B-36A4F342,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-VLV
+AHM-PPE-12771,AHM-B-4797A3CD,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PPE
+GME-ELC-14530,GME-B-02BF1CAE,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+BUS-GSK-58986,BUS-B-E1673155,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+BUS-PPE-22953,BUS-B-89CC0295,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PPE
+CPI-PPE-14462,CPI-B-57AA2D18,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+GME-PPE-96138,GME-B-48FE535E,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-FLG-65535,BUS-B-ED42D10C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+GME-CBL-12293,GME-B-8B90DD3B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-CBL
+GME-FLG-80251,GME-B-76996C24,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-FLG
+AHM-INS-70218,AHM-B-FF469652,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-PPE-48825,AHM-B-B01D5CC4,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+AHM-PIP-47642,AHM-B-CEE97454,NOT_EQUIVALENT,"Same category, critical attribute conflict",material_grade,CAT-PIP
+BUS-INS-82199,BUS-B-33B49571,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+NEC-BRG-64206,NEC-B-B2F1A457,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-INS-18966,CPI-B-C6F0ECD3,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+GME-INS-16866,GME-B-3052B0F5,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+BUS-PMP-81288,BUS-B-CA9C8867,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-BRG-59611,BUS-B-F922CF77,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-BRG
+BUS-ELC-97836,BUS-B-135FA10C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+BUS-PMP-59015,BUS-B-60EFC3BE,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PMP
+CPI-PIP-43111,CPI-B-FE702B1C,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+BUS-DUP-89325,BUS-B-5E39603E,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-LUB
+CPI-PIP-44178,CPI-B-BC7B4295,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+CPI-BRG-88997,CPI-B-89353A46,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-PMP-64116,NEC-B-3EA77265,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-PMP
+BUS-CFL-40156,BUS-B-CFDE43AB,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-INS
+GME-PIP-49637,GME-B-B4A05039,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+AHM-CBL-78558,AHM-B-451A724F,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-CBL
+GME-MTR-48447,GME-B-72B65AC8,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-MTR
+AHM-ELC-48363,AHM-B-9BFAC3A2,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-ELC
+BUS-BRG-77592,BUS-B-DE1C3754,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-BRG
+GME-FST-30257,GME-B-1577A877,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+CPI-BRG-30643,CPI-B-3EFD87D6,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-INS-89549,BUS-B-9FDEC14E,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-INS
+BUS-BRG-59611,BUS-B-2868325A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+NEC-DUP-84965,NEC-B-74CC675A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FST
+NEC-CFL-26785,NEC-B-F7668C54,RELATED,"Same category/mfg, different size/specs",NONE,CAT-FLG
+AHM-CFL-67728,AHM-B-CD0FE17B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-PPE-57337,NEC-B-6997A901,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+BUS-DUP-14951,BUS-B-78EF7D89,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-DUP-87635,BUS-B-A22485A1,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-VLV
+GME-PMP-94099,GME-B-510E5277,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+BUS-BRG-66265,BUS-B-B7A9F1EB,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-GSK-71022,BUS-B-7B470B1A,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+CPI-VLV-96207,CPI-B-BB5F79E2,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-VLV
+BUS-FLG-44853,BUS-B-A3D65977,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-FLG
+AHM-CFL-79709,AHM-B-BA8FA08A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+BUS-BRG-93858,BUS-B-1790B805,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-ELC-21647,AHM-B-FF4CBBDF,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-ELC
+CPI-DUP-55489,CPI-B-9C64DBD0,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+CPI-DUP-51975,CPI-B-5093E33F,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-GSK
+AHM-INS-54036,AHM-B-3F121582,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-INS-20750,AHM-B-213ED9D6,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+BUS-CFL-51735,BUS-B-977C6963,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-FST
+BUS-LUB-39417,BUS-B-76D96AD1,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-LUB
+CPI-FLG-64158,CPI-B-08264F99,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+AHM-LUB-50691,AHM-B-6B218D6A,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-ELC-65797,GME-B-AE9F7FAF,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+GME-BRG-73412,GME-B-BC719BC9,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-LUB-34711,BUS-B-273DDFC6,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+BUS-BRG-49863,BUS-B-3CD3E608,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+AHM-PIP-53069,AHM-B-69540E78,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+GME-GSK-23052,GME-B-04C75AC7,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+GME-PPE-69716,GME-B-0D4E9471,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+CPI-CBL-73801,CPI-B-280F197D,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+NEC-CBL-91365,NEC-B-DFBD65AD,NOT_EQUIVALENT,"Same category, critical attribute conflict",NONE,CAT-CBL
+AHM-ELC-74894,AHM-B-B8F15A74,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-ELC
+BUS-BRG-59192,BUS-B-695469CA,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-MTR-81464,CPI-B-DA326EA4,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-MTR
+NEC-VLV-79747,NEC-B-3BA35DA1,RELATED,"Same category/mfg, different size/specs",NONE,CAT-VLV
+BUS-CBL-48103,BUS-B-287BDE8A,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-CBL
+GME-BRG-17980,GME-B-774B9469,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-PIP-20115,NEC-B-AFA107FF,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PIP
+GME-LUB-74118,GME-B-134B7928,RELATED,"Same category/mfg, different size/specs",NONE,CAT-LUB
+AHM-CBL-46064,AHM-B-B9F653B8,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-CBL
+AHM-PMP-25957,AHM-B-B718C20A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+CPI-BRG-39368,CPI-B-41384E93,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-DUP-10140,AHM-B-44C76575,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+NEC-GSK-47453,NEC-B-5A7B32F9,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-GSK
+GME-PPE-90859,GME-B-7AD0E130,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+GME-DUP-76498,GME-B-3B572E2F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-LUB
+GME-INS-17268,GME-B-5086F20E,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+NEC-MTR-61097,NEC-B-F50A4640,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-MTR
+BUS-ELC-43768,BUS-B-E777C98B,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-ELC
+GME-BRG-51419,GME-B-56ED76A2,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-INS-93689,CPI-B-0B94BB67,RELATED,"Same category/mfg, different size/specs",NONE,CAT-INS
+AHM-BRG-64662,AHM-B-55253673,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-PIP-42214,CPI-B-5E5AEEDE,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PIP
+AHM-DUP-50938,AHM-B-86B71316,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-FLG
+GME-BRG-88114,GME-B-BC165A56,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+NEC-BRG-71729,NEC-B-F03C26D3,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+BUS-PMP-94092,BUS-B-4562C54B,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PMP
+AHM-BRG-13724,AHM-B-B8B88272,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+GME-PPE-88049,GME-B-C1883F87,RELATED,"Same category/mfg, different size/specs",NONE,CAT-PPE
+GME-DUP-97920,GME-B-99238463,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-VLV
+NEC-GSK-34159,NEC-B-43B96B95,RELATED,"Same category/mfg, different size/specs",NONE,CAT-GSK
+AHM-BRG-62279,AHM-B-2582D84F,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-BRG-31748,GME-B-31258182,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+GME-BRG-50006,GME-B-AC91C58E,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-BRG
+CPI-DUP-63991,CPI-B-792ACE59,RELATED,"Same category/mfg, different size/specs",NONE,CAT-ELC
+GME-PIP-99600,GME-B-BE880663,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PIP
+AHM-DUP-83619,AHM-B-2F9B56BD,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+CPI-MTR-90395,CPI-B-0054674A,RELATED,"Same category/mfg, different size/specs",NONE,CAT-MTR
+CPI-PMP-29309,CPI-B-59E7FF9B,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-PMP
+GME-DUP-94793,GME-B-7F7A2B0F,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-GSK
+BUS-PPE-75563,BUS-B-88D392A1,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-PPE
+NEC-PPE-57263,NEC-B-1FAC166F,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+BUS-INS-13245,BUS-B-409F43DA,NEAR_DUPLICATE,"Identical MPN, perturbed desc, dropped minor field",NONE,CAT-INS
+BUS-BRG-92577,BUS-B-4018A74B,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-PMP-77480,AHM-B-FD8308D2,FUNCTIONALLY_EQUIVALENT,"Different Manufacturer/MPN, identical critical attributes",NONE,CAT-PMP
+AHM-MTR-99284,AHM-B-8B2F22E3,NOT_EQUIVALENT,Completely different category,CATEGORY_MISMATCH,CAT-MTR
+AHM-PPE-22243,AHM-B-2494D365,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-PPE
+BUS-BRG-50810,BUS-B-6333A857,REQUIRES_ENGINEERING_REVIEW,Mismatched conditionally critical attribute,seal_type (Conditional),CAT-BRG
+AHM-ELC-90521,AHM-B-69366DB8,EXACT_DUPLICATE,"Identical MPN/Attributes, perturbed description",NONE,CAT-ELC

@@ -1,0 +1,93 @@
+{
+  "dictionary_version": "1.0",
+  "synonyms": [
+    {
+      "term": "BRG",
+      "expansion": "BEARING",
+      "confidence": 0.99,
+      "category_context": ["CAT-BRG"],
+      "is_ambiguous": false
+    },
+    {
+      "term": "BRNG",
+      "expansion": "BEARING",
+      "confidence": 0.99,
+      "category_context": ["CAT-BRG"],
+      "is_ambiguous": false
+    },
+    {
+      "term": "DIA",
+      "expansion": "DIAMETER",
+      "confidence": 0.95,
+      "category_context": null,
+      "is_ambiguous": false
+    },
+    {
+      "term": "OD",
+      "expansion": "OUTER DIAMETER",
+      "confidence": 0.95,
+      "category_context": ["CAT-BRG", "CAT-PIP"],
+      "is_ambiguous": false
+    },
+    {
+      "term": "ID",
+      "expansion": "INNER DIAMETER",
+      "confidence": 0.85,
+      "category_context": ["CAT-BRG", "CAT-PIP"],
+      "is_ambiguous": true,
+      "notes": "Could mean Inner Diameter or Identification/Identifier."
+    },
+    {
+      "term": "SS",
+      "expansion": "STAINLESS STEEL",
+      "confidence": 0.95,
+      "category_context": null,
+      "is_ambiguous": false
+    },
+    {
+      "term": "CS",
+      "expansion": "CARBON STEEL",
+      "confidence": 0.80,
+      "category_context": null,
+      "is_ambiguous": true,
+      "notes": "Could mean Carbon Steel or Cast Steel."
+    },
+    {
+      "term": "GALV",
+      "expansion": "GALVANIZED",
+      "confidence": 0.99,
+      "category_context": null,
+      "is_ambiguous": false
+    },
+    {
+      "term": "VAL",
+      "expansion": "VALVE",
+      "confidence": 0.85,
+      "category_context": ["CAT-VLV"],
+      "is_ambiguous": true,
+      "notes": "Could mean Valve or Value."
+    },
+    {
+      "term": "MTR",
+      "expansion": "MOTOR",
+      "confidence": 0.95,
+      "category_context": ["CAT-MTR"],
+      "is_ambiguous": false
+    },
+    {
+      "term": "PMP",
+      "expansion": "PUMP",
+      "confidence": 0.95,
+      "category_context": ["CAT-PMP"],
+      "is_ambiguous": false
+    },
+    {
+      "term": "GV",
+      "expansion": "GATE VALVE",
+      "confidence": 0.70,
+      "category_context": ["CAT-VLV"],
+      "is_ambiguous": true,
+      "notes": "Could mean Gate Valve or Globe Valve."
+    }
+  ]
+}

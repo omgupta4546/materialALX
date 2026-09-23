@@ -1,0 +1,128 @@
+{
+  "exact_match": {
+    "material_a": "BALL BEARING 6205 2RS SKF",
+    "material_b": "SKF DEEP GROOVE BEARING 6205-2RS",
+    "expected": {
+      "match_category": "EXACT_DUPLICATE",
+      "critical_conflict": false,
+      "classification": "CAT-BEARING",
+      "attributes_a": {
+        "type": "DEEP GROOVE BALL BEARING",
+        "size": "6205",
+        "seal": "2RS",
+        "manufacturer": "SKF"
+      },
+      "attributes_b": {
+        "type": "DEEP GROOVE BALL BEARING",
+        "size": "6205",
+        "seal": "2RS",
+        "manufacturer": "SKF"
+      },
+      "normalization_a": "SKF DEEP GROOVE BALL BEARING 6205 2RS",
+      "normalization_b": "SKF DEEP GROOVE BALL BEARING 6205 2RS"
+    }
+  },
+  "near_match": {
+    "material_a": "6205 2RS",
+    "material_b": "6205 ZZ",
+    "expected": {
+      "match_category": "NEAR_DUPLICATE",
+      "critical_conflict": true,
+      "classification": "CAT-BEARING",
+      "attributes_a": {
+        "size": "6205",
+        "seal": "2RS"
+      },
+      "attributes_b": {
+        "size": "6205",
+        "seal": "ZZ"
+      },
+      "normalization_a": "BEARING 6205 2RS",
+      "normalization_b": "BEARING 6205 ZZ"
+    }
+  },
+  "conflict": {
+    "material_a": "GATE VALVE 6IN CL300",
+    "material_b": "GATE VALVE 6IN CL150",
+    "expected": {
+      "match_category": "NOT_EQUIVALENT",
+      "critical_conflict": true,
+      "classification": "CAT-VALVE",
+      "attributes_a": {
+        "type": "GATE VALVE",
+        "size": "6IN",
+        "pressure_class": "300"
+      },
+      "attributes_b": {
+        "type": "GATE VALVE",
+        "size": "6IN",
+        "pressure_class": "150"
+      },
+      "normalization_a": "GATE VALVE 6 INCH CLASS 300",
+      "normalization_b": "GATE VALVE 6 INCH CLASS 150"
+    }
+  },
+  "missing_attributes": {
+    "material_a": "GATE VALVE 6IN",
+    "material_b": "GATE VALVE 6IN",
+    "expected": {
+      "match_category": "REQUIRES_ENGINEERING_REVIEW",
+      "critical_conflict": false,
+      "classification": "CAT-VALVE",
+      "attributes_a": {
+        "type": "GATE VALVE",
+        "size": "6IN"
+      },
+      "attributes_b": {
+        "type": "GATE VALVE",
+        "size": "6IN"
+      },
+      "normalization_a": "GATE VALVE 6 INCH",
+      "normalization_b": "GATE VALVE 6 INCH"
+    }
+  },
+  "motor_equivalent": {
+    "material_a": "15KW 415V 3PH 50HZ",
+    "material_b": "15 KW 440V 3PH 50HZ",
+    "expected": {
+      "match_category": "FUNCTIONALLY_EQUIVALENT",
+      "critical_conflict": false,
+      "classification": "CAT-MOTOR",
+      "attributes_a": {
+        "power": "15KW",
+        "voltage": "415V",
+        "phase": "3PH",
+        "frequency": "50HZ"
+      },
+      "attributes_b": {
+        "power": "15KW",
+        "voltage": "440V",
+        "phase": "3PH",
+        "frequency": "50HZ"
+      },
+      "normalization_a": "MOTOR 15KW 415V 3PH 50HZ",
+      "normalization_b": "MOTOR 15KW 440V 3PH 50HZ"
+    }
+  },
+  "pipe_equivalent": {
+    "material_a": "SS PIPE 4IN SCH40",
+    "material_b": "SS304 PIPE 100MM SCH40",
+    "expected": {
+      "match_category": "EXACT_DUPLICATE",
+      "critical_conflict": false,
+      "classification": "CAT-PIPE",
+      "attributes_a": {
+        "material": "SS",
+        "size": "4IN",
+        "schedule": "SCH40"
+      },
+      "attributes_b": {
+        "material": "SS304",
+        "size": "100MM",
+        "schedule": "SCH40"
+      },
+      "normalization_a": "STAINLESS STEEL PIPE 4 INCH SCH 40",
+      "normalization_b": "STAINLESS STEEL 304 PIPE 100MM SCH 40"
+    }
+  }
+}

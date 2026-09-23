@@ -1,0 +1,54 @@
+{
+  "category": "CAT-CBL",
+  "name": "Cable",
+  "attributes": [
+    {
+      "name": "cores",
+      "valid_units": [
+        "EACH"
+      ],
+      "value_range": {
+        "min": 1,
+        "max": 100
+      }
+    },
+    {
+      "name": "cross_section",
+      "valid_units": [
+        "mm2",
+        "AWG"
+      ],
+      "value_range": {
+        "min": 0.5,
+        "max": 1000
+      }
+    },
+    {
+      "name": "voltage_grade",
+      "valid_values": [
+        "1.1KV",
+        "3.3KV",
+        "11KV",
+        "33KV",
+        "66KV"
+      ]
+    },
+    {
+      "name": "insulation",
+      "valid_values": [
+        "PVC",
+        "XLPE",
+        "EPR",
+        "Rubber"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Prysmian",
+    "Nexans",
+    "Polycab",
+    "LAPP",
+    "Havells"
+  ],
+  "part_number_structure": "[Cores]C x [Size] sqmm [Insulation]/[Sheath] [Voltage]"
+}

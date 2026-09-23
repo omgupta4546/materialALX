@@ -1,0 +1,56 @@
+{
+  "category": "CAT-FST",
+  "name": "Fastener",
+  "attributes": [
+    {
+      "name": "diameter",
+      "valid_units": [
+        "mm",
+        "inch"
+      ],
+      "value_range": {
+        "min": 2,
+        "max": 100
+      }
+    },
+    {
+      "name": "length",
+      "valid_units": [
+        "mm",
+        "inch"
+      ],
+      "value_range": {
+        "min": 5,
+        "max": 500
+      }
+    },
+    {
+      "name": "grade",
+      "valid_values": [
+        "8.8",
+        "10.9",
+        "12.9",
+        "A2-70",
+        "A4-80",
+        "B7",
+        "L7"
+      ]
+    },
+    {
+      "name": "thread_type",
+      "valid_values": [
+        "Metric Coarse",
+        "Metric Fine",
+        "UNC",
+        "UNF"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Hilti",
+    "W\u00fcrth",
+    "Bossard",
+    "Kamax"
+  ],
+  "part_number_structure": "[Type]-[Dia]x[Length]-[Grade]-[Finish]"
+}

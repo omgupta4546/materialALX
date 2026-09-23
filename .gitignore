@@ -1,0 +1,56 @@
+# Node
+node_modules/
+dist/
+build/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+*.egg-info/
+.eggs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Data
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Databases (local dev artifacts — not for VCS)
+*.db
+*.sqlite
+*.sqlite3
+
+# Scratch / debug output files
+backend/scratch.txt
+backend/scratch_git.txt
+seed_error.txt
+seed_out*.txt
+
+# Coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.xml
+
+# Build artifacts
+*.egg
+dist/
+build/

@@ -1,0 +1,110 @@
+{
+  "rules_version": "1.0",
+  "rules": [
+    {
+      "category": "CAT-VLV",
+      "attribute": "size",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-VLV",
+      "attribute": "pressure_class",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-VLV",
+      "attribute": "body_material",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-VLV",
+      "attribute": "end_connection",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-MTR",
+      "attribute": "power",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-MTR",
+      "attribute": "voltage",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-MTR",
+      "attribute": "frequency",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-PIP",
+      "attribute": "diameter",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-PIP",
+      "attribute": "schedule",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-PIP",
+      "attribute": "material_grade",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-BRG",
+      "attribute": "series",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-BRG",
+      "attribute": "bore",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-BRG",
+      "attribute": "outer_diameter",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-BRG",
+      "attribute": "width",
+      "severity": "CRITICAL",
+      "conflict_behavior": "PREVENT_MATCH",
+      "automatic_match_allowed": false
+    },
+    {
+      "category": "CAT-BRG",
+      "attribute": "seal_type",
+      "severity": "CONDITIONALLY_CRITICAL",
+      "conflict_behavior": "REQUIRE_ENGINEERING_APPROVAL",
+      "automatic_match_allowed": false
+    }
+  ]
+}

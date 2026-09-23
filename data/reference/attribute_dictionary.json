@@ -1,0 +1,302 @@
+{
+  "dictionary_version": "1.0",
+  "attributes": [
+    {
+      "name": "bearing_type",
+      "display_name": "Bearing Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "series",
+      "display_name": "Series",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "bore",
+      "display_name": "Bore Diameter",
+      "data_type": "number",
+      "unit": "mm",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "outer_diameter",
+      "display_name": "Outer Diameter",
+      "data_type": "number",
+      "unit": "mm",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "width",
+      "display_name": "Width",
+      "data_type": "number",
+      "unit": "mm",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "seal_type",
+      "display_name": "Seal Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-BRG"]
+    },
+    {
+      "name": "material",
+      "display_name": "Material",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-BRG", "CAT-PMP"]
+    },
+    {
+      "name": "manufacturer",
+      "display_name": "Manufacturer",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG", "CAT-VLV", "CAT-MTR", "CAT-PIP"]
+    },
+    {
+      "name": "mpn",
+      "display_name": "Manufacturer Part Number",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-BRG", "CAT-VLV", "CAT-MTR"]
+    },
+    {
+      "name": "valve_type",
+      "display_name": "Valve Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "size",
+      "display_name": "Size",
+      "data_type": "number",
+      "unit": "inch",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "pressure_class",
+      "display_name": "Pressure Class",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "body_material",
+      "display_name": "Body Material",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "trim_material",
+      "display_name": "Trim Material",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "end_connection",
+      "display_name": "End Connection",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "rating",
+      "display_name": "Rating",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-VLV"]
+    },
+    {
+      "name": "motor_type",
+      "display_name": "Motor Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "power",
+      "display_name": "Power",
+      "data_type": "number",
+      "unit": "kW",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR", "CAT-PMP"]
+    },
+    {
+      "name": "voltage",
+      "display_name": "Voltage",
+      "data_type": "number",
+      "unit": "V",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR", "CAT-PMP"]
+    },
+    {
+      "name": "frequency",
+      "display_name": "Frequency",
+      "data_type": "number",
+      "unit": "Hz",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "phase",
+      "display_name": "Phase",
+      "data_type": "number",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "rpm",
+      "display_name": "RPM",
+      "data_type": "number",
+      "unit": "rpm",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "efficiency",
+      "display_name": "Efficiency",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "enclosure",
+      "display_name": "Enclosure",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-MTR"]
+    },
+    {
+      "name": "pipe_type",
+      "display_name": "Pipe Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "diameter",
+      "display_name": "Diameter",
+      "data_type": "number",
+      "unit": "inch",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "wall_thickness",
+      "display_name": "Wall Thickness",
+      "data_type": "number",
+      "unit": "mm",
+      "mandatory": false,
+      "critical": true,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "schedule",
+      "display_name": "Schedule",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "material_grade",
+      "display_name": "Material Grade",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "length",
+      "display_name": "Length",
+      "data_type": "number",
+      "unit": "m",
+      "mandatory": false,
+      "critical": false,
+      "applicable_categories": ["CAT-PIP"]
+    },
+    {
+      "name": "pump_type",
+      "display_name": "Pump Type",
+      "data_type": "string",
+      "unit": null,
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PMP"]
+    },
+    {
+      "name": "flow_rate",
+      "display_name": "Flow Rate",
+      "data_type": "number",
+      "unit": "m3/h",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PMP"]
+    },
+    {
+      "name": "head",
+      "display_name": "Head",
+      "data_type": "number",
+      "unit": "m",
+      "mandatory": true,
+      "critical": true,
+      "applicable_categories": ["CAT-PMP"]
+    }
+  ]
+}

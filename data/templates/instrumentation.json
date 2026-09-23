@@ -1,0 +1,55 @@
+{
+  "category": "CAT-INS",
+  "name": "Instrumentation",
+  "attributes": [
+    {
+      "name": "measurement_range",
+      "valid_units": [
+        "BAR",
+        "PSI",
+        "degC",
+        "degF"
+      ],
+      "value_range": {
+        "min": -200,
+        "max": 10000
+      }
+    },
+    {
+      "name": "output_signal",
+      "valid_values": [
+        "4-20mA",
+        "HART",
+        "Profibus",
+        "Modbus",
+        "0-10V"
+      ]
+    },
+    {
+      "name": "process_connection",
+      "valid_values": [
+        "1/2 NPT",
+        "1/4 NPT",
+        "Flanged 2 inch",
+        "Sanitary"
+      ]
+    },
+    {
+      "name": "accuracy",
+      "valid_values": [
+        "0.1%",
+        "0.25%",
+        "0.5%",
+        "1.0%"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Rosemount",
+    "Endress+Hauser",
+    "Yokogawa",
+    "WIKA",
+    "Honeywell"
+  ],
+  "part_number_structure": "[ModelCode]-[RangeCode]-[OutputCode]-[ConnectionCode]-[Options]"
+}

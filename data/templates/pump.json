@@ -1,0 +1,47 @@
+{
+  "category": "CAT-PMP",
+  "name": "Pump",
+  "attributes": [
+    {
+      "name": "flow_rate",
+      "valid_units": [
+        "m3/h",
+        "GPM"
+      ],
+      "value_range": {
+        "min": 1,
+        "max": 20000
+      }
+    },
+    {
+      "name": "head",
+      "valid_units": [
+        "M",
+        "FT"
+      ],
+      "value_range": {
+        "min": 5,
+        "max": 3000
+      }
+    },
+    {
+      "name": "power",
+      "valid_units": [
+        "KW",
+        "HP"
+      ],
+      "value_range": {
+        "min": 0.5,
+        "max": 5000
+      }
+    }
+  ],
+  "manufacturers": [
+    "KSB",
+    "Flowserve",
+    "Sulzer",
+    "Grundfos",
+    "ITT Goulds"
+  ],
+  "part_number_structure": "[ModelFamily]-[Size]-[ImpellerDia]-[MaterialCode]"
+}

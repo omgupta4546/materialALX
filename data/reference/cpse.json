@@ -1,0 +1,42 @@
+{
+  "dataset_version": "1.0",
+  "data_type": "SYNTHETIC",
+  "warning": "DO NOT USE IN PRODUCTION. This is synthetic data for development and demonstration purposes only.",
+  "organizations": [
+    {
+      "cpse_code": "NTPC",
+      "cpse_name": "National Thermal Power Corporation",
+      "sector": "Power",
+      "description": "[SYNTHETIC] A fictional power generation and distribution enterprise used for testing the material platform.",
+      "is_synthetic": true
+    },
+    {
+      "cpse_code": "ONGC",
+      "cpse_name": "Oil and Natural Gas Corporation",
+      "sector": "Oil & Gas",
+      "description": "[SYNTHETIC] A fictional oil and gas exploration company.",
+      "is_synthetic": true
+    },
+    {
+      "cpse_code": "SAIL",
+      "cpse_name": "Steel Authority of India Limited",
+      "sector": "Steel",
+      "description": "[SYNTHETIC] A fictional steel manufacturing entity.",
+      "is_synthetic": true
+    },
+    {
+      "cpse_code": "IOCL",
+      "cpse_name": "Indian Oil Corporation Limited",
+      "sector": "Oil & Gas",
+      "description": "[SYNTHETIC] A fictional oil and gas corporation.",
+      "is_synthetic": true
+    },
+    {
+      "cpse_code": "BHEL",
+      "cpse_name": "Bharat Heavy Electricals Limited",
+      "sector": "Heavy Engineering",
+      "description": "[SYNTHETIC] A fictional heavy engineering firm.",
+      "is_synthetic": true
+    }
+  ]
+}

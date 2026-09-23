@@ -1,0 +1,57 @@
+{
+  "category": "CAT-PIP",
+  "name": "Pipe",
+  "attributes": [
+    {
+      "name": "diameter",
+      "valid_units": [
+        "inch",
+        "mm"
+      ],
+      "value_range": {
+        "min": 0.5,
+        "max": 120
+      }
+    },
+    {
+      "name": "schedule",
+      "valid_values": [
+        "SCH10",
+        "SCH40",
+        "SCH80",
+        "SCH160",
+        "STD",
+        "XS",
+        "XXS"
+      ]
+    },
+    {
+      "name": "material_grade",
+      "valid_values": [
+        "API 5L X52",
+        "ASTM A106 Gr B",
+        "ASTM A312 TP316L",
+        "ASTM A333 Gr 6"
+      ]
+    },
+    {
+      "name": "length",
+      "valid_units": [
+        "M",
+        "FT"
+      ],
+      "value_range": {
+        "min": 6,
+        "max": 12
+      }
+    }
+  ],
+  "manufacturers": [
+    "Tenaris",
+    "Jindal SAW",
+    "ArcelorMittal",
+    "Nippon Steel",
+    "Vallourec"
+  ],
+  "part_number_structure": "[Type]-[Size]-[Schedule]-[Material]-[Length]"
+}

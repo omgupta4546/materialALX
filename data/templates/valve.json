@@ -1,0 +1,60 @@
+{
+  "category": "CAT-VLV",
+  "name": "Valve",
+  "attributes": [
+    {
+      "name": "size",
+      "valid_units": [
+        "inch",
+        "mm"
+      ],
+      "value_range": {
+        "min": 0.25,
+        "max": 72
+      }
+    },
+    {
+      "name": "pressure_class",
+      "valid_values": [
+        "150#",
+        "300#",
+        "600#",
+        "900#",
+        "1500#",
+        "2500#",
+        "PN16",
+        "PN40"
+      ]
+    },
+    {
+      "name": "body_material",
+      "valid_values": [
+        "WCB",
+        "LCC",
+        "CF8M",
+        "A105",
+        "Ductile Iron",
+        "Bronze"
+      ]
+    },
+    {
+      "name": "end_connection",
+      "valid_values": [
+        "Flanged",
+        "Threaded",
+        "Socket Weld",
+        "Butt Weld",
+        "Wafer",
+        "Lug"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Emerson",
+    "Flowserve",
+    "Velan",
+    "Crane",
+    "KITZ"
+  ],
+  "part_number_structure": "[Size]-[Class]-[Type]-[BodyMat]-[TrimMat]-[Ends]"
+}

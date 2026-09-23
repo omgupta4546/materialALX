@@ -1,0 +1,54 @@
+{
+  "category": "CAT-LUB",
+  "name": "Lubricant",
+  "attributes": [
+    {
+      "name": "viscosity_grade",
+      "valid_values": [
+        "ISO VG 32",
+        "ISO VG 46",
+        "ISO VG 68",
+        "ISO VG 220",
+        "SAE 10W-40"
+      ]
+    },
+    {
+      "name": "base_oil",
+      "valid_values": [
+        "Mineral",
+        "Synthetic (PAO)",
+        "PAG",
+        "Ester",
+        "Silicone"
+      ]
+    },
+    {
+      "name": "nlgi_grade",
+      "valid_values": [
+        "NLGI 0",
+        "NLGI 1",
+        "NLGI 2",
+        "NLGI 3"
+      ]
+    },
+    {
+      "name": "container_size",
+      "valid_units": [
+        "L",
+        "KG"
+      ],
+      "value_range": {
+        "min": 1,
+        "max": 1000
+      }
+    }
+  ],
+  "manufacturers": [
+    "Shell",
+    "Mobil",
+    "Castrol",
+    "TotalEnergies",
+    "Kl\u00fcber"
+  ],
+  "part_number_structure": "[BrandName] [ProductLine] [Viscosity/NLGI] - [ContainerSize]"
+}

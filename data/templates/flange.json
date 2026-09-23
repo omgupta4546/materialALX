@@ -1,0 +1,54 @@
+{
+  "category": "CAT-FLG",
+  "name": "Flange",
+  "attributes": [
+    {
+      "name": "size",
+      "valid_units": [
+        "inch",
+        "mm"
+      ],
+      "value_range": {
+        "min": 0.5,
+        "max": 72
+      }
+    },
+    {
+      "name": "pressure_class",
+      "valid_values": [
+        "150#",
+        "300#",
+        "600#",
+        "900#",
+        "1500#",
+        "2500#"
+      ]
+    },
+    {
+      "name": "flange_type",
+      "valid_values": [
+        "Weld Neck",
+        "Slip-On",
+        "Blind",
+        "Socket Weld",
+        "Threaded",
+        "Lap Joint"
+      ]
+    },
+    {
+      "name": "facing",
+      "valid_values": [
+        "Raised Face (RF)",
+        "Flat Face (FF)",
+        "Ring Type Joint (RTJ)"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Ulma",
+    "Melesi",
+    "Galperti",
+    "CHW Forge"
+  ],
+  "part_number_structure": "[Size]-[Class]-[Type]-[Facing]-[Material]"
+}

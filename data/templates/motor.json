@@ -1,0 +1,71 @@
+{
+  "category": "CAT-MTR",
+  "name": "Motor",
+  "attributes": [
+    {
+      "name": "power",
+      "valid_units": [
+        "kW",
+        "HP"
+      ],
+      "value_range": {
+        "min": 0.1,
+        "max": 10000
+      }
+    },
+    {
+      "name": "voltage",
+      "valid_units": [
+        "V",
+        "KV"
+      ],
+      "value_range": {
+        "min": 110,
+        "max": 11000
+      }
+    },
+    {
+      "name": "frequency",
+      "valid_units": [
+        "HZ"
+      ],
+      "valid_values": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "rpm",
+      "valid_units": [
+        "RPM"
+      ],
+      "valid_values": [
+        750,
+        1000,
+        1500,
+        3000,
+        900,
+        1200,
+        1800,
+        3600
+      ]
+    },
+    {
+      "name": "enclosure",
+      "valid_values": [
+        "TEFC",
+        "ODP",
+        "TENV",
+        "Explosion Proof"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Siemens",
+    "ABB",
+    "WEG",
+    "Crompton Greaves",
+    "Baldor"
+  ],
+  "part_number_structure": "[FrameSize]-[Poles]-[Power]-[VoltageCode]-[Enclosure]"
+}

@@ -1,0 +1,58 @@
+{
+  "category": "CAT-BRG",
+  "name": "Bearing",
+  "attributes": [
+    {
+      "name": "bore",
+      "valid_units": [
+        "mm",
+        "inch"
+      ],
+      "value_range": {
+        "min": 3,
+        "max": 1500
+      }
+    },
+    {
+      "name": "outer_diameter",
+      "valid_units": [
+        "mm",
+        "inch"
+      ],
+      "value_range": {
+        "min": 10,
+        "max": 2000
+      }
+    },
+    {
+      "name": "width",
+      "valid_units": [
+        "mm",
+        "inch"
+      ],
+      "value_range": {
+        "min": 4,
+        "max": 500
+      }
+    },
+    {
+      "name": "seal_type",
+      "valid_values": [
+        "Open",
+        "Z",
+        "ZZ",
+        "RS",
+        "2RS",
+        "NR"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "SKF",
+    "FAG",
+    "Timken",
+    "NSK",
+    "NTN"
+  ],
+  "part_number_structure": "[SeriesCode][BoreCode][Suffix(Seals/Clearance)] (e.g. 6204-2RS1/C3)"
+}

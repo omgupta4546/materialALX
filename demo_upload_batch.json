@@ -1,0 +1,17 @@
+[
+  {
+    "material_code": "SRC-DEMO-001",
+    "description": "GATE VALVE 6IN CLASS 150 (Synthetic Safe Match)",
+    "uom": "EA"
+  },
+  {
+    "material_code": "SRC-DEMO-002",
+    "description": "GATE VALVE 6IN CLASS 300 (Synthetic Dangerous Match)",
+    "uom": "EA"
+  },
+  {
+    "material_code": "SRC-DEMO-003",
+    "description": "BALL BEARING 6205 2RS SKF (Synthetic No Match)",
+    "uom": "EA"
+  }
+]

@@ -1,0 +1,3 @@
+STATUS: PASSED
+Checked: Required fields, UOM, Taxonomy, Numeric Ranges, Math Arithmetic, FK Relationships.
+Total Errors: 0

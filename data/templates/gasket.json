@@ -1,0 +1,54 @@
+{
+  "category": "CAT-GSK",
+  "name": "Gasket",
+  "attributes": [
+    {
+      "name": "size",
+      "valid_units": [
+        "inch",
+        "mm"
+      ],
+      "value_range": {
+        "min": 0.5,
+        "max": 72
+      }
+    },
+    {
+      "name": "pressure_class",
+      "valid_values": [
+        "150#",
+        "300#",
+        "600#",
+        "900#",
+        "1500#",
+        "2500#"
+      ]
+    },
+    {
+      "name": "gasket_type",
+      "valid_values": [
+        "Spiral Wound",
+        "CNAF",
+        "PTFE",
+        "RTJ",
+        "Corrugated Metal"
+      ]
+    },
+    {
+      "name": "material",
+      "valid_values": [
+        "Graphite/SS316",
+        "PTFE",
+        "Soft Iron",
+        "SS304"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "Flexitallic",
+    "Garlock",
+    "Klinger",
+    "Lamons"
+  ],
+  "part_number_structure": "[Type]-[Size]-[Class]-[WindingMat]-[FillerMat]-[RingMat]"
+}

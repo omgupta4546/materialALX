@@ -1,0 +1,54 @@
+{
+  "category": "CAT-ELC",
+  "name": "Electrical Component",
+  "attributes": [
+    {
+      "name": "current_rating",
+      "valid_units": [
+        "A",
+        "KA"
+      ],
+      "value_range": {
+        "min": 0.1,
+        "max": 6300
+      }
+    },
+    {
+      "name": "voltage_rating",
+      "valid_units": [
+        "V",
+        "KV"
+      ],
+      "value_range": {
+        "min": 12,
+        "max": 800000
+      }
+    },
+    {
+      "name": "poles",
+      "valid_values": [
+        "1P",
+        "2P",
+        "3P",
+        "4P"
+      ]
+    },
+    {
+      "name": "breaking_capacity",
+      "valid_units": [
+        "KA"
+      ],
+      "value_range": {
+        "min": 10,
+        "max": 150
+      }
+    }
+  ],
+  "manufacturers": [
+    "Schneider Electric",
+    "ABB",
+    "Siemens",
+    "Eaton"
+  ],
+  "part_number_structure": "[Family]-[Rating]-[Poles]-[Curve/Type]"
+}

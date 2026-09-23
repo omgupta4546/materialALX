@@ -1,0 +1,58 @@
+{
+  "category": "CAT-PPE",
+  "name": "PPE",
+  "attributes": [
+    {
+      "name": "size",
+      "valid_values": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "name": "material",
+      "valid_values": [
+        "Nitrile",
+        "Leather",
+        "Kevlar",
+        "Polycarbonate",
+        "HDPE"
+      ]
+    },
+    {
+      "name": "certification",
+      "valid_values": [
+        "CE",
+        "ANSI",
+        "EN 388",
+        "EN 397"
+      ]
+    },
+    {
+      "name": "color",
+      "valid_values": [
+        "Yellow",
+        "White",
+        "Blue",
+        "Red",
+        "Hi-Vis"
+      ]
+    }
+  ],
+  "manufacturers": [
+    "3M",
+    "Honeywell",
+    "MSA Safety",
+    "Ansell",
+    "DuPont"
+  ],
+  "part_number_structure": "[ProductFamily]-[Model]-[Size]-[Color]"
+}

@@ -1,0 +1,131 @@
+{
+  "taxonomy_version": "1.0",
+  "categories": [
+    {
+      "id": "CAT-BRG",
+      "name": "Bearings",
+      "subcategories": [
+        {
+          "id": "SCAT-BRG-BB",
+          "name": "Ball Bearings",
+          "subcategories": [
+            {
+              "id": "SCAT-BRG-DGBB",
+              "name": "Deep Groove Ball Bearings",
+              "subcategories": []
+            }
+          ]
+        },
+        {
+          "id": "SCAT-BRG-TRB",
+          "name": "Tapered Roller Bearings",
+          "subcategories": []
+        }
+      ]
+    },
+    {
+      "id": "CAT-VLV",
+      "name": "Valves",
+      "subcategories": [
+        { "id": "SCAT-VLV-GT", "name": "Gate Valve", "subcategories": [] },
+        { "id": "SCAT-VLV-GL", "name": "Globe Valve", "subcategories": [] },
+        { "id": "SCAT-VLV-BA", "name": "Ball Valve", "subcategories": [] },
+        { "id": "SCAT-VLV-BT", "name": "Butterfly Valve", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-PMP",
+      "name": "Pumps",
+      "subcategories": [
+        { "id": "SCAT-PMP-CT", "name": "Centrifugal Pump", "subcategories": [] },
+        { "id": "SCAT-PMP-PD", "name": "Positive Displacement Pump", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-MTR",
+      "name": "Motors",
+      "subcategories": [
+        { "id": "SCAT-MTR-AC", "name": "AC Motor", "subcategories": [] },
+        { "id": "SCAT-MTR-DC", "name": "DC Motor", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-PIP",
+      "name": "Pipes",
+      "subcategories": [
+        { "id": "SCAT-PIP-CS", "name": "Carbon Steel Pipe", "subcategories": [] },
+        { "id": "SCAT-PIP-SS", "name": "Stainless Steel Pipe", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-FLG",
+      "name": "Flanges",
+      "subcategories": [
+        { "id": "SCAT-FLG-WN", "name": "Weld Neck", "subcategories": [] },
+        { "id": "SCAT-FLG-SO", "name": "Slip-On", "subcategories": [] },
+        { "id": "SCAT-FLG-BL", "name": "Blind", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-GSK",
+      "name": "Gaskets",
+      "subcategories": [
+        { "id": "SCAT-GSK-SW", "name": "Spiral Wound", "subcategories": [] },
+        { "id": "SCAT-GSK-NM", "name": "Non-Metallic", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-FST",
+      "name": "Fasteners",
+      "subcategories": [
+        { "id": "SCAT-FST-BL", "name": "Bolts", "subcategories": [] },
+        { "id": "SCAT-FST-NT", "name": "Nuts", "subcategories": [] },
+        { "id": "SCAT-FST-WS", "name": "Washers", "subcategories": [] },
+        { "id": "SCAT-FST-SC", "name": "Screws", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-CBL",
+      "name": "Cables",
+      "subcategories": [
+        { "id": "SCAT-CBL-PW", "name": "Power Cable", "subcategories": [] },
+        { "id": "SCAT-CBL-CT", "name": "Control Cable", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-ELC",
+      "name": "Electrical Components",
+      "subcategories": [
+        { "id": "SCAT-ELC-CB", "name": "Circuit Breaker", "subcategories": [] },
+        { "id": "SCAT-ELC-RL", "name": "Relay", "subcategories": [] },
+        { "id": "SCAT-ELC-SW", "name": "Switchgear", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-INS",
+      "name": "Instrumentation",
+      "subcategories": [
+        { "id": "SCAT-INS-PT", "name": "Pressure Transmitter", "subcategories": [] },
+        { "id": "SCAT-INS-TT", "name": "Temperature Transmitter", "subcategories": [] },
+        { "id": "SCAT-INS-FT", "name": "Flow Transmitter", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-PPE",
+      "name": "PPE",
+      "subcategories": [
+        { "id": "SCAT-PPE-HM", "name": "Helmets", "subcategories": [] },
+        { "id": "SCAT-PPE-GL", "name": "Gloves", "subcategories": [] },
+        { "id": "SCAT-PPE-BT", "name": "Safety Boots", "subcategories": [] }
+      ]
+    },
+    {
+      "id": "CAT-LUB",
+      "name": "Lubricants",
+      "subcategories": [
+        { "id": "SCAT-LUB-OL", "name": "Industrial Oil", "subcategories": [] },
+        { "id": "SCAT-LUB-GR", "name": "Grease", "subcategories": [] }
+      ]
+    }
+  ]
+}

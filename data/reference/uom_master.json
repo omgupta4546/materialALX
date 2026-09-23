@@ -1,0 +1,187 @@
+{
+  "uom_version": "1.0",
+  "dimensions": {
+    "COUNT": {
+      "canonical_unit": "EACH",
+      "units": [
+        {
+          "code": "EACH",
+          "name": "Each",
+          "aliases": ["EA", "PCS", "NOS", "PIECE", "PIECES", "NUMBER", "NUMBERS"],
+          "multiplier_to_canonical": 1.0
+        }
+      ]
+    },
+    "MASS": {
+      "canonical_unit": "KG",
+      "units": [
+        {
+          "code": "KG",
+          "name": "Kilogram",
+          "aliases": ["KGS", "KILO", "KILOGRAMS"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "G",
+          "name": "Gram",
+          "aliases": ["GM", "GMS", "GRAMS"],
+          "multiplier_to_canonical": 0.001
+        },
+        {
+          "code": "MT",
+          "name": "Metric Ton",
+          "aliases": ["TON", "TONNE", "METRIC TONNE"],
+          "multiplier_to_canonical": 1000.0
+        }
+      ]
+    },
+    "LENGTH": {
+      "canonical_unit": "MM",
+      "units": [
+        {
+          "code": "MM",
+          "name": "Millimeter",
+          "aliases": ["MILLIMETER", "MILLIMETERS"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "CM",
+          "name": "Centimeter",
+          "aliases": ["CENTIMETER", "CENTIMETERS"],
+          "multiplier_to_canonical": 10.0
+        },
+        {
+          "code": "M",
+          "name": "Meter",
+          "aliases": ["MTR", "MTRS", "METER", "METERS"],
+          "multiplier_to_canonical": 1000.0
+        },
+        {
+          "code": "IN",
+          "name": "Inch",
+          "aliases": ["\"", "INCH", "INCHES"],
+          "multiplier_to_canonical": 25.4
+        },
+        {
+          "code": "FT",
+          "name": "Foot",
+          "aliases": ["'", "FOOT", "FEET"],
+          "multiplier_to_canonical": 304.8
+        }
+      ]
+    },
+    "VOLUME": {
+      "canonical_unit": "L",
+      "units": [
+        {
+          "code": "L",
+          "name": "Liter",
+          "aliases": ["LTR", "LITER", "LITERS", "LITRES"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "ML",
+          "name": "Milliliter",
+          "aliases": ["MILLILITER", "MILLILITERS"],
+          "multiplier_to_canonical": 0.001
+        }
+      ]
+    },
+    "PRESSURE": {
+      "canonical_unit": "BAR",
+      "units": [
+        {
+          "code": "BAR",
+          "name": "Bar",
+          "aliases": ["BARS"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "PSI",
+          "name": "Pounds per Square Inch",
+          "aliases": ["P.S.I.", "LB/IN2"],
+          "multiplier_to_canonical": 0.0689476
+        }
+      ]
+    },
+    "VOLTAGE": {
+      "canonical_unit": "V",
+      "units": [
+        {
+          "code": "V",
+          "name": "Volt",
+          "aliases": ["VOLT", "VOLTS"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "KV",
+          "name": "Kilovolt",
+          "aliases": ["KILOVOLT", "KILOVOLTS"],
+          "multiplier_to_canonical": 1000.0
+        }
+      ]
+    },
+    "CURRENT": {
+      "canonical_unit": "A",
+      "units": [
+        {
+          "code": "A",
+          "name": "Ampere",
+          "aliases": ["AMP", "AMPS", "AMPERES"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "KA",
+          "name": "Kiloampere",
+          "aliases": ["KILOAMP", "KILOAMPS"],
+          "multiplier_to_canonical": 1000.0
+        }
+      ]
+    },
+    "POWER": {
+      "canonical_unit": "KW",
+      "units": [
+        {
+          "code": "KW",
+          "name": "Kilowatt",
+          "aliases": ["KILOWATT", "KILOWATTS"],
+          "multiplier_to_canonical": 1.0
+        },
+        {
+          "code": "MW",
+          "name": "Megawatt",
+          "aliases": ["MEGAWATT", "MEGAWATTS"],
+          "multiplier_to_canonical": 1000.0
+        },
+        {
+          "code": "HP",
+          "name": "Horsepower",
+          "aliases": ["HORSEPOWER"],
+          "multiplier_to_canonical": 0.7457
+        }
+      ]
+    },
+    "FREQUENCY": {
+      "canonical_unit": "HZ",
+      "units": [
+        {
+          "code": "HZ",
+          "name": "Hertz",
+          "aliases": ["HERTZ"],
+          "multiplier_to_canonical": 1.0
+        }
+      ]
+    },
+    "ROTATIONAL_SPEED": {
+      "canonical_unit": "RPM",
+      "units": [
+        {
+          "code": "RPM",
+          "name": "Revolutions Per Minute",
+          "aliases": ["REV/MIN", "R.P.M."],
+          "multiplier_to_canonical": 1.0
+        }
+      ]
+    }
+  }
+}
