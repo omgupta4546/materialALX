@@ -129,6 +129,8 @@ jobs:
             --tb=short \
             --ignore=tests/e2e \
             --ignore=tests/load \
+            --asyncio-mode=strict \
+            -W ignore::DeprecationWarning \
             -q
 
   # ─────────────────────────────────────────────────────────────
