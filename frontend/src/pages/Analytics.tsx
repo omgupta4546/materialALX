@@ -15,12 +15,13 @@ import {
 } from '../api/analytics';
 import { cn } from '../components/common/MetricCard';
 
-const PALETTE = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899', '#14b8a6'];
-const RISK_COLORS: Record<string, string> = { 'Low Risk': '#10b981', 'Medium Risk': '#f59e0b', 'High Risk': '#ef4444' };
-const CHART_THEME = { text: '#94a3b8', grid: 'rgba(148,163,184,0.08)' };
+const PALETTE = ['#0F5B3D', '#3B7DA8', '#F2A93B', '#14b8a6', '#0d6e5b', '#ef4444', '#8b5cf6'];
+const PIE_PALETTE = ['#0F5B3D', '#3B7DA8', '#F2A93B', '#14b8a6', '#f97316', '#ef4444'];
+const RISK_COLORS: Record<string, string> = { 'Low Risk': '#0F5B3D', 'Medium Risk': '#F2A93B', 'High Risk': '#ef4444' };
+const CHART_THEME = { text: '#64748b', grid: 'rgba(0,0,0,0.06)' };
 
 const CardShell: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
-  <div className={cn('glass rounded-xl overflow-hidden', className)}>{children}</div>
+  <div className={cn('card overflow-hidden', className)}>{children}</div>
 );
 const CardHeader: React.FC<{ icon: React.ReactNode; title: string; subtitle?: string }> = ({ icon, title, subtitle }) => (
   <div className="px-5 py-4 border-b border-border flex items-start justify-between">
@@ -34,7 +35,7 @@ const CardHeader: React.FC<{ icon: React.ReactNode; title: string; subtitle?: st
 const ChartTooltip: React.FC<{ active?: boolean; payload?: any[]; label?: any }> = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="glass border border-border rounded-lg px-3 py-2 text-xs shadow-xl">
+    <div className="bg-white border border-border rounded-lg px-3 py-2 text-xs shadow-xl">
       {label && <p className="font-semibold mb-1">{label}</p>}
       {payload.map((p: any, i: number) => (
         <p key={i} style={{ color: p.color || p.fill }}>{p.name}: <span className="font-bold">{p.value?.toLocaleString()}</span></p>
@@ -43,17 +44,16 @@ const ChartTooltip: React.FC<{ active?: boolean; payload?: any[]; label?: any }>
   );
 };
 
-// ── Quality Gauge ──────────────────────────────────────────────
 const GaugeCard: React.FC<{ label: string; score: number; icon: React.ReactNode }> = ({ label, score, icon }) => {
   const pct = Math.round(score * 100);
-  const color = pct >= 80 ? '#10b981' : pct >= 60 ? '#f59e0b' : '#ef4444';
+  const color = pct >= 80 ? '#0F5B3D' : pct >= 60 ? '#F2A93B' : '#ef4444';
   const data = [{ value: pct, fill: color }, { value: 100 - pct, fill: 'transparent' }];
   return (
     <CardShell>
       <div className="p-5">
         <div className="flex items-center gap-2 mb-2">
           {icon}
-          <span className="text-xs text-muted-foreground uppercase tracking-wider">{label}</span>
+          <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">{label}</span>
         </div>
         <div className="flex items-center justify-center">
           <div className="relative">
@@ -71,16 +71,21 @@ const GaugeCard: React.FC<{ label: string; score: number; icon: React.ReactNode 
 };
 
 // ── Stat Card ──────────────────────────────────────────────
-const StatCard: React.FC<{ icon: React.ReactNode; label: string; value: string | number; sub?: string; color?: string }> = ({ icon, label, value, sub, color = 'text-primary' }) => (
-  <CardShell>
-    <div className="p-5">
-      <div className="inline-flex p-2.5 rounded-lg mb-3 bg-primary/10 text-primary">{icon}</div>
-      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{label}</p>
-      <p className={cn('text-2xl font-bold tabular-nums', color)}>{typeof value === 'number' ? value.toLocaleString() : value}</p>
-      {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
-    </div>
-  </CardShell>
-);
+const StatCard: React.FC<{ icon: React.ReactNode; label: string; value: string | number; sub?: string; color?: string; chipColor?: string }> = ({ icon, label, value, sub, color = 'text-foreground', chipColor = 'green' }) => {
+  const chipClass = `kpi-chip kpi-chip-${chipColor}`;
+  return (
+    <CardShell>
+      <div className="p-5 flex items-start gap-4">
+        <div className={chipClass}>{icon}</div>
+        <div className="min-w-0 flex-1">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-semibold">{label}</p>
+          <p className={cn('text-2xl font-bold tabular-nums', color)}>{typeof value === 'number' ? value.toLocaleString() : value}</p>
+          {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
+        </div>
+      </div>
+    </CardShell>
+  );
+};
 
 export const Analytics: React.FC = () => {
   const { data: dq, isLoading: dqLoading } = useQuery({ queryKey: ['analytics-dq'], queryFn: () => getDataQualityFn() });
@@ -122,10 +127,10 @@ export const Analytics: React.FC = () => {
       <div>
         <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-3 pl-1">Processing Pipeline</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <StatCard icon={<BarChart3 size={18} />} label="Total Jobs" value={health?.total_jobs ?? 0} sub="Processing runs completed" />
-          <StatCard icon={<Database size={18} />} label="Records Processed" value={health?.total_records_processed ?? 0} sub="Total records through pipeline" />
-          <StatCard icon={<TrendingUp size={18} />} label="Match Rate" value={overview ? `${overview.mapping_pct}%` : '0%'} sub="Source materials mapped" color={overview && overview.mapping_pct >= 80 ? 'text-green-400' : 'text-amber-400'} />
-          <StatCard icon={<AlertTriangle size={18} />} label="High Risk" value={overview?.high_risk_matches ?? 0} sub="Matches needing attention" color={(overview?.high_risk_matches ?? 0) > 0 ? 'text-red-400' : 'text-green-400'} />
+          <StatCard icon={<BarChart3 size={18} />} label="Total Jobs" value={health?.total_jobs ?? 0} sub="Processing runs completed" chipColor="blue" />
+          <StatCard icon={<Database size={18} />} label="Records Processed" value={health?.total_records_processed ?? 0} sub="Total records through pipeline" chipColor="teal" />
+          <StatCard icon={<TrendingUp size={18} />} label="Match Rate" value={overview ? `${overview.mapping_pct}%` : '0%'} sub="Source materials mapped" color={overview && overview.mapping_pct >= 80 ? 'text-green-700' : 'text-amber-700'} chipColor={overview && overview.mapping_pct >= 80 ? 'green' : 'amber'} />
+          <StatCard icon={<AlertTriangle size={18} />} label="High Risk" value={overview?.high_risk_matches ?? 0} sub="Matches needing attention" color={(overview?.high_risk_matches ?? 0) > 0 ? 'text-red-600' : 'text-green-700'} chipColor={(overview?.high_risk_matches ?? 0) > 0 ? 'red' : 'green'} />
         </div>
       </div>
 
@@ -140,7 +145,7 @@ export const Analytics: React.FC = () => {
                 <ResponsiveContainer width="55%" height={220}>
                   <PieChart>
                     <Pie data={risk} dataKey="count" nameKey="risk_level" cx="50%" cy="50%" innerRadius={55} outerRadius={85} paddingAngle={3}>
-                      {risk.map((d, i) => <Cell key={i} fill={RISK_COLORS[d.risk_level] ?? PALETTE[i % PALETTE.length]} />)}
+                      {risk.map((d, i) => <Cell key={i} fill={RISK_COLORS[d.risk_level] ?? PIE_PALETTE[i % PIE_PALETTE.length]} />)}
                     </Pie>
                     <Tooltip content={<ChartTooltip />} />
                   </PieChart>
@@ -173,7 +178,7 @@ export const Analytics: React.FC = () => {
                   <YAxis tick={{ fill: CHART_THEME.text, fontSize: 11 }} />
                   <Tooltip content={<ChartTooltip />} />
                   <Bar dataKey="count" name="Mappings" radius={[4, 4, 0, 0]}>
-                    {confidence.map((_, i) => <Cell key={i} fill={['#10b981', '#06b6d4', '#f59e0b', '#ef4444'][i % 4]} />)}
+                    {confidence.map((_, i) => <Cell key={i} fill="#0F5B3D" />)}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -198,7 +203,7 @@ export const Analytics: React.FC = () => {
                   <YAxis type="category" dataKey="category" tick={{ fill: CHART_THEME.text, fontSize: 10 }} width={80} />
                   <Tooltip content={<ChartTooltip />} />
                   <Bar dataKey="count" name="Materials" radius={[0, 4, 4, 0]}>
-                    {coverage.map((_, i) => <Cell key={i} fill={PALETTE[i % PALETTE.length]} />)}
+                    {coverage.map((_, i) => <Cell key={i} fill="#0F5B3D" />)}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -221,7 +226,7 @@ export const Analytics: React.FC = () => {
                   <Tooltip content={<ChartTooltip />} />
                   <Legend wrapperStyle={{ fontSize: 11, color: CHART_THEME.text }} />
                   <Bar dataKey="count" name="Source Materials" radius={[4, 4, 0, 0]}>
-                    {byCpse.map((_, i) => <Cell key={i} fill={PALETTE[i % PALETTE.length]} />)}
+                    {byCpse.map((_, i) => <Cell key={i} fill="#0F5B3D" />)}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -267,7 +272,7 @@ export const Analytics: React.FC = () => {
                 <span>{overview.mapping_pct}%</span>
               </div>
               <div className="h-2 rounded-full bg-muted overflow-hidden">
-                <div className="h-full rounded-full bg-green-500 transition-all" style={{ width: `${overview.mapping_pct}%` }} />
+                <div className="h-full rounded-full transition-all" style={{ width: `${overview.mapping_pct}%`, backgroundColor: '#0F5B3D' }} />
               </div>
             </div>
           </div>

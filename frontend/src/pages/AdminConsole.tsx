@@ -341,27 +341,57 @@ function CPSESection({ headers, isAdmin }: { headers: any; isAdmin: boolean }) {
 
   const filtered = cpses.filter(c => `${c.cpse_code} ${c.cpse_name} ${c.sector}`.toLowerCase().includes(filter.toLowerCase()));
 
+  // Add consistent color generator for CPSE badges
+  const getColor = (code: string) => {
+    const colors = ['bg-blue-100 text-blue-700', 'bg-teal-100 text-teal-700', 'bg-amber-100 text-amber-700', 'bg-green-100 text-green-700', 'bg-purple-100 text-purple-700'];
+    let hash = 0;
+    for (let i = 0; i < code.length; i++) hash = code.charCodeAt(i) + ((hash << 5) - hash);
+    return colors[Math.abs(hash) % colors.length];
+  };
+
   return (
     <div>
-      <SectionTitle icon={<Building2 className="w-5 h-5 text-blue-400" />} title="CPSEs" subtitle={`${cpses.length} registered enterprises`} />
-      <div className="flex gap-3 mb-4">
+      <SectionTitle icon={<Building2 className="w-5 h-5 text-blue-400" />} title="Organizations" subtitle={`${cpses.length} registered partner enterprises`} />
+      <div className="flex gap-3 mb-6">
         <div className="flex-1"><SearchBar value={filter} onChange={setFilter} placeholder="Filter by code, name, sector…" /></div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-8">
+        {filtered.map(c => (
+          <div key={c.cpse_code} className="bg-white rounded-xl p-5 flex flex-col items-center text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all group">
+            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 shadow-sm group-hover:scale-105 transition-transform ${getColor(c.cpse_code)}`}>
+              {c.cpse_code.substring(0, 2).toUpperCase()}
+            </div>
+            <h4 className="font-semibold text-gray-900 text-sm mb-1 leading-snug">{c.cpse_name}</h4>
+            <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] mt-auto pt-3">
+              <span className="text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-md font-medium">{c.cpse_code}</span>
+              {c.sector && <span className="text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-md font-medium">{c.sector}</span>}
+              {c.status && <span className={c.status === 'ACTIVE' ? 'text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-md font-medium' : 'text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-md font-medium'}>{c.status}</span>}
+            </div>
+          </div>
+        ))}
+
+        {/* More CPSEs Add Button Tile */}
         {isAdmin && (
-          <button onClick={() => setModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-lg text-sm shrink-0">
-            <Plus className="w-4 h-4" /> Add CPSE
+          <button onClick={() => setModalOpen(true)} className="bg-gray-50/50 rounded-xl p-5 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 hover:border-[#0F5B3D] hover:bg-[#F5F8F6] transition-all group min-h-[200px]">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-200 group-hover:bg-[#0F5B3D]/10 text-gray-500 group-hover:text-[#0F5B3D] mb-3 transition-colors">
+              <Plus className="w-6 h-6" />
+            </div>
+            <span className="font-semibold text-gray-800 group-hover:text-[#0F5B3D] text-sm">More CPSEs</span>
+            <span className="text-[11px] text-gray-500 mt-1">Register new organization</span>
           </button>
         )}
       </div>
-      <Table
-        columns={[
-          { key: 'cpse_code', label: 'Code', render: (v) => <code className="text-blue-300 text-xs font-bold">{v}</code> },
-          { key: 'cpse_name', label: 'Name' },
-          { key: 'sector', label: 'Sector', render: (v) => <span className="text-gray-400">{v || '—'}</span> },
-          { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
-        ]}
-        rows={filtered}
-      />
+
+      {/* Footer Banner */}
+      <div className="rounded-xl overflow-hidden bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 relative">
+        <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: 'linear-gradient(to right, #0F5B3D 0%, #FFFFFF 50%, #F2A93B 100%)' }} />
+        <div className="p-5 pt-6 flex items-center justify-center gap-3">
+          <Building2 className="w-4 h-4 text-[#0F5B3D]" />
+          <span className="text-sm font-semibold text-gray-800 tracking-wide">Empowering National Enterprise Collaboration</span>
+        </div>
+      </div>
+
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="Add CPSE">
         <Field label="CPSE Code"><Input value={form.cpse_code} onChange={v => setForm(f => ({ ...f, cpse_code: v }))} placeholder="NTPC" /></Field>
         <Field label="Name"><Input value={form.cpse_name} onChange={v => setForm(f => ({ ...f, cpse_name: v }))} /></Field>

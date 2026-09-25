@@ -98,7 +98,10 @@ if not _is_sqlite:
 
         @event.listens_for(engine, "connect")
         def _register_vector(dbapi_connection, connection_record):
-            register_vector(dbapi_connection)
+            try:
+                register_vector(dbapi_connection)
+            except Exception:
+                pass
 
     except ImportError:
         log.warning("pgvector psycopg2 adapter not found — vector ops will be unavailable")

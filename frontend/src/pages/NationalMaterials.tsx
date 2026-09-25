@@ -6,7 +6,8 @@ import { z } from 'zod';
 import {
   Database, RefreshCw, Search, Plus, X, ChevronRight,
   Archive, Edit, Eye, CheckCircle2, Clock,
-  AlertTriangle, Hash, Users, FileStack, Layers
+  AlertTriangle, Hash, Users, FileStack, Layers,
+  ImageOff, Star, BookmarkPlus, Pencil
 } from 'lucide-react';
 import {
   getNationalMaterialsFn, getNationalMaterialDetailFn,
@@ -24,15 +25,15 @@ import { cn } from '../components/common/MetricCard';
 
 const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
   const cfg: Record<string, string> = {
-    ACTIVE:        'bg-green-500/15 text-green-400 border-green-500/30',
-    PROVISIONAL:   'bg-slate-500/15 text-slate-400 border-slate-500/30',
-    UNDER_REVIEW:  'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    REJECTED:      'bg-red-500/15 text-red-400 border-red-500/30',
-    SUPERSEDED:    'bg-blue-500/15 text-blue-400 border-blue-500/30',
-    RETIRED:       'bg-red-500/15 text-red-400 border-red-500/30 line-through opacity-60',
+    ACTIVE:        'bg-green-50 text-green-700 border-green-200',
+    PROVISIONAL:   'bg-slate-100 text-slate-600 border-slate-200',
+    UNDER_REVIEW:  'bg-amber-50 text-amber-700 border-amber-200',
+    REJECTED:      'bg-red-50 text-red-600 border-red-200',
+    SUPERSEDED:    'bg-blue-50 text-blue-700 border-blue-200',
+    RETIRED:       'bg-red-50 text-red-400 border-red-200 line-through opacity-60',
   };
   return (
-    <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border', cfg[status] ?? cfg.PROVISIONAL)}>
+    <span className={cn('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border', cfg[status] ?? cfg.PROVISIONAL)}>
       {status}
     </span>
   );
@@ -246,8 +247,72 @@ const NMDetailDrawer: React.FC<{
             </div>
           ) : data ? (
             <>
+              {/* ── Product image placeholder + action buttons ── */}
+              <div className="flex gap-4 items-start">
+
+                {/* Image placeholder frame */}
+                <div
+                  className="shrink-0 w-28 h-28 rounded-2xl border-2 border-dashed border-border bg-muted/40 flex flex-col items-center justify-center gap-1.5 cursor-default select-none"
+                  title="No product image available"
+                >
+                  <ImageOff size={22} className="text-muted-foreground/40" />
+                  <span className="text-[9px] text-muted-foreground/50 font-medium uppercase tracking-wide">No Image</span>
+                </div>
+
+                {/* Right: description + actions */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-base font-semibold leading-snug mb-1">{data.canonical_description}</p>
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
+                    <StatusBadge status={data.status} />
+                    {data.canonical_uom && (
+                      <span className="text-xs text-muted-foreground font-mono bg-muted px-2 py-0.5 rounded">{data.canonical_uom}</span>
+                    )}
+                    <span className="text-xs text-muted-foreground">{data.cpse_count} CPSEs · {data.source_count} legacy codes</span>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {/* Primary: Approve & Publish — deep green */}
+                    {!data.is_retired && data.status !== 'ACTIVE' && (
+                      <button
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-px"
+                        style={{
+                          background: 'linear-gradient(135deg, hsl(155,73%,17%), hsl(155,62%,25%))',
+                          boxShadow: '0 4px 12px hsl(155 73% 21% / 0.30)',
+                        }}
+                      >
+                        <CheckCircle2 size={14} />
+                        Approve &amp; Publish
+                      </button>
+                    )}
+                    {/* Secondary: Suggest Edit — outlined gray-green */}
+                    {!data.is_retired && (
+                      <button
+                        onClick={() => onEdit(data)}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold border transition-all hover:-translate-y-px"
+                        style={{
+                          color: 'hsl(155,73%,21%)',
+                          borderColor: 'hsl(155 73% 21% / 0.35)',
+                          background: 'hsl(155 73% 21% / 0.04)',
+                        }}
+                      >
+                        <Pencil size={13} />
+                        Suggest Edit
+                      </button>
+                    )}
+                    {/* Ghost: Add to Watchlist */}
+                    <button
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold border border-border bg-white text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-all"
+                    >
+                      <BookmarkPlus size={13} />
+                      Add to Watchlist
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               {/* Identity */}
-              <div className="glass rounded-xl overflow-hidden">
+              <div className="card overflow-hidden">
                 <SectionHeader icon={<Hash size={13} />} title="Identity" />
                 <div className="p-4">
                   <InfoRow label="National Code" value={data.national_material_code} mono />
@@ -259,7 +324,7 @@ const NMDetailDrawer: React.FC<{
               </div>
 
               {/* Canonical Description */}
-              <div className="glass rounded-xl overflow-hidden">
+              <div className="card overflow-hidden">
                 <SectionHeader icon={<FileStack size={13} />} title="Canonical Description" />
                 <div className="p-4">
                   <p className="text-base leading-relaxed">{data.canonical_description}</p>
@@ -267,7 +332,7 @@ const NMDetailDrawer: React.FC<{
               </div>
 
               {/* Classification */}
-              <div className="glass rounded-xl overflow-hidden">
+              <div className="card overflow-hidden">
                 <SectionHeader icon={<Layers size={13} />} title="Classification" />
                 <div className="p-4">
                   {data.classification_breadcrumb.length > 0 ? (
@@ -275,7 +340,7 @@ const NMDetailDrawer: React.FC<{
                       {data.classification_breadcrumb.map((c, i) => (
                         <React.Fragment key={c.code}>
                           {i > 0 && <ChevronRight size={13} className="text-muted-foreground" />}
-                          <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-medium text-xs">{c.name}</span>
+                          <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium text-xs">{c.name}</span>
                         </React.Fragment>
                       ))}
                     </div>
@@ -286,11 +351,11 @@ const NMDetailDrawer: React.FC<{
 
               {/* Attributes */}
               {data.attributes && Object.keys(data.attributes).length > 0 && (
-                <div className="glass rounded-xl overflow-hidden">
+                <div className="card overflow-hidden">
                   <SectionHeader icon={<Layers size={13} />} title="Canonical Attributes" />
                   <div className="p-4 grid grid-cols-2 gap-2">
                     {Object.entries(data.attributes).map(([k, v]) => (
-                      <div key={k} className="bg-muted/40 rounded px-3 py-2">
+                      <div key={k} className="bg-muted/40 rounded-lg px-3 py-2">
                         <p className="text-xs text-muted-foreground">{k}</p>
                         <p className="text-sm font-medium">{String(v)}</p>
                       </div>
@@ -300,12 +365,12 @@ const NMDetailDrawer: React.FC<{
               )}
 
               {/* CPSE Mappings */}
-              <div className="glass rounded-xl overflow-hidden">
+              <div className="card overflow-hidden">
                 <SectionHeader icon={<Users size={13} />} title={`CPSE Mappings (${data.source_count} legacy codes, ${data.cpse_count} CPSEs)`} />
                 {data.mappings_summary && data.mappings_summary.length > 0 ? (
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                      <thead className="bg-muted/20 border-b border-border">
+                      <thead className="bg-muted/40 border-b border-border">
                         <tr>
                           {['CPSE', 'Legacy Code', 'Description', 'UOM', 'Type', 'Confidence'].map(h => (
                             <th key={h} className="p-3 text-left text-xs font-semibold text-muted-foreground">{h}</th>
@@ -314,15 +379,38 @@ const NMDetailDrawer: React.FC<{
                       </thead>
                       <tbody>
                         {data.mappings_summary.map((m: any) => (
-                          <tr key={m.mapping_id} className="border-b border-border/30 hover:bg-accent/30 transition-colors">
-                            <td className="p-3"><span className="text-xs bg-secondary px-2 py-0.5 rounded font-medium">{m.cpse_code}</span></td>
-                            <td className="p-3 font-mono text-xs text-primary">{m.legacy_material_code}</td>
+                          <tr key={m.mapping_id} className="border-b border-border/30 hover:bg-primary/3 transition-colors">
+                            {/* CPSE chip — green tag */}
+                            <td className="p-3">
+                              <span
+                                className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                                style={{ background: 'hsl(155 73% 21% / 0.10)', color: 'hsl(155,73%,21%)' }}
+                              >
+                                {m.cpse_code}
+                              </span>
+                            </td>
+                            {/* Legacy code — green chip */}
+                            <td className="p-3">
+                              <span
+                                className="font-mono text-xs px-2 py-0.5 rounded font-semibold"
+                                style={{ background: 'hsl(155 73% 21% / 0.08)', color: 'hsl(155,62%,25%)' }}
+                              >
+                                {m.legacy_material_code}
+                              </span>
+                            </td>
                             <td className="p-3 text-xs text-muted-foreground max-w-[160px] truncate">{m.description}</td>
                             <td className="p-3 font-mono text-xs">{m.uom ?? '—'}</td>
                             <td className="p-3 text-xs font-semibold">{m.mapping_type}</td>
-                            <td className="p-3 text-xs font-mono">
+                            <td className="p-3">
                               {m.confidence !== null ? (
-                                <span className={m.confidence >= 0.9 ? 'text-green-400' : m.confidence >= 0.7 ? 'text-amber-400' : 'text-red-400'}>
+                                <span
+                                  className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold tabular-nums border"
+                                  style={{
+                                    background: m.confidence >= 0.9 ? 'hsl(155 73% 21% / 0.08)' : m.confidence >= 0.7 ? '#fffbeb' : '#fef2f2',
+                                    color: m.confidence >= 0.9 ? 'hsl(155,62%,25%)' : m.confidence >= 0.7 ? '#92610a' : '#dc2626',
+                                    borderColor: m.confidence >= 0.9 ? 'hsl(155 73% 21% / 0.20)' : m.confidence >= 0.7 ? '#fde68a' : '#fecaca',
+                                  }}
+                                >
                                   {Math.round(m.confidence * 100)}%
                                 </span>
                               ) : '—'}
@@ -337,11 +425,9 @@ const NMDetailDrawer: React.FC<{
                 )}
               </div>
 
-
-
               {/* Audit History */}
               {data.audit_history.length > 0 && (
-                <div className="glass rounded-xl overflow-hidden">
+                <div className="card overflow-hidden">
                   <SectionHeader icon={<Clock size={13} />} title="Audit History" />
                   <div className="p-4 space-y-2">
                     {data.audit_history.map((a, i) => (
@@ -409,7 +495,7 @@ export const NationalMaterials: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
+          <h1 className="text-2xl font-bold font-heading flex items-center gap-2">
             <Database size={22} className="text-primary" /> National Material Catalog
           </h1>
           {data && (
@@ -419,12 +505,16 @@ export const NationalMaterials: React.FC = () => {
           )}
         </div>
         <div className="flex gap-2">
-          <button onClick={() => refetch()} className="p-2 rounded-md border border-border hover:bg-accent transition-colors">
-            <RefreshCw size={16} className={cn(isFetching && 'animate-spin')} />
+          <button
+            onClick={() => refetch()}
+            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary border border-border rounded-lg px-3 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all"
+          >
+            <RefreshCw size={13} className={cn(isFetching && 'animate-spin text-primary')} />
+            Refresh
           </button>
           <button
             onClick={() => setShowCreate(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
+            className="btn-primary"
           >
             <Plus size={15} /> Create National Material
           </button>
@@ -432,7 +522,7 @@ export const NationalMaterials: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="glass rounded-xl p-4 space-y-3">
+      <div className="card p-4 space-y-3">
         <div className="flex gap-3">
           <form onSubmit={handleSearch} className="flex-1 flex gap-2">
             <div className="relative flex-1">
@@ -479,10 +569,10 @@ export const NationalMaterials: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="glass rounded-xl overflow-hidden">
+      <div className="card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-muted/30 border-b border-border">
+            <thead className="bg-muted/40 border-b border-border">
               <tr>
                 {['National Code', 'Canonical Description', 'Category', 'Classification', 'Status', 'CPSEs', 'Legacy Codes', 'Actions'].map(h => (
                   <th key={h} className="p-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider whitespace-nowrap">{h}</th>
@@ -493,14 +583,14 @@ export const NationalMaterials: React.FC = () => {
               {isLoading ? (
                 <tr><td colSpan={8} className="p-12 text-center text-muted-foreground"><RefreshCw size={20} className="animate-spin inline mr-2" />Loading…</td></tr>
               ) : data?.items.length === 0 ? (
-                <tr><td colSpan={8} className="p-12 text-center text-muted-foreground">
+              <tr><td colSpan={8} className="p-12 text-center text-muted-foreground">
                   <Database size={32} className="mx-auto mb-3 opacity-30" />
                   <p>No national materials found.</p>
                   <p className="text-xs mt-1">Create the first golden record using the button above.</p>
                 </td></tr>
               ) : (
                 data?.items.map((nm: NationalMaterialRead) => (
-                  <tr key={nm.national_material_code} className="border-b border-border/50 hover:bg-accent/40 transition-colors group">
+                  <tr key={nm.national_material_code} className="border-b border-border/50 hover:bg-primary/3 transition-colors group">
                     <td className="p-3">
                       <button
                         onClick={() => setSelectedCode(nm.national_material_id)}
@@ -521,7 +611,11 @@ export const NationalMaterials: React.FC = () => {
                       <StatChip icon={<Users size={11} />} label="CPSEs" value={nm.cpse_count} />
                     </td>
                     <td className="p-3">
-                      <StatChip icon={<FileStack size={11} />} label="codes" value={nm.source_count} />
+                      {/* Legacy codes — green chip count */}
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full"
+                        style={{ background: 'hsl(155 73% 21% / 0.09)', color: 'hsl(155,62%,25%)' }}>
+                        <FileStack size={10} /> {nm.source_count}
+                      </span>
                     </td>
                     <td className="p-3">
                       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
