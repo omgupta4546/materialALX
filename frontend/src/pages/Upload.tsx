@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useDropzone } from 'react-dropzone';
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
-import { UploadCloud, CheckCircle2, AlertCircle, Loader2, ArrowRight } from 'lucide-react';
+import { UploadCloud, CheckCircle2, AlertCircle, Loader2, ArrowRight, FileText, Download, Info } from 'lucide-react';
 import { uploadFileFn, getJobFn } from '../api/upload';
 import { cn } from '../components/common/MetricCard';
-
 import { getCpsesFn } from '../api/cpses';
 
 type Step = 'SELECT_CPSE' | 'UPLOAD' | 'MAP' | 'VALIDATE' | 'JOB';
@@ -24,12 +23,12 @@ export const Upload: React.FC = () => {
     queryKey: ['cpses'],
     queryFn: getCpsesFn
   });
-  
+
   // File Parsing State
   const [_, setFile] = useState<File | null>(null);
   const [headers, setHeaders] = useState<string[]>([]);
   const [previewRows, setPreviewRows] = useState<any[]>([]);
-  const [rawRows, setRawRows] = useState<any[]>([]); // To build final CSV
+  const [rawRows, setRawRows] = useState<any[]>([]);
 
   // Mapping State
   const [mapping, setMapping] = useState<MappingState>({ material_code: '', description: '', uom: '' });
@@ -47,7 +46,7 @@ export const Upload: React.FC = () => {
   });
 
   const uploadMutation = useMutation({
-    mutationFn: (data: { file: File, cpseCode: string }) => uploadFileFn(data.file, data.cpseCode),
+    mutationFn: (data: { file: File; cpseCode: string }) => uploadFileFn(data.file, data.cpseCode),
     onSuccess: (data) => {
       setJobId(data.job_id);
       setStep('JOB');
@@ -59,7 +58,6 @@ export const Upload: React.FC = () => {
     queryFn: () => getJobFn(jobId!),
     enabled: !!jobId && step === 'JOB',
     refetchInterval: (query) => {
-      // stop refetching if status is COMPLETED or FAILED
       const status = query.state.data?.status;
       if (status === 'COMPLETED' || status === 'FAILED' || status === 'CANCELLED') return false;
       return 1000;
@@ -102,81 +100,223 @@ export const Upload: React.FC = () => {
   };
 
   const submitMapping = () => {
-    // Generate clean CSV string from rawRows based on mapping
     const cleanData = rawRows.map(row => ({
       material_code: mapping.material_code ? row[mapping.material_code] : '',
       description: mapping.description ? row[mapping.description] : '',
       uom: mapping.uom ? row[mapping.uom] : ''
     }));
-
     const csvContent = Papa.unparse(cleanData);
-    const cleanFile = new File([csvContent], "mapped_upload.csv", { type: "text/csv" });
-
+    const cleanFile = new File([csvContent], 'mapped_upload.csv', { type: 'text/csv' });
     setStep('VALIDATE');
     uploadMutation.mutate({ file: cleanFile, cpseCode });
   };
 
+  const GUIDELINES = [
+    'File must contain at least Material Code and Description columns.',
+    'Ensure no duplicate material codes within the same file.',
+    'UOM (Unit of Measure) column is optional but recommended.',
+    'First row should be the column header row.',
+    'Remove any summary or total rows before uploading.',
+    'Accepted formats: CSV, XLSX, JSON (UTF-8 encoded).',
+    'Maximum file size: 50 MB per upload.',
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto space-y-6 pb-20">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold">Upload Catalog</h1>
-        <div className="flex space-x-2 text-sm text-muted-foreground">
-          <span className={cn(step === 'SELECT_CPSE' && 'text-primary font-bold')}>1. Setup</span>
-          <span>→</span>
-          <span className={cn(step === 'UPLOAD' && 'text-primary font-bold')}>2. Upload</span>
-          <span>→</span>
-          <span className={cn(step === 'MAP' && 'text-primary font-bold')}>3. Map</span>
-          <span>→</span>
-          <span className={cn(step === 'JOB' && 'text-primary font-bold')}>4. Process</span>
+    <div className="max-w-5xl mx-auto space-y-6 pb-20">
+
+      {/* ── Page header + stepper ── */}
+      <div className="flex items-center justify-between mb-2">
+        <div>
+          <h1 className="text-2xl font-bold font-heading">Upload Catalog</h1>
+          <p className="text-sm text-muted-foreground mt-0.5">Import material master data for your CPSE</p>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          {(['SELECT_CPSE', 'UPLOAD', 'MAP', 'JOB'] as Step[]).map((s, i) => {
+            const labels = ['1. Setup', '2. Upload', '3. Map', '4. Process'];
+            const isActive = step === s;
+            return (
+              <React.Fragment key={s}>
+                {i > 0 && <span className="text-border text-xs">→</span>}
+                <span className={cn('transition-colors', isActive ? 'text-primary font-bold' : 'text-muted-foreground')}>
+                  {labels[i]}
+                </span>
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
 
+      {/* ══ STEP 1 — SELECT CPSE ══ */}
       {step === 'SELECT_CPSE' && (
-        <div className="glass p-8 rounded-xl">
-          <h2 className="text-lg font-medium mb-4">Select Target Organization</h2>
-          <select 
+        <div className="card p-8">
+          <h2 className="text-lg font-semibold mb-4">Select Target Organization</h2>
+          <select
             value={cpseCode}
             onChange={(e) => setCpseCode(e.target.value)}
-            className="w-full p-3 rounded-md border border-border bg-background mb-6 focus:ring-primary focus:border-primary text-foreground"
+            className="w-full p-3 rounded-lg border border-border bg-background mb-6 text-foreground transition-all outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/60"
             disabled={orgsLoading}
           >
             <option value="">-- Choose an Organization --</option>
             {orgs?.map(org => <option key={org.cpse_id} value={org.cpse_code}>{org.cpse_name}</option>)}
           </select>
-          <button 
+          <button
             disabled={!cpseCode}
             onClick={() => setStep('UPLOAD')}
-            className="px-6 py-2 bg-primary text-primary-foreground rounded-md disabled:opacity-50 flex items-center"
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Continue <ArrowRight size={16} className="ml-2" />
+            Continue <ArrowRight size={16} />
           </button>
         </div>
       )}
 
+      {/* ══ STEP 2 — UPLOAD (restyled) ══ */}
       {step === 'UPLOAD' && (
-        <div 
-          {...getRootProps()} 
-          className={cn(
-            "border-2 border-dashed rounded-xl p-16 text-center cursor-pointer transition-colors glass",
-            isDragActive ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
-          )}
-        >
-          <input {...getInputProps()} />
-          <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-medium mb-1">Drag and drop your file here</h3>
-          <p className="text-muted-foreground text-sm">Supports CSV, JSON, XLSX up to 50MB</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
+
+          {/* Left: dropzone 2/3 */}
+          <div className="lg:col-span-2 space-y-4">
+
+            {/* Drag-and-drop zone */}
+            <div
+              {...getRootProps()}
+              className={cn(
+                'relative rounded-2xl border-2 border-dashed p-14 text-center cursor-pointer transition-all duration-200 group select-none',
+                isDragActive
+                  ? 'border-primary bg-primary/8 scale-[1.01]'
+                  : 'border-primary/35 bg-white hover:border-primary/65 hover:bg-primary/4'
+              )}
+              style={{ boxShadow: isDragActive ? '0 0 0 4px hsl(155 73% 21% / 0.10)' : '0 1px 4px rgba(0,0,0,0.04), 0 2px 8px hsl(155 73% 21% / 0.05)' }}
+            >
+              <input {...getInputProps()} />
+
+              {/* Cloud icon chip */}
+              <div
+                className={cn(
+                  'inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-5 mx-auto transition-all duration-200',
+                  isDragActive ? 'bg-primary/18 scale-110' : 'bg-primary/8 group-hover:bg-primary/13'
+                )}
+              >
+                <UploadCloud
+                  size={32}
+                  className={cn(
+                    'transition-colors duration-200',
+                    isDragActive ? 'text-primary' : 'text-primary/65 group-hover:text-primary'
+                  )}
+                />
+              </div>
+
+              {isDragActive ? (
+                <p className="text-primary font-bold text-base">Release to upload!</p>
+              ) : (
+                <>
+                  <h3 className="text-base font-semibold text-foreground mb-1.5">
+                    Drag &amp; drop your file here
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    or click anywhere, or use the button below
+                  </p>
+
+                  {/* Deep green Upload File button */}
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-150 hover:-translate-y-px active:translate-y-0 focus:outline-none"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(155,73%,17%), hsl(155,62%,25%))',
+                      boxShadow: '0 4px 14px hsl(155 73% 21% / 0.32)',
+                    }}
+                  >
+                    <UploadCloud size={16} />
+                    Upload File
+                  </button>
+                </>
+              )}
+
+              {/* Format badges */}
+              <div className="mt-6 flex items-center justify-center gap-2 flex-wrap">
+                {['CSV', 'XLSX', 'JSON'].map(fmt => (
+                  <span
+                    key={fmt}
+                    className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                    style={{ background: 'hsl(155 73% 21% / 0.09)', color: 'hsl(155,62%,25%)' }}
+                  >
+                    {fmt}
+                  </span>
+                ))}
+                <span className="text-[11px] text-muted-foreground">· Max 50 MB</span>
+              </div>
+            </div>
+
+            {/* Privacy note */}
+            <div
+              className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm"
+              style={{ background: 'hsl(155 73% 21% / 0.06)', border: '1px solid hsl(155 73% 21% / 0.15)' }}
+            >
+              <Info size={15} className="text-primary shrink-0 mt-0.5" />
+              <p className="text-primary/80 leading-relaxed">
+                Files are parsed locally in your browser. Your data is never transmitted without your explicit confirmation at the next step.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Guidelines white card 1/3 */}
+          <div className="card p-6 flex flex-col gap-5 h-fit">
+
+            {/* Card header */}
+            <div className="flex items-center gap-2.5">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                style={{ background: 'hsl(155 73% 21% / 0.10)' }}
+              >
+                <FileText size={16} className="text-primary" />
+              </div>
+              <h3 className="font-semibold text-sm text-foreground">File Guidelines</h3>
+            </div>
+
+            {/* Green bullet list */}
+            <ul className="space-y-3">
+              {GUIDELINES.map((tip, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-snug">
+                  <span
+                    className="shrink-0 rounded-full"
+                    style={{
+                      width: '6px', height: '6px',
+                      marginTop: '6px',
+                      background: 'hsl(155,73%,25%)',
+                      display: 'inline-block',
+                    }}
+                  />
+                  {tip}
+                </li>
+              ))}
+            </ul>
+
+            {/* Divider */}
+            <div className="h-px bg-border" />
+
+            {/* Download template */}
+            <a
+              href="/template.csv"
+              download
+              className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:underline"
+              style={{ color: 'hsl(155,73%,21%)' }}
+            >
+              <Download size={15} />
+              Download CSV template
+            </a>
+          </div>
         </div>
       )}
 
+      {/* ══ STEP 3 — MAP COLUMNS (unchanged) ══ */}
       {step === 'MAP' && (
         <div className="space-y-6">
-          <div className="glass p-6 rounded-xl">
-            <h2 className="text-lg font-medium mb-4">Map Columns</h2>
+          <div className="card p-6">
+            <h2 className="text-lg font-semibold mb-4">Map Columns</h2>
             <div className="grid grid-cols-3 gap-6">
               <div>
                 <label className="block text-sm mb-1 text-muted-foreground">Target: Material Code</label>
-                <select 
-                  onChange={e => setMapping({...mapping, material_code: e.target.value})}
+                <select
+                  onChange={e => setMapping({ ...mapping, material_code: e.target.value })}
                   className="w-full p-2 rounded-md border border-border bg-background"
                 >
                   <option value="">-- Select Column --</option>
@@ -185,8 +325,8 @@ export const Upload: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm mb-1 text-muted-foreground">Target: Description</label>
-                <select 
-                  onChange={e => setMapping({...mapping, description: e.target.value})}
+                <select
+                  onChange={e => setMapping({ ...mapping, description: e.target.value })}
                   className="w-full p-2 rounded-md border border-border bg-background"
                 >
                   <option value="">-- Select Column --</option>
@@ -195,8 +335,8 @@ export const Upload: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm mb-1 text-muted-foreground">Target: UOM</label>
-                <select 
-                  onChange={e => setMapping({...mapping, uom: e.target.value})}
+                <select
+                  onChange={e => setMapping({ ...mapping, uom: e.target.value })}
                   className="w-full p-2 rounded-md border border-border bg-background"
                 >
                   <option value="">-- Select Column --</option>
@@ -206,7 +346,7 @@ export const Upload: React.FC = () => {
             </div>
           </div>
 
-          <div className="glass p-6 rounded-xl overflow-auto">
+          <div className="card p-6 overflow-auto">
             <h3 className="text-sm font-medium mb-4 text-muted-foreground">Data Preview</h3>
             <table className="w-full text-sm text-left">
               <thead className="bg-muted/50 border-b border-border">
@@ -224,18 +364,19 @@ export const Upload: React.FC = () => {
             </table>
           </div>
 
-          <button 
+          <button
             onClick={submitMapping}
             disabled={!mapping.material_code || !mapping.description}
-            className="px-6 py-2 bg-primary text-primary-foreground rounded-md disabled:opacity-50"
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Validate & Submit
+            Validate &amp; Submit
           </button>
         </div>
       )}
 
+      {/* ══ STEP 4 — VALIDATE / JOB (unchanged) ══ */}
       {(step === 'VALIDATE' || step === 'JOB') && (
-        <div className="glass p-8 rounded-xl text-center max-w-lg mx-auto">
+        <div className="card p-8 text-center max-w-lg mx-auto">
           {uploadMutation.isPending ? (
             <div className="py-8">
               <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto mb-4" />
@@ -244,26 +385,23 @@ export const Upload: React.FC = () => {
           ) : jobData ? (
             <div className="py-8 space-y-4">
               {jobData.status === 'COMPLETED' ? (
-                <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto" />
+                <CheckCircle2 className="w-12 h-12 text-primary mx-auto" />
               ) : jobData.status === 'FAILED' ? (
                 <AlertCircle className="w-12 h-12 text-destructive mx-auto" />
               ) : (
                 <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto" />
               )}
-              
+
               <h2 className="text-xl font-bold">
-                {jobData.status === 'COMPLETED' ? 'Processing Complete' : 
+                {jobData.status === 'COMPLETED' ? 'Processing Complete' :
                  jobData.status === 'FAILED' ? 'Processing Failed' : 'Processing Background Job'}
               </h2>
-              
+
               <div className="w-full bg-muted rounded-full h-3 mb-2 overflow-hidden border border-border">
-                <div 
-                  className={cn(
-                    "h-full transition-all duration-500",
-                    jobData.status === 'FAILED' ? "bg-destructive" : "bg-primary"
-                  )} 
+                <div
+                  className={cn('h-full transition-all duration-500 rounded-full', jobData.status === 'FAILED' ? 'bg-destructive' : 'bg-primary')}
                   style={{ width: `${jobData.total_records > 0 ? (jobData.records_processed / jobData.total_records) * 100 : 0}%` }}
-                ></div>
+                />
               </div>
               <p className="text-muted-foreground text-sm">
                 Processed {jobData.records_processed} of {jobData.total_records} records.

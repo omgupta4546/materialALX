@@ -13,6 +13,7 @@ import { NationalMaterials } from './pages/NationalMaterials';
 import TaxonomyManagement from './pages/TaxonomyManagement';
 import RuleManagement from './pages/RuleManagement';
 import AdminConsole from './pages/AdminConsole';
+import { Profile } from './pages/Profile';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +40,7 @@ function App() {
               <Route path="national-materials" element={<NationalMaterials />} />
               <Route path="approvals" element={<Approvals />} />
               <Route path="analytics" element={<Analytics />} />
+              <Route path="profile" element={<Profile />} />
               <Route path="taxonomy" element={<TaxonomyManagement />} />
               <Route path="rules" element={<RuleManagement />} />
               <Route path="admin" element={<AdminConsole />} />

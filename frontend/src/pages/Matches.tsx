@@ -17,14 +17,14 @@ import { cn } from '../components/common/MetricCard';
 
 const ReviewBadge: React.FC<{ status: string | null }> = ({ status }) => {
   const cfg: Record<string, string> = {
-    PENDING:   'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    APPROVED:  'bg-green-500/15 text-green-400 border-green-500/30',
-    REJECTED:  'bg-red-500/15 text-red-400 border-red-500/30',
-    ESCALATED: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+    PENDING:   'bg-amber-50 text-amber-700 border-amber-200',
+    APPROVED:  'bg-green-50 text-green-700 border-green-200',
+    REJECTED:  'bg-red-50 text-red-600 border-red-200',
+    ESCALATED: 'bg-blue-50 text-blue-700 border-blue-200',
   };
   const label = status === 'ESCALATED' ? 'ENG REVIEW' : (status ?? 'PENDING');
   return (
-    <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border', cfg[status ?? 'PENDING'] ?? cfg.PENDING)}>
+    <span className={cn('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border', cfg[status ?? 'PENDING'] ?? cfg.PENDING)}>
       {label.replace('_', ' ')}
     </span>
   );
@@ -32,13 +32,13 @@ const ReviewBadge: React.FC<{ status: string | null }> = ({ status }) => {
 
 const AIBadge: React.FC<{ rec: string }> = ({ rec }) => {
   const cfg: Record<string, { cls: string; icon: React.ReactNode }> = {
-    APPROVE: { cls: 'text-green-400 bg-green-500/10 border-green-500/20', icon: <CheckCircle2 size={11} /> },
-    REJECT:  { cls: 'text-red-400 bg-red-500/10 border-red-500/20',   icon: <XCircle size={11} /> },
-    REVIEW:  { cls: 'text-amber-400 bg-amber-500/10 border-amber-500/20', icon: <AlertTriangle size={11} /> },
+    APPROVE: { cls: 'text-green-700 bg-green-50 border-green-200', icon: <CheckCircle2 size={11} /> },
+    REJECT:  { cls: 'text-red-600 bg-red-50 border-red-200',       icon: <XCircle size={11} /> },
+    REVIEW:  { cls: 'text-amber-700 bg-amber-50 border-amber-200', icon: <AlertTriangle size={11} /> },
   };
   const { cls, icon } = cfg[rec] ?? cfg.REVIEW;
   return (
-    <span className={cn('inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border', cls)}>
+    <span className={cn('inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold border', cls)}>
       <Bot size={10} /> AI: {icon} {rec}
     </span>
   );
@@ -46,12 +46,28 @@ const AIBadge: React.FC<{ rec: string }> = ({ rec }) => {
 
 const RiskBadge: React.FC<{ level: string }> = ({ level }) => {
   const cfg: Record<string, string> = {
-    LOW:      'text-green-400',
-    MEDIUM:   'text-amber-400',
-    HIGH:     'text-orange-400',
-    CRITICAL: 'text-red-400 animate-pulse',
+    LOW:      'text-green-700',
+    MEDIUM:   'text-amber-600',
+    HIGH:     'text-orange-600',
+    CRITICAL: 'text-red-600 animate-pulse',
   };
   return <span className={cn('font-bold text-xs uppercase tracking-wide', cfg[level] ?? 'text-muted-foreground')}>{level}</span>;
+};
+
+// Confidence score pill badge
+const ConfidencePill: React.FC<{ score: number | null }> = ({ score }) => {
+  if (score === null) return <span className="text-muted-foreground text-xs">—</span>;
+  const pct = Math.round(score * 100);
+  const cls = pct >= 85
+    ? 'bg-green-50 text-green-700 border-green-200'
+    : pct >= 65
+    ? 'bg-amber-50 text-amber-700 border-amber-200'
+    : 'bg-red-50 text-red-600 border-red-200';
+  return (
+    <span className={cn('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold tabular-nums border', cls)}>
+      {pct}%
+    </span>
+  );
 };
 
 const ScoreBar: React.FC<{ label: string; value: number | null; icon: React.ReactNode }> = ({ label, value, icon }) => {
@@ -77,10 +93,10 @@ const ScoreBar: React.FC<{ label: string; value: number | null; icon: React.Reac
 // ══════════════════════════════════════════════════════════
 
 const MatCard: React.FC<{ mat: MaterialSnapshot; label: string; highlightDiffs?: Record<string, string> }> = ({ mat, label, highlightDiffs = {} }) => (
-  <div className="glass rounded-xl overflow-hidden flex-1 min-w-0">
-    <div className="px-4 py-2.5 bg-muted/30 border-b border-border flex items-center justify-between">
+  <div className="card overflow-hidden flex-1 min-w-0">
+    <div className="px-4 py-2.5 bg-muted/40 border-b border-border flex items-center justify-between">
       <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{label}</span>
-      <span className="text-xs bg-secondary px-2 py-0.5 rounded font-medium">{mat.cpse_id}</span>
+      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">{mat.cpse_id}</span>
     </div>
     <div className="p-4 space-y-3 text-sm">
       <DataRow label="Code" value={mat.legacy_material_code} mono />
@@ -169,7 +185,7 @@ const MatchDetailDrawer: React.FC<{ matchId: string; onClose: () => void; onActi
             <div className="p-6 space-y-6">
 
               {/* Score Breakdown */}
-              <div className="glass rounded-xl p-5 space-y-4">
+              <div className="card p-5 space-y-4">
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-2">
                   <Bot size={14} /> AI Scoring Breakdown
                 </h3>
@@ -285,7 +301,7 @@ const MatchDetailDrawer: React.FC<{ matchId: string; onClose: () => void; onActi
 
               {/* Critical Warnings */}
               {data.conflicts && Object.keys(data.conflicts).length > 0 && (
-                <div className="glass rounded-xl p-4 border border-red-500/30 bg-red-500/5">
+                <div className="card p-4 border border-red-200 bg-red-50/60">
                   <h4 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <ShieldAlert size={12} /> Critical Attribute Warnings
                   </h4>
@@ -303,7 +319,7 @@ const MatchDetailDrawer: React.FC<{ matchId: string; onClose: () => void; onActi
 
               {/* Review History */}
               {data.review_history && data.review_history.length > 0 && (
-                <div className="glass rounded-xl p-4">
+                <div className="card p-4">
                   <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
                     <UserCheck size={12} /> Human Review History
                   </h4>
@@ -364,7 +380,7 @@ const MatchDetailDrawer: React.FC<{ matchId: string; onClose: () => void; onActi
 };
 
 const NullCard: React.FC<{ label: string }> = ({ label }) => (
-  <div className="glass rounded-xl flex-1 flex items-center justify-center p-8 text-muted-foreground text-sm italic">{label} not available</div>
+  <div className="card flex-1 flex items-center justify-center p-8 text-muted-foreground text-sm italic">{label} not available</div>
 );
 
 const ActionBtn: React.FC<{
@@ -420,11 +436,11 @@ export const Matches: React.FC = () => {
   const currentPage = Math.floor((params.offset ?? 0) / (params.limit ?? 50)) + 1;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
+          <h1 className="text-2xl font-bold font-heading flex items-center gap-2">
             <Scale size={22} className="text-primary" /> Match Review Queue
           </h1>
           {data && (
@@ -433,13 +449,67 @@ export const Matches: React.FC = () => {
             </p>
           )}
         </div>
-        <button onClick={() => refetch()} className="p-2 rounded-md border border-border hover:bg-accent transition-colors">
-          <RefreshCw size={16} className={cn(isFetching && 'animate-spin')} />
+        <button
+          onClick={() => refetch()}
+          className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary border border-border rounded-lg px-3 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all"
+        >
+          <RefreshCw size={13} className={cn(isFetching && 'animate-spin text-primary')} />
+          Refresh
         </button>
       </div>
 
+      {/* ── Stat Summary Cards ── */}
+      {data && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            {
+              label: 'Total Matches',
+              value: data.total,
+              color: '#0F5B3D',
+              chipCls: 'kpi-chip kpi-chip-green',
+              icon: <Scale size={20} />,
+            },
+            {
+              label: 'Pending Review',
+              value: data.items.filter((m: MatchSummary) => !m.decision || m.decision === 'PENDING').length,
+              color: '#92610a',
+              chipCls: 'kpi-chip kpi-chip-amber',
+              icon: <AlertTriangle size={20} />,
+              note: 'in this page',
+            },
+            {
+              label: 'Approved',
+              value: data.items.filter((m: MatchSummary) => m.decision === 'APPROVED').length,
+              color: '#0F5B3D',
+              chipCls: 'kpi-chip kpi-chip-green',
+              icon: <CheckCircle2 size={20} />,
+              note: 'in this page',
+            },
+            {
+              label: 'Critical Conflicts',
+              value: data.items.filter((m: MatchSummary) => m.requires_human_review).length,
+              color: '#ef4444',
+              chipCls: 'kpi-chip kpi-chip-red',
+              icon: <ShieldAlert size={20} />,
+              note: 'in this page',
+            },
+          ].map((s) => (
+            <div key={s.label} className="card p-4 flex items-start gap-3">
+              <div className={s.chipCls}>{s.icon}</div>
+              <div className="min-w-0">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">{s.label}</p>
+                <p className="text-2xl font-bold tabular-nums leading-tight" style={{ color: s.color }}>
+                  {s.value.toLocaleString()}
+                </p>
+                {s.note && <p className="text-[10px] text-muted-foreground mt-0.5">{s.note}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Filter strip */}
-      <div className="glass rounded-xl p-4">
+      <div className="card p-4">
         <div className="flex flex-wrap gap-3 items-end">
           <div>
             <label className="text-xs text-muted-foreground mb-1 block">Review Status</label>
@@ -484,12 +554,12 @@ export const Matches: React.FC = () => {
       </div>
 
       {/* Queue Table */}
-      <div className="glass rounded-xl overflow-hidden">
+      <div className="card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-muted/30 border-b border-border">
+            <thead className="bg-muted/40 border-b border-border">
               <tr>
-                {['Match ID', 'CPSE A', 'Material A', 'CPSE B', 'Material B', 'Match Type', 'Confidence', 'Conflict', 'AI Rec.', 'Status'].map(h => (
+                {['Match ID', 'CPSE A', 'Material A', 'CPSE B', 'Material B', 'Match Type', 'Confidence', 'Conflict', 'AI Rec.', 'Status', 'Action'].map(h => (
                   <th key={h} className="p-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -508,15 +578,15 @@ export const Matches: React.FC = () => {
                   <tr
                     key={m.match_id}
                     onClick={() => setSelectedId(m.match_id)}
-                    className="border-b border-border/50 hover:bg-accent/40 cursor-pointer transition-colors"
+                    className="border-b border-border/50 hover:bg-primary/3 cursor-pointer transition-colors group"
                   >
                     <td className="p-3 font-mono text-xs text-muted-foreground">{m.match_id.slice(0, 8)}…</td>
-                    <td className="p-3"><span className="text-xs bg-secondary px-2 py-0.5 rounded font-medium">—</span></td>
+                    <td className="p-3"><span className="text-xs bg-primary/8 text-primary px-2 py-0.5 rounded-full font-semibold">—</span></td>
                     <td className="p-3 max-w-[180px]">
                       <p className="font-mono text-xs text-primary">{m.material_a_id.slice(0,8)}…</p>
                       <p className="text-muted-foreground truncate text-xs">Material A</p>
                     </td>
-                    <td className="p-3"><span className="text-xs bg-secondary px-2 py-0.5 rounded font-medium">—</span></td>
+                    <td className="p-3"><span className="text-xs bg-primary/8 text-primary px-2 py-0.5 rounded-full font-semibold">—</span></td>
                     <td className="p-3 max-w-[180px]">
                       <p className="font-mono text-xs text-primary">{m.material_b_id.slice(0,8)}…</p>
                       <p className="text-muted-foreground truncate text-xs">Material B</p>
@@ -526,20 +596,32 @@ export const Matches: React.FC = () => {
                         {m.match_type ? (MATCH_TYPE_LABELS[m.match_type] ?? m.match_type) : '—'}
                       </span>
                     </td>
-                    <td className="p-3 font-mono text-xs font-semibold">
-                      {m.final_score !== null ? (
-                        <span className={m.final_score >= 0.9 ? 'text-green-400' : m.final_score >= 0.7 ? 'text-amber-400' : 'text-red-400'}>
-                          {Math.round(m.final_score * 100)}%
-                        </span>
-                      ) : '—'}
+                    {/* Confidence pill */}
+                    <td className="p-3">
+                      <ConfidencePill score={m.final_score} />
                     </td>
                     <td className="p-3">
                       {m.requires_human_review
-                        ? <span className="flex items-center gap-1 text-red-400 text-xs font-semibold"><ShieldAlert size={12} /> YES</span>
+                        ? <span className="flex items-center gap-1 text-red-600 text-xs font-semibold"><ShieldAlert size={12} /> YES</span>
                         : <span className="text-muted-foreground text-xs">—</span>}
                     </td>
                     <td className="p-3"><AIBadge rec={m.recommendation ?? 'REVIEW'} /></td>
                     <td className="p-3"><ReviewBadge status={m.decision ?? 'PENDING'} /></td>
+                    {/* Review action button */}
+                    <td className="p-3" onClick={e => e.stopPropagation()}>
+                      <button
+                        onClick={() => setSelectedId(m.match_id)}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all hover:-translate-y-px"
+                        style={{
+                          color: 'hsl(155,73%,21%)',
+                          borderColor: 'hsl(155 73% 21% / 0.35)',
+                          background: 'hsl(155 73% 21% / 0.04)',
+                        }}
+                      >
+                        <Scale size={12} />
+                        Review
+                      </button>
+                    </td>
                   </tr>
                 ))
               )}
