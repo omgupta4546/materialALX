@@ -471,7 +471,7 @@ export const Matches: React.FC = () => {
             },
             {
               label: 'Pending Review',
-              value: data.items.filter((m: MatchSummary) => !m.decision || m.decision === 'PENDING').length,
+              value: data.items.filter((m: MatchSummary) => !m.decision).length,
               color: '#92610a',
               chipCls: 'kpi-chip kpi-chip-amber',
               icon: <AlertTriangle size={20} />,
