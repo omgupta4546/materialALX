@@ -1,29 +1,44 @@
-# National Material Intelligence & Harmonization Platform
+<div align="center">
+  <h1>National Material Intelligence & Harmonization Platform</h1>
+  <p><b>🏆 Smart India Hackathon 2024</b></p>
 
-An AI-assisted platform that harmonizes material masters across multiple CPSEs.
+  <p>An AI-assisted platform that harmonizes material masters across multiple CPSEs (Central Public Sector Enterprises).</p>
 
-## Repository Structure
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+</div>
 
-- `/frontend` - React/TypeScript SPA built with Vite, Tailwind, and React Router. Contains the UI for uploading data, exploring materials, and the dashboard.
-- `/backend` - Python/FastAPI application. Serves the REST API, handles authentication, and orchestrates database operations.
-- `/ai` - Python-based AI pipeline for material description normalization, attribute extraction, classification, and embeddings generation.
-- `/database` - Database migration scripts (Alembic) and SQL schemas for PostgreSQL + pgvector.
-- `/data` - Local storage for synthetic data, CSV uploads, and temporary processing files (gitignored).
-- `/mock-erp` - Mock API adapters simulating legacy CPSE ERPs (e.g., mock SAP endpoints) to demonstrate integration safely.
-- `/integrations` - Interfaces and adapters for third-party tools, future real ERP connectivity, and authentication providers.
-- `/infrastructure` - Docker Compose files, container definitions, and configurations (Redis, object storage) for local deployment.
-- `/tests` - Unit, integration, and end-to-end test suites.
-- `/docs` - Master project specification, architecture decision logs, and setup checklists.
-- `/scripts` - Helper shell/Python scripts for database seeding, running local environments, and utility tasks.
+<br/>
 
-## Prerequisites
+## 🏆 Problem Statement Overview
+Different CPSEs currently maintain their material masters independently in disparate legacy ERP systems using inconsistent terminologies and formats. This lack of standardization leads to duplicate inventories, inefficient procurement, and hinders data-driven national-level decision making.
 
-Please refer to [`docs/setup-checklist.md`](docs/setup-checklist.md) for detailed installation instructions. You will need:
-- Node.js & npm
-- Python & pip
-## SIH Demonstration Workflow (Local Development)
+## 💡 Our Solution
+The **National Material Intelligence & Harmonization Platform** acts as a central brain that ingests raw material data, leverages **Generative AI & Semantic Embeddings (pgvector)** to detect duplicates, standardize descriptions, and create a single unified **National Material Catalog**. 
 
-The following command sequence is designed to run the entire platform natively on Windows without Docker.
+### ✨ Key Features
+- **Intelligent Ingestion:** Automated data pipeline to parse diverse CSV formats from different ERPs.
+- **AI-Powered Matching:** LLM-based semantic matching using `sentence-transformers` and Postgres `pgvector` to identify similar and duplicate materials.
+- **Interactive Dashboard:** Modern React-based UI to view analytics, track harmonization progress, and approve AI recommendations.
+- **Automated Harmonization:** Smart extraction of key technical attributes (Make, Grade, Dimensions) to generate standardized descriptions.
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React, Vite, TypeScript, Tailwind CSS, Lucide React
+- **Backend:** Python, FastAPI, SQLAlchemy, Alembic
+- **AI/ML:** sentence-transformers, Generative AI APIs, pgvector
+- **Database:** PostgreSQL (with pgvector extension)
+- **Background Jobs:** Redis, ARQ Worker
+
+---
+
+## 🚀 Quick Setup Guide (Local Development)
+
+The following sequence runs the platform locally for SIH demonstration purposes.
 
 ### 1. Prerequisites
 - **Node.js**: v18+ 
@@ -31,49 +46,30 @@ The following command sequence is designed to run the entire platform natively o
 - **PostgreSQL**: With `pgvector` extension installed.
 - **Redis**: Running locally (via WSL, Memurai, or native port 6379).
 
-### 2. Clone the Repository
-```bash
-git clone <repository-url>
-cd <repository-folder>
-```
-
-### 3. Configure Environment
-Copy the `.env.example` file to `.env` and verify credentials.
+### 2. Configure Environment
 ```bash
 cp .env.example .env
 ```
-*(The default demo credentials for the admin are `demo_admin`/`admin123` and for the engineer `demo_engineer`/`engineer123`.)*
+*(Default Demo Credentials: Admin `demo_admin`/`admin123` | Engineer `demo_engineer`/`engineer123`)*
 
-### 4. Install Dependencies
-**Backend:**
+### 3. Install Dependencies
 ```bash
-cd backend
-pip install -r requirements.txt
-cd ..
-```
-**Frontend:**
-```bash
-cd frontend
-npm install
-cd ..
+# Backend
+cd backend && pip install -r requirements.txt
+
+# Frontend
+cd ../frontend && npm install
 ```
 
-### 5. Run Database Migrations
-Initialize the PostgreSQL database schema using Alembic.
+### 4. Database Setup & Seeding
 ```bash
 cd backend
 alembic upgrade head
-cd ..
+python ../database/seed_database.py --demo
 ```
 
-### 6. Seed Demo Data
-Populate the database with curated, synthetic data.
-```bash
-python database/seed_database.py --demo
-```
-
-### 7. Start the Platform
-You will need to open **three separate terminals** from the project root:
+### 5. Run the Application
+Open **three separate terminals** in the project root:
 
 **Terminal 1 (Backend API):**
 ```bash
@@ -81,7 +77,7 @@ cd backend
 uvicorn app.main:app --reload
 ```
 
-**Terminal 2 (ARQ Worker):**
+**Terminal 2 (Background Worker):**
 ```cmd
 run_worker.bat
 ```
@@ -92,30 +88,26 @@ cd frontend
 npm run dev
 ```
 
-### 6. Interactive Demonstration
-Once the data is seeded, you can open `http://localhost` in your browser. The typical flow is:
-1. **Frontend Login:** Use `demo_admin` / `admin123`.
+---
+
+## 💻 Workflow / Demo Flow
+1. **Login:** Use `demo_admin` / `admin123`.
 2. **Dashboard:** View high-level metrics for material harmonization and duplicate detection.
-3. **Material Explorer:** Browse the synthetic source materials ingested from the simulated CPSEs.
-4. **AI Matching:** Run the background job to automatically detect duplicate and semantically similar records.
-5. **Approval:** Navigate to the AI matches and approve a recommendation as an Engineering Reviewer.
-6. **National Material:** View the newly created, harmonized National Material.
-7. **Analytics:** Explore the analytics dashboards detailing harmonized spend and procurement intelligence.
+3. **Upload & Ingestion:** Simulate ingestion of raw materials from CPSEs.
+4. **AI Matching Engine:** Background workers automatically detect duplicate and semantically similar records.
+5. **Human-in-the-Loop Approval:** Engineering Reviewers navigate to AI Matches and approve/reject recommendations.
+6. **Harmonized Output:** A standardized National Material Code is generated.
 
-## Architecture & Data Context
+---
 
-### Where Data Comes From
-In a production setting, raw material data is ingested from various legacy CPSE ERP systems (e.g., SAP). For local development and demonstration purposes, we rely on CSV uploads and mock adapters.
+## 📁 Repository Structure
+- `/frontend` - React SPA (Vite, Tailwind).
+- `/backend` - FastAPI Python REST API.
+- `/ai` - AI pipeline for NLP description normalization & vector embeddings.
+- `/database` - Alembic migrations & DB schemas.
+- `/mock-erp` - Mock API adapters simulating legacy CPSE ERPs (e.g. SAP).
 
-### How Mock APIs Work
-The `/mock-erp` directory simulates external systems. Instead of making live HTTP calls to real SAP instances, our `MaterialSourceAdapter` interface points to mock endpoints that return hardcoded or dynamically generated synthetic JSON payloads. This ensures development is safe, fast, and offline-capable.
-
-### Which Parts Are Synthetic
-- **Material Records:** All current material data used for development is fully synthetic and does not represent real, sensitive CPSE data.
-- **ERP Endpoints:** The SAP/ERP integrations are mocked.
-- **User Accounts:** Demo roles and users are synthetic.
-
-### Which Parts Are Future Integrations
-- **Real SAP Connectivity:** A true `SAPAdapter` will be implemented once secure connectivity and VPN/VPC peering is established with CPSEs.
-- **Production Object Storage:** Local file storage will be replaced by AWS S3 / Azure Blob Storage.
-- **Advanced LLM Providers:** The pipeline currently abstracts the LLM provider, which can be swapped for enterprise-grade, localized models in the future.
+<br/>
+<div align="center">
+  <b>Built with ❤️ for Smart India Hackathon</b>
+</div>
