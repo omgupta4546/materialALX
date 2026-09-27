@@ -12,7 +12,7 @@ export function MigrationSection({ headers, isAdmin }: { headers: any, isAdmin: 
     setLoading(true);
     try {
       const token = headers.Authorization.split(' ')[1];
-      const res = await fetch('http://localhost:8000/api/v1/migration/batches', {
+      const res = await fetch('https://materialalx.onrender.com/api/v1/migration/batches', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) setBatches(await res.json());
@@ -35,7 +35,7 @@ export function MigrationSection({ headers, isAdmin }: { headers: any, isAdmin: 
     setActionLoading(`${batchId}-${action}`);
     try {
       const token = headers.Authorization.split(' ')[1];
-      const res = await fetch(`http://localhost:8000/api/v1/migration/batches/${batchId}/${action}`, {
+      const res = await fetch(`https://materialalx.onrender.com/api/v1/migration/batches/${batchId}/${action}`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -123,7 +123,7 @@ export function MigrationSection({ headers, isAdmin }: { headers: any, isAdmin: 
                 )}
                 
                 {batch.status === 'EXECUTED' && (
-                  <a href={`http://localhost:8000/api/v1/exports/migration-report?format=csv`} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 text-sm bg-gray-800 text-gray-300 border border-gray-700 rounded hover:bg-gray-700">
+                  <a href={`https://materialalx.onrender.com/api/v1/exports/migration-report?format=csv`} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 text-sm bg-gray-800 text-gray-300 border border-gray-700 rounded hover:bg-gray-700">
                     Download Export
                   </a>
                 )}

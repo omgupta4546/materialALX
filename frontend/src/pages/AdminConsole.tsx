@@ -11,7 +11,7 @@ import {
 import { DataExportsSection } from '../components/DataExportsSection';
 import { MigrationSection } from '../components/MigrationSection';
 
-const API = 'http://localhost:8000/api/v1';
+const API = 'https://materialalx.onrender.com/api/v1';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Shared helpers

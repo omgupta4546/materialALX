@@ -20,7 +20,7 @@ export function DataExportsSection({ headers }: { headers: any }) {
     try {
       setDownloading(`${reportId}-${format}`);
       const token = headers.Authorization.split(' ')[1];
-      const url = `http://localhost:8000/api/v1/exports/${reportId}?format=${format}`;
+      const url = `https://materialalx.onrender.com/api/v1/exports/${reportId}?format=${format}`;
       
       const response = await fetch(url, {
         headers: {

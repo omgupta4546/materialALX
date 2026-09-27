@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 import { Shield, Plus, History, Settings, ChevronDown, ChevronRight, AlertTriangle, Trash2, RefreshCw } from 'lucide-react';
 
-const API = 'http://localhost:8000/api/v1/rules';
+const API = 'https://materialalx.onrender.com/api/v1/rules';
 
 interface CriticalRule {
   id: string;

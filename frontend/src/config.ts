@@ -10,7 +10,7 @@ export const config = {
    * Base URL for the backend API.
    * Maps to API_BASE_URL via Vite config or VITE_ prefix.
    */
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
+  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'https://materialalx.onrender.com',
   
   /** Current environment (development, production, test) */
   environment: import.meta.env.MODE || 'development',
