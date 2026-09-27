@@ -104,7 +104,7 @@ const DetailDrawer: React.FC<{
                 {data.normalized_description ? (
                   <>
                     <Row label="Normalized Description" value={data.normalized_description} />
-                    <Row label="Category" value={data.raw_category} />
+                    <Row label="Category" value={data.classification_id} />
                     <Row label="Manufacturer" value={data.normalized_manufacturer || data.manufacturer} />
                     <Row label="Embedding Ready" value={data.embedding_ready ? '✅ Yes' : '⏳ Pending'} />
                   </>
@@ -389,9 +389,9 @@ export const Materials: React.FC = () => {
                     <td className="p-3 max-w-[200px] text-muted-foreground">
                       <span className="block truncate" title={m.normalized_description ?? ''}>{m.normalized_description ?? <i>—</i>}</span>
                     </td>
-                    <td className="p-3 text-xs text-muted-foreground">{m.raw_category ?? '—'}</td>
+                    <td className="p-3 text-xs text-muted-foreground">{m.classification_id ?? m.raw_category ?? '—'}</td>
                     <td className="p-3 text-xs text-muted-foreground">{m.manufacturer ?? '—'}</td>
-                    <td className="p-3 text-xs font-mono">{m.raw_uom ?? '—'}</td>
+                    <td className="p-3 text-xs font-mono">{m.canonical_uom ?? m.raw_uom ?? '—'}</td>
                     <td className="p-3 font-mono text-xs text-primary">{m.national_material_code ?? '—'}</td>
                     <td className="p-3"><MappingBadge status={m.mapping_status} /></td>
                     <td className="p-3"><ConfidenceBadge score={m.confidence} /></td>

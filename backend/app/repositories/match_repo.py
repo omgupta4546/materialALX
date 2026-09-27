@@ -90,33 +90,22 @@ class MatchRepo:
             .order_by(Approval.created_at.desc())
             .first()
         )
-        src_a = self.db.query(SourceMaterial).filter(
-            SourceMaterial.source_material_id == match.material_a_id
+        norm_a = self.db.query(NormalizedMaterial).filter(
+            or_(NormalizedMaterial.normalized_material_id == match.material_a_id, NormalizedMaterial.source_material_id == match.material_a_id)
         ).first()
-        norm_a = (
-            self.db.query(NormalizedMaterial)
-            .filter(NormalizedMaterial.normalized_material_id == match.material_a_id)
-            .first()
-        ) if not src_a else (
-            self.db.query(NormalizedMaterial)
-            .filter(NormalizedMaterial.source_material_id == match.material_a_id)
-            .first()
-        )
+        src_a = self.db.query(SourceMaterial).filter(
+            SourceMaterial.source_material_id == (norm_a.source_material_id if norm_a else match.material_a_id)
+        ).first()
+
         nat_b = self.db.query(NationalMaterial).filter(
             NationalMaterial.national_material_id == match.material_b_id
         ).first()
-        src_b = self.db.query(SourceMaterial).filter(
-            SourceMaterial.source_material_id == match.material_b_id
+        norm_b = self.db.query(NormalizedMaterial).filter(
+            or_(NormalizedMaterial.normalized_material_id == match.material_b_id, NormalizedMaterial.source_material_id == match.material_b_id)
         ).first() if not nat_b else None
-        norm_b = (
-            self.db.query(NormalizedMaterial)
-            .filter(NormalizedMaterial.normalized_material_id == match.material_b_id)
-            .first()
-        ) if not src_b and not nat_b else (
-            self.db.query(NormalizedMaterial)
-            .filter(NormalizedMaterial.source_material_id == match.material_b_id)
-            .first()
-        )
+        src_b = self.db.query(SourceMaterial).filter(
+            SourceMaterial.source_material_id == (norm_b.source_material_id if norm_b else match.material_b_id)
+        ).first() if not nat_b else None
         return MatchRow(match, approval, src_a, norm_a, nat_b, src_b, norm_b)
 
     # ── List / search ─────────────────────────────────────────────────────────

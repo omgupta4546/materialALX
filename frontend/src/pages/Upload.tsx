@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useDropzone } from 'react-dropzone';
 import Papa from 'papaparse';
@@ -157,7 +157,7 @@ export const Upload: React.FC = () => {
             disabled={orgsLoading}
           >
             <option value="">-- Choose an Organization --</option>
-            {orgs?.map(org => <option key={org.cpse_id} value={org.cpse_code}>{org.cpse_name}</option>)}
+            {orgs?.map(org => <option key={org.cpse_id} value={org.cpse_id}>{org.cpse_name}</option>)}
           </select>
           <button
             disabled={!cpseCode}
@@ -374,7 +374,7 @@ export const Upload: React.FC = () => {
         </div>
       )}
 
-      {/* ══ STEP 4 — VALIDATE / JOB (unchanged) ══ */}
+      {/* ══ STEP 4 — VALIDATE / JOB ══ */}
       {(step === 'VALIDATE' || step === 'JOB') && (
         <div className="card p-8 text-center max-w-lg mx-auto">
           {uploadMutation.isPending ? (
@@ -382,11 +382,25 @@ export const Upload: React.FC = () => {
               <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto mb-4" />
               <p>Uploading mapped catalog...</p>
             </div>
+          ) : uploadMutation.isError ? (
+            <div className="py-8 space-y-4">
+              <AlertCircle className="w-12 h-12 text-destructive mx-auto" />
+              <h2 className="text-xl font-bold">Upload Failed</h2>
+              <p className="text-muted-foreground text-sm">
+                {(uploadMutation.error as any)?.response?.data?.detail || uploadMutation.error?.message || 'An error occurred during upload.'}
+              </p>
+              <button
+                onClick={() => { setStep('SELECT_CPSE'); setJobId(null); }}
+                className="btn-primary mt-4"
+              >
+                Start New Upload
+              </button>
+            </div>
           ) : jobData ? (
             <div className="py-8 space-y-4">
               {jobData.status === 'COMPLETED' ? (
                 <CheckCircle2 className="w-12 h-12 text-primary mx-auto" />
-              ) : jobData.status === 'FAILED' ? (
+              ) : jobData.status === 'FAILED' || jobData.status === 'CANCELLED' ? (
                 <AlertCircle className="w-12 h-12 text-destructive mx-auto" />
               ) : (
                 <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto" />
@@ -394,8 +408,15 @@ export const Upload: React.FC = () => {
 
               <h2 className="text-xl font-bold">
                 {jobData.status === 'COMPLETED' ? 'Processing Complete' :
-                 jobData.status === 'FAILED' ? 'Processing Failed' : 'Processing Background Job'}
+                 jobData.status === 'FAILED' ? 'Processing Failed' :
+                 jobData.status === 'CANCELLED' ? 'Processing Cancelled' : 'Processing Background Job'}
               </h2>
+
+              {jobData.current_stage && !['FINISHED'].includes(jobData.current_stage) && (
+                <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                  Stage: {jobData.current_stage.replace(/_/g, ' ')}
+                </p>
+              )}
 
               <div className="w-full bg-muted rounded-full h-3 mb-2 overflow-hidden border border-border">
                 <div
@@ -407,10 +428,32 @@ export const Upload: React.FC = () => {
                 Processed {jobData.records_processed} of {jobData.total_records} records.
               </p>
 
-              {jobData.errors && (
-                <div className="mt-4 p-4 bg-destructive/10 text-destructive text-sm rounded text-left">
-                  {JSON.stringify(jobData.errors)}
+              {jobData.details && Object.keys(jobData.details).length > 0 && jobData.status === 'COMPLETED' && (
+                <div className="mt-2 p-3 bg-primary/5 text-sm rounded text-left space-y-1">
+                  {jobData.details.accepted_source_records !== undefined && (
+                    <p>✅ Accepted: <strong>{jobData.details.accepted_source_records}</strong></p>
+                  )}
+                  {jobData.details.rejected_source_records !== undefined && jobData.details.rejected_source_records > 0 && (
+                    <p>❌ Rejected: <strong>{jobData.details.rejected_source_records}</strong></p>
+                  )}
                 </div>
+              )}
+
+              {jobData.errors && Object.keys(jobData.errors).length > 0 && (
+                <div className="mt-4 p-4 bg-destructive/10 text-destructive text-sm rounded text-left">
+                  {typeof jobData.errors === 'object' && jobData.errors.error
+                    ? jobData.errors.error
+                    : JSON.stringify(jobData.errors, null, 2)}
+                </div>
+              )}
+
+              {(jobData.status === 'COMPLETED' || jobData.status === 'FAILED' || jobData.status === 'CANCELLED') && (
+                <button
+                  onClick={() => { setStep('SELECT_CPSE'); setJobId(null); setFile(null); setHeaders([]); setPreviewRows([]); setRawRows([]); setMapping({ material_code: '', description: '', uom: '' }); }}
+                  className="btn-primary mt-4"
+                >
+                  Start New Upload
+                </button>
               )}
             </div>
           ) : null}

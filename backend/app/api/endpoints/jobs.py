@@ -159,3 +159,112 @@ async def stream_job_progress(request: Request, job_id: str, db: Session = Depen
             await asyncio.sleep(1.0) # Poll DB every second to push to client
 
     return EventSourceResponse(event_generator())
+
+
+@router.post("/trigger-matching", status_code=202)
+async def trigger_matching(
+    request: Request,
+    db: Session = Depends(get_db)
+):
+    """
+    Trigger AI matching for source materials that haven't been matched yet.
+    Accepts JSON body: {"cpse_id": "...", "source_file": "..." (optional)}
+    Returns a job_id to track progress.
+    """
+    import threading
+    from app.models.base import SourceMaterial, NormalizedMaterial
+
+    body = await request.json()
+    cpse_id = body.get("cpse_id")
+    source_file = body.get("source_file")
+
+    if not cpse_id:
+        raise HTTPException(status_code=400, detail="cpse_id is required")
+
+    # Find source materials that don't have normalized materials yet (unmatched)
+    query = db.query(SourceMaterial).filter(SourceMaterial.cpse_id == cpse_id)
+    if source_file:
+        query = query.filter(SourceMaterial.source_file == source_file)
+
+    all_sm = query.all()
+    already_matched_ids = {n.source_material_id for n in
+                          db.query(NormalizedMaterial.source_material_id).all()}
+    unmatched = [sm for sm in all_sm if sm.source_material_id not in already_matched_ids]
+
+    if not unmatched:
+        return {"message": "All materials already matched", "total": len(all_sm), "unmatched": 0}
+
+    # Create a job
+    job_id = f"MATCH-{uuid.uuid4().hex[:12]}"
+    job = ProcessingJob(
+        job_id=job_id,
+        job_type="AI_MATCHING",
+        status="PENDING",
+        total_records=len(unmatched),
+        records_processed=0,
+        successful=0,
+        failed=0,
+        details={"cpse_id": cpse_id, "source_file": source_file},
+    )
+    db.add(job)
+    db.commit()
+
+    target_ids = [sm.source_material_id for sm in unmatched]
+
+    def _run_matching():
+        from app.core.connection import SessionLocal as SL
+        from app.ai.pipeline import MatchingPipeline
+        import logging
+        log = logging.getLogger(__name__)
+
+        tdb = SL()
+        try:
+            tjob = tdb.query(ProcessingJob).filter_by(job_id=job_id).first()
+            if not tjob:
+                return
+
+            tjob.status = "RUNNING"
+            tjob.current_stage = "AI_MATCHING"
+            tdb.commit()
+
+            pipeline = MatchingPipeline(tdb)
+
+            for idx, tid in enumerate(target_ids):
+                tdb.refresh(tjob)
+                if tjob.status == "CANCELLED":
+                    break
+
+                try:
+                    pipeline.process(tid)
+                    tjob.successful = (tjob.successful or 0) + 1
+                except Exception as e:
+                    log.error(f"Matching failed for {tid}: {e}")
+                    tjob.failed = (tjob.failed or 0) + 1
+
+                tjob.records_processed = idx + 1
+                if idx % 5 == 0:
+                    tdb.commit()
+
+            tjob.records_processed = tjob.total_records
+            tjob.status = "COMPLETED"
+            tjob.current_stage = "FINISHED"
+            tdb.commit()
+            log.info(f"Matching job {job_id} done. OK={tjob.successful} FAIL={tjob.failed}")
+
+        except Exception as err:
+            log.exception(f"Matching job {job_id} failed: {err}")
+            try:
+                tjob = tdb.query(ProcessingJob).filter_by(job_id=job_id).first()
+                if tjob:
+                    tjob.status = "FAILED"
+                    tjob.errors = {"error": str(err)}
+                    tdb.commit()
+            except Exception:
+                pass
+        finally:
+            tdb.close()
+
+    thread = threading.Thread(target=_run_matching, daemon=True)
+    thread.start()
+
+    return {"job_id": job_id, "total": len(all_sm), "unmatched": len(unmatched), "status": "PENDING"}

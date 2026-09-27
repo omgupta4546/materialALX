@@ -96,15 +96,15 @@ const MatCard: React.FC<{ mat: MaterialSnapshot; label: string; highlightDiffs?:
   <div className="card overflow-hidden flex-1 min-w-0">
     <div className="px-4 py-2.5 bg-muted/40 border-b border-border flex items-center justify-between">
       <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{label}</span>
-      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">{mat.cpse_id}</span>
+      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">{mat.cpse_id || 'NATIONAL'}</span>
     </div>
     <div className="p-4 space-y-3 text-sm">
-      <DataRow label="Code" value={mat.legacy_material_code} mono />
-      <DataRow label="Description" value={mat.raw_description} />
-      <DataRow label="Normalized" value={mat.normalized_description} emphasized />
+      <DataRow label="Code" value={mat.legacy_material_code || mat.national_material_code} mono />
+      <DataRow label="Description" value={mat.raw_description || mat.national_description} />
+      <DataRow label="Normalized" value={mat.normalized_description || mat.national_description} emphasized />
       <DataRow label="Manufacturer" value={mat.manufacturer} diff={highlightDiffs.manufacturer} />
       <DataRow label="MPN" value={mat.manufacturer_part_number} diff={highlightDiffs.manufacturer_part_number} mono />
-      <DataRow label="UOM" value={mat.raw_uom} diff={highlightDiffs.uom} mono />
+      <DataRow label="UOM" value={mat.raw_uom || mat.canonical_uom} diff={highlightDiffs.uom} mono />
       <DataRow label="Category" value={mat.classification_id} />
     </div>
   </div>

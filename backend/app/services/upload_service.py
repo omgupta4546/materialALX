@@ -387,22 +387,147 @@ class UploadService:
         job_id = str(uuid.uuid4())
         result = UploadResult(job_id=job_id, upload_id="")
 
-        # Step 2: file record
+        # Step 2: job
+        job = self._create_job(job_id, filename)
+
+        # Step 3: file record
         file_record = self._create_file_record(filename, len(content), cpse_id, job_id)
         result.upload_id = file_record.id
-
-        # Step 3: job
-        job = self._create_job(job_id, filename)
         self.db.flush()
 
-        # Queue the background processing task in Redis using arq
-        if redis_pool:
+        # Use in-process background thread for upload processing.
+        # (arq worker enqueue is disabled until a dedicated worker process is set up)
+        if False and redis_pool:
             await redis_pool.enqueue_job(
                 "process_upload_job",
                 content, filename, cpse_id, job_id, result.upload_id
             )
         else:
-            log.warning("Redis pool not found. Job will not be processed.")
+            # IMPORTANT: Commit job + file_upload records BEFORE starting the
+            # background thread, so the thread's own DB session can see them.
+            self.db.commit()
+
+            log.warning("Redis pool not found. Running upload processing in a background thread.")
+            import threading
+
+            def _run_in_thread():
+                """Run upload processing in a separate thread with its own DB session."""
+                from app.core.connection import SessionLocal
+                thread_db = SessionLocal()
+                try:
+                    thread_job = thread_db.query(ProcessingJob).filter_by(job_id=job_id).first()
+
+                    if not thread_job:
+                        log.error(f"ProcessingJob {job_id} not found in background thread!")
+                        return
+
+                    thread_svc = UploadService(thread_db)
+
+                    # 1. Parse file
+                    try:
+                        raw_rows = _parse_file(content, filename)
+                    except ValueError as parse_err:
+                        thread_job.status = "FAILED"
+                        thread_job.errors = {"error": str(parse_err)}
+                        thread_db.commit()
+                        return
+
+                    if not raw_rows:
+                        thread_job.status = "COMPLETED"
+                        thread_job.total_records = 0
+                        thread_db.commit()
+                        return
+
+                    # 2. Save source materials
+                    thread_job.status = "RUNNING"
+                    thread_job.current_stage = "SAVING_SOURCE_MATERIALS"
+                    thread_db.commit()
+
+                    thread_result = UploadResult(job_id=job_id, upload_id=result.upload_id)
+                    try:
+                        thread_svc._process_rows(raw_rows, cpse_id, filename, thread_job, thread_result)
+                    except Exception as exc:
+                        log.exception(f"Error during row processing for job {job_id}")
+                        thread_job.status = "FAILED"
+                        thread_job.errors = {"error": str(exc)}
+                        thread_db.commit()
+                        return
+
+                    # 3. AI Matching Pipeline
+                    thread_job.current_stage = "AI_MATCHING"
+                    thread_db.commit()
+
+                    from app.models.base import SourceMaterial as SM
+                    source_materials = thread_db.query(SM).filter(
+                        SM.cpse_id == cpse_id,
+                        SM.source_file == filename
+                    ).all()
+                    target_ids = [sm.source_material_id for sm in source_materials]
+
+                    thread_job.total_records = len(target_ids)
+                    thread_job.records_processed = 0
+                    thread_job.successful = 0
+                    thread_job.failed = 0
+                    thread_db.commit()
+
+                    try:
+                        from app.ai.pipeline import MatchingPipeline
+                        pipeline = MatchingPipeline(thread_db)
+
+                        for idx, target_id in enumerate(target_ids):
+                            thread_db.refresh(thread_job)
+                            if thread_job.status == "CANCELLED":
+                                log.warning(f"Job {job_id} was cancelled by user.")
+                                break
+
+                            try:
+                                pipeline.process(target_id)
+                                thread_job.successful = (thread_job.successful or 0) + 1
+                            except Exception as e:
+                                log.error(f"AI matching failed for item {target_id}: {e}")
+                                thread_job.failed = (thread_job.failed or 0) + 1
+
+                            thread_job.records_processed = idx + 1
+                            if idx % 5 == 0:
+                                thread_db.commit()
+
+                    except Exception as ai_err:
+                        log.warning(f"AI pipeline init failed for job {job_id}: {ai_err}. "
+                                    "Source materials saved — continuing to finalize.")
+
+                    thread_db.commit()
+
+                    # 4. Finalize
+                    details = dict(thread_job.details) if thread_job.details else {}
+                    details.update({
+                        "total_raw_records": thread_result.total_records,
+                        "accepted_source_records": thread_result.accepted_records,
+                        "rejected_source_records": thread_result.rejected_records,
+                    })
+                    thread_job.details = details
+                    thread_job.records_processed = thread_job.total_records
+                    thread_job.status = "COMPLETED"
+                    thread_job.current_stage = "FINISHED"
+                    thread_db.commit()
+                    log.info(f"Job {job_id} completed in background thread. "
+                             f"Accepted: {thread_result.accepted_records}, "
+                             f"Rejected: {thread_result.rejected_records}")
+
+                except Exception as outer_err:
+                    log.exception(f"Unhandled error in background thread for job {job_id}")
+                    try:
+                        thread_job = thread_db.query(ProcessingJob).filter_by(job_id=job_id).first()
+                        if thread_job:
+                            thread_job.status = "FAILED"
+                            thread_job.errors = {"error": f"Background processing failed: {str(outer_err)}"}
+                            thread_db.commit()
+                    except Exception:
+                        log.exception("Failed to update job status after error")
+                finally:
+                    thread_db.close()
+
+            thread = threading.Thread(target=_run_in_thread, daemon=True)
+            thread.start()
 
         return result
 

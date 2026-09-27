@@ -196,7 +196,9 @@ export const Approvals: React.FC = () => {
                 <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4">
                   <h4 className="text-sm font-semibold text-red-500 flex items-center gap-2 mb-3"><AlertTriangle size={16}/> Conflicts / Negative</h4>
                   <pre className="text-xs font-mono text-muted-foreground overflow-auto">
-                    {JSON.stringify(detail.conflicts || detail.negative_evidence, null, 2)}
+                    {Object.keys(detail.conflicts || detail.negative_evidence || {}).length > 0 
+                      ? JSON.stringify(detail.conflicts || detail.negative_evidence, null, 2)
+                      : "No conflicts detected."}
                   </pre>
                 </div>
               </div>
